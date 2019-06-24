@@ -4,7 +4,7 @@
 //
 //  Created by Vishwanath Kota on 10/06/19.
 //  Copyright © 2019 University Of Hertfordshire. All rights reserved.
-//
+//  GitHub URL: https://github.com/kotavishwanath/MSc-Masters-Project.git
 
 import UIKit
 import CoreData

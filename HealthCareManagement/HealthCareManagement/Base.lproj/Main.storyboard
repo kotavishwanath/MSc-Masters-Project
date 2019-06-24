@@ -278,6 +278,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="5S6-rF-H9U"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 1*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9G4-1m-4M3">
                                                 <rect key="frame" x="10" y="411.5" width="61" height="15"/>
@@ -290,6 +293,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="pFj-qt-tzy"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqt-0G-iMS">
                                                 <rect key="frame" x="10" y="465.5" width="57" height="15"/>
@@ -302,6 +308,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="bpm-ZW-3Y7"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0j0-ye-KdZ">
                                                 <rect key="frame" x="10" y="516.5" width="36" height="15"/>
@@ -314,6 +323,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="m9x-Sr-dPB"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0c-RD-eq7">
                                                 <rect key="frame" x="10" y="570.5" width="51" height="15"/>
@@ -326,6 +338,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="J9T-74-WOO"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postcode*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CSP-hO-uU2">
                                                 <rect key="frame" x="10" y="622.5" width="59" height="15"/>
@@ -338,6 +353,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="YJk-o4-qOg"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Number*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hyl-wT-JrQ">
                                                 <rect key="frame" x="10" y="677.5" width="92" height="15"/>
@@ -350,6 +368,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="zOH-oo-Q8M"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emerg. contact name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5j-5W-cfS">
                                                 <rect key="frame" x="10" y="731.5" width="126" height="15"/>
@@ -362,6 +383,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="7d1-Xt-uvh"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emerg. contact no.*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bki-xy-ywg">
                                                 <rect key="frame" x="10" y="785.5" width="111" height="15"/>
@@ -374,6 +398,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="blg-De-xju"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emerg. contact email*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw4-6d-3z0">
                                                 <rect key="frame" x="10" y="835.5" width="125" height="15"/>
@@ -386,6 +413,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="bwE-ja-KWS"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emerg. contact rel*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKS-Lx-7ql">
                                                 <rect key="frame" x="10" y="919.5" width="110" height="15"/>
@@ -398,6 +428,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="fHp-IT-rqA"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin Number*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LK-A1-tcY">
                                                 <rect key="frame" x="10" y="963.5" width="72" height="15"/>
@@ -410,6 +443,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="jME-Jz-kIW"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Desired Username*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXY-Lo-cxt">
                                                 <rect key="frame" x="10" y="1013" width="111" height="15"/>
@@ -422,6 +458,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="3zU-jl-cSy"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Password*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bu-gb-t3g">
                                                 <rect key="frame" x="10" y="1059" width="111" height="15"/>
@@ -434,10 +473,19 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="jWn-8z-z1K"/>
+                                                </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-lL-xVz">
-                                                <rect key="frame" x="182.5" y="1155" width="49" height="30"/>
-                                                <state key="normal" title="Submit"/>
+                                                <rect key="frame" x="123" y="1155" width="168" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="168" id="AM9-eM-iH1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                                <state key="normal" title="Submit">
+                                                    <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="GSy-Cr-QCP"/>
                                                 </connections>
@@ -453,6 +501,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="FAO-zv-AU0"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -637,6 +688,7 @@
                         <outlet property="emercontactnumber" destination="gjE-F4-Jx5" id="BPQ-xf-5d7"/>
                         <outlet property="emercontactrelationship" destination="gQD-Es-KRS" id="DeL-Iy-oLd"/>
                         <outlet property="firstname" destination="Lbe-Pv-fN6" id="kTz-6H-Gs6"/>
+                        <outlet property="formScrollView" destination="Kf1-fV-DbQ" id="opo-x2-raH"/>
                         <outlet property="lastname" destination="jqM-D5-0nK" id="wXe-iu-4V9"/>
                         <outlet property="maidenname" destination="Il9-gt-V0P" id="wWG-SM-1rh"/>
                         <outlet property="mobilenumber" destination="FvA-ib-Dtt" id="TyC-ze-kXW"/>
@@ -647,6 +699,7 @@
                         <outlet property="profileImageview" destination="bAK-6k-PcM" id="fDM-ny-Zdi"/>
                         <outlet property="reenterpassword" destination="TB1-hd-rkb" id="2pa-Xk-38J"/>
                         <outlet property="state" destination="hDp-8O-86T" id="Wz0-3I-kry"/>
+                        <outlet property="submitBtn" destination="Dgl-lL-xVz" id="2My-AE-9oO"/>
                         <outlet property="username" destination="PXk-AH-6zQ" id="bNI-my-Xp6"/>
                     </connections>
                 </viewController>
