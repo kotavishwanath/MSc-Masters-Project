@@ -189,13 +189,13 @@
                                                     <action selector="openGalleryButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="kwW-5P-BW9"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvX-sE-L73">
-                                                <rect key="frame" x="236" y="21.5" width="170" height="39"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvX-sE-L73">
+                                                <rect key="frame" x="236" y="10.5" width="170" height="61"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="39" id="Q2a-hi-zMQ"/>
+                                                    <constraint firstAttribute="height" constant="61" id="Q2a-hi-zMQ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" name="HiraMinProN-W6" family="Hiragino Mincho ProN" pointSize="20"/>
+                                                <color key="textColor" red="0.23600585870845056" green="0.10814669121971826" blue="1" alpha="0.88105193661971826" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Note: Alerts will be sent to this email Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95S-IP-6wH">
@@ -278,6 +278,9 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="F0D-4f-sgy" id="aRr-YT-20E"/>
+                                                </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 1*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9G4-1m-4M3">
                                                 <rect key="frame" x="10" y="411.5" width="61" height="15"/>
@@ -436,8 +439,14 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgl-lL-xVz">
-                                                <rect key="frame" x="182.5" y="1155" width="49" height="30"/>
-                                                <state key="normal" title="Submit"/>
+                                                <rect key="frame" x="123" y="1155" width="168" height="39"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="168" id="AM9-eM-iH1"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                                <state key="normal" title="Submit">
+                                                    <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="GSy-Cr-QCP"/>
                                                 </connections>
@@ -637,6 +646,7 @@
                         <outlet property="emercontactnumber" destination="gjE-F4-Jx5" id="BPQ-xf-5d7"/>
                         <outlet property="emercontactrelationship" destination="gQD-Es-KRS" id="DeL-Iy-oLd"/>
                         <outlet property="firstname" destination="Lbe-Pv-fN6" id="kTz-6H-Gs6"/>
+                        <outlet property="formScrollView" destination="Kf1-fV-DbQ" id="opo-x2-raH"/>
                         <outlet property="lastname" destination="jqM-D5-0nK" id="wXe-iu-4V9"/>
                         <outlet property="maidenname" destination="Il9-gt-V0P" id="wWG-SM-1rh"/>
                         <outlet property="mobilenumber" destination="FvA-ib-Dtt" id="TyC-ze-kXW"/>
@@ -647,6 +657,7 @@
                         <outlet property="profileImageview" destination="bAK-6k-PcM" id="fDM-ny-Zdi"/>
                         <outlet property="reenterpassword" destination="TB1-hd-rkb" id="2pa-Xk-38J"/>
                         <outlet property="state" destination="hDp-8O-86T" id="Wz0-3I-kry"/>
+                        <outlet property="submitBtn" destination="Dgl-lL-xVz" id="2My-AE-9oO"/>
                         <outlet property="username" destination="PXk-AH-6zQ" id="bNI-my-Xp6"/>
                     </connections>
                 </viewController>

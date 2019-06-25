@@ -13,12 +13,16 @@ import CoreData
 
 // patients.value(forKeyPath: "name") as? String
 
-class RegestrationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+class RegestrationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
+    
     var patients:[NSManagedObject] = []
+    @IBOutlet weak var formScrollView: UIScrollView!
+    var activeField: UITextField?
     
     let imagepickerController = UIImagePickerController()
     //Outlet connections
+    @IBOutlet weak var submitBtn: UIButton!
+    
     @IBOutlet weak var profileImageview: UIImageView!
     @IBOutlet weak var patientname: UILabel!
     @IBOutlet weak var firstname: UITextField!
@@ -50,6 +54,10 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
         imagepickerController.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        submitBtn.layer.borderWidth = 1.5
+        submitBtn.layer.borderColor = UIColor.blue.cgColor
+        submitBtn.layer.cornerRadius = 4.0
     }
     
     @objc func dismissKeyboard() {
@@ -121,7 +129,7 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
     }
     
     @IBAction func registerButton(_ sender: Any) {
-        
+        var uhiNumber = 0
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -166,7 +174,7 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
                 person.setValue(password.text, forKeyPath: "password")
                 
                 
-                let uhiNumber = randomNumberWith(digits: 5)
+                uhiNumber = randomNumberWith(digits: 5)
                 print(uhiNumber)
                 //need to save this number and is used as the Universal Health Identifier number.
                 
@@ -191,6 +199,9 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
         do {
             try managedContext.save()
             patients.append(person)
+            let alert = UIAlertController(title: "Successful", message: "You have successfully registred and your UHI number is: \(uhiNumber)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
@@ -201,6 +212,10 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        patientname.text = displayname.text
     }
 }
 

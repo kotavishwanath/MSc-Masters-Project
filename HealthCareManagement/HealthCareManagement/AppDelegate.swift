@@ -5,6 +5,7 @@
 //  Created by Vishwanath Kota on 10/06/19.
 //  Copyright © 2019 University Of Hertfordshire. All rights reserved.
 //  https://github.com/hackiftekhar/IQKeyboardManager
+//  GitHub URL: https://github.com/kotavishwanath/MSc-Masters-Project.git
 
 import UIKit
 import CoreData
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        IQKeyboardManager.shared.enable = true
         return true
     }
 
