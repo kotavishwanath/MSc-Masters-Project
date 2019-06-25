@@ -13,12 +13,16 @@ import CoreData
 
 // patients.value(forKeyPath: "name") as? String
 
-class RegestrationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+class RegestrationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
+    
     var patients:[NSManagedObject] = []
+    @IBOutlet weak var formScrollView: UIScrollView!
+    var activeField: UITextField?
     
     let imagepickerController = UIImagePickerController()
     //Outlet connections
+    @IBOutlet weak var submitBtn: UIButton!
+    
     @IBOutlet weak var profileImageview: UIImageView!
     @IBOutlet weak var patientname: UILabel!
     @IBOutlet weak var firstname: UITextField!
@@ -50,6 +54,10 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
         imagepickerController.delegate = self
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
+        submitBtn.layer.borderWidth = 1.5
+        submitBtn.layer.borderColor = UIColor.blue.cgColor
+        submitBtn.layer.cornerRadius = 4.0
     }
     
     @objc func dismissKeyboard() {
