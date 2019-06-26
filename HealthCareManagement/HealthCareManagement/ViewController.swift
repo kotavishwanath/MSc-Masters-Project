@@ -83,6 +83,8 @@ class ViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil) */
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
+                    vc.name = (data.value(forKey: "username") as? String)!
+                    vc.uhinumber = "\(data.value(forKey: "uhi") as! Int)"
                     navigationController?.pushViewController(vc, animated: true)
                     return
                 }

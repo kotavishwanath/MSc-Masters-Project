@@ -10,7 +10,17 @@ import XCTest
 @testable import HealthCareManagement
 
 class HealthCareManagementTests: XCTestCase {
-
+    var regtir: RegestrationViewController!
+    func testHelloWorld(){
+        var helloWorld: String?
+        XCTAssertNil(helloWorld)
+        helloWorld = "Hello World"
+        XCTAssertEqual(helloWorld, "Hello World")
+        regtir.randomNumberWith(digits: 123)
+    }
+    
+    
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

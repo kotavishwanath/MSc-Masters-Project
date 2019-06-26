@@ -9,11 +9,15 @@
 import UIKit
 
 class DashboardViewController: UIViewController {
-
+    var name: String = ""
+    var uhinumber: String = ""
+    @IBOutlet weak var usernameLbl: UILabel!
+    @IBOutlet weak var uhiLbl: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        usernameLbl.text = "Name: \(name)"
+        uhiLbl.text = "UHI: \(uhinumber)"
     }
 
     @IBAction func healthStatusButton(_ sender: Any) {
