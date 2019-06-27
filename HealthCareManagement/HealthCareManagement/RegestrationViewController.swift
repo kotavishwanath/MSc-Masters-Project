@@ -172,6 +172,7 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
                 person.setValue(Int16(pinnumber.text!), forKeyPath: "pin_number")
                 person.setValue(username.text, forKeyPath: "username")
                 person.setValue(password.text, forKeyPath: "password")
+                person.setValue(2, forKey: "accessLevel")
                 
                 
                 uhiNumber = randomNumberWith(digits: 5)
@@ -200,7 +201,12 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
             try managedContext.save()
             patients.append(person)
             let alert = UIAlertController(title: "Successful", message: "You have successfully registred and your UHI number is: \(uhiNumber)", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (UIAlertAction) in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+            }))
+//            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")

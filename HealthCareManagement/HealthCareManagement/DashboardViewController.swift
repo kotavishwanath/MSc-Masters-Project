@@ -35,5 +35,11 @@ class DashboardViewController: UIViewController {
         //self.present(CalenderVC(), animated: true, completion: nil)
     }
     @IBAction func telemedicineButton(_ sender: Any) {
+        
+    }
+    @IBAction func logut(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

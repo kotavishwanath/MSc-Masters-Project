@@ -16,6 +16,7 @@ import CoreData
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var docotrRegisterBtn: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var username: UITextField!
@@ -26,13 +27,17 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
        // keepSignIn.setImage(UIImage(named: "empty_check"), for: .normal)
         //navigationController?.setNavigationBarHidden(true, animated: true)
-        signInButton.layer.borderWidth = 1.5
+        signInButton.layer.borderWidth = 1
         signInButton.layer.borderColor = UIColor.blue.cgColor
         signInButton.layer.cornerRadius = 4.0
         
-        registerButton.layer.borderWidth = 1.5
+        registerButton.layer.borderWidth = 1
         registerButton.layer.borderColor = UIColor.blue.cgColor
         registerButton.layer.cornerRadius = 4.0
+        
+        docotrRegisterBtn.layer.borderWidth = 1
+        docotrRegisterBtn.layer.borderColor = UIColor.blue.cgColor
+        docotrRegisterBtn.layer.cornerRadius = 4.0
         
         username.layer.borderColor = UIColor.black.cgColor
         username.layer.borderWidth = 1
@@ -70,7 +75,39 @@ class ViewController: UIViewController {
             let alert = UIAlertController(title: "Error", message: "Username or Password shouldnt be empty", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            return
         }
+        
+        let fetchRequestDoctor =
+            NSFetchRequest<NSManagedObject>(entityName: "DoctorsInfo")
+        do{
+            let doctorsinfo = try managedContext.fetch(fetchRequestDoctor)
+            for data in doctorsinfo{
+                if (uname == (data.value(forKey: "gmc_number") as? String)) && (pass == (data.value(forKey: "password") as? String)){
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "DoctorsViewController") as! DoctorsViewController
+                    //https://www.gmc-uk.org/registration-and-licensing/the-medical-register/a-guide-to-the-medical-register/find-a-doctors-record
+                    vc.doctorname = "Name: \((data.value(forKey: "first_name") as? String)!) \((data.value(forKey: "last_name") as? String)!)"
+                    vc.gmcNumber = "GMC Ref. No.: \(uname)"
+                    navigationController?.pushViewController(vc, animated: true)
+                    return
+                }
+            }
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+    /*
+        if (uname == "doctor" && pass == "doctor"){
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "DoctorsViewController") as! DoctorsViewController
+        //https://www.gmc-uk.org/registration-and-licensing/the-medical-register/a-guide-to-the-medical-register/find-a-doctors-record
+            vc.doctorname = "Name: \(uname)"
+            vc.gmcNumber = "GMC Ref. No.: 54323456"
+            navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+ */
         //3
         do {
             let patientsinfo = try managedContext.fetch(fetchRequest)
@@ -128,6 +165,11 @@ class ViewController: UIViewController {
 //            keepSignIn.layer.borderColor = UIColor.red.cgColor
         }
         
+    }
+    @IBAction func doctorRegistration(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DoctorRegistrationViewController") as! DoctorRegistrationViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

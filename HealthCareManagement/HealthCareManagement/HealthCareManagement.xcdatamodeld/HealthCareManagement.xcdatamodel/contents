@@ -11,7 +11,14 @@
         <attribute name="systolic" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="DoctorsInfo" representedClassName="DoctorsInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gmc_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="PatientsContactInfo" representedClassName="PatientsContactInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="accessLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="display_name" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,7 +48,8 @@
     </entity>
     <elements>
         <element name="BloodPressureVitalInfo" positionX="-63" positionY="126" width="128" height="180"/>
-        <element name="PatientsContactInfo" positionX="-63" positionY="-18" width="128" height="345"/>
+        <element name="PatientsContactInfo" positionX="-63" positionY="-18" width="128" height="360"/>
         <element name="TemperatureVitalInfo" positionX="-54" positionY="135" width="128" height="105"/>
+        <element name="DoctorsInfo" positionX="-54" positionY="135" width="128" height="105"/>
     </elements>
 </model>

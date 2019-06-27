@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1006D4C022C4B2890028AD5B /* DoctorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006D4BF22C4B2880028AD5B /* DoctorsViewController.swift */; };
+		1006D4C222C4B90F0028AD5B /* DoctorRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006D4C122C4B90E0028AD5B /* DoctorRegistrationViewController.swift */; };
 		100AAAA122B8FDC800E3FAA2 /* RegestrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AAAA022B8FDC800E3FAA2 /* RegestrationViewController.swift */; };
 		10D3A04E22C28CF800B54B92 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3A03822C28CF700B54B92 /* IQTextView.swift */; };
 		10D3A04F22C28CF800B54B92 /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3A03A22C28CF700B54B92 /* IQPreviousNextView.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1006D4BF22C4B2880028AD5B /* DoctorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsViewController.swift; sourceTree = "<group>"; };
+		1006D4C122C4B90E0028AD5B /* DoctorRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorRegistrationViewController.swift; sourceTree = "<group>"; };
 		100AAAA022B8FDC800E3FAA2 /* RegestrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegestrationViewController.swift; sourceTree = "<group>"; };
 		10D3A03822C28CF700B54B92 /* IQTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTextView.swift; sourceTree = "<group>"; };
 		10D3A03A22C28CF700B54B92 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQPreviousNextView.swift; sourceTree = "<group>"; };
@@ -219,6 +223,8 @@
 				10E004F822AECEA70009155C /* ViewController.swift */,
 				10EC3C7A22BD41B6000A615D /* DashboardViewController.swift */,
 				10E004FA22AECEA70009155C /* Main.storyboard */,
+				1006D4C122C4B90E0028AD5B /* DoctorRegistrationViewController.swift */,
+				1006D4BF22C4B2880028AD5B /* DoctorsViewController.swift */,
 				10E0050022AECEAA0009155C /* Assets.xcassets */,
 				10E0050222AECEAA0009155C /* LaunchScreen.storyboard */,
 				10E0050522AECEAA0009155C /* Info.plist */,
@@ -399,6 +405,7 @@
 				10D3A05E22C28CF800B54B92 /* IQNSArray+Sort.swift in Sources */,
 				10D3A05422C28CF800B54B92 /* IQInvocation.swift in Sources */,
 				10D3A05222C28CF800B54B92 /* IQToolbar.swift in Sources */,
+				1006D4C222C4B90F0028AD5B /* DoctorRegistrationViewController.swift in Sources */,
 				10EC3C8422BD52F6000A615D /* WeekdaysView.swift in Sources */,
 				10D3A05322C28CF800B54B92 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				10D3A05A22C28CF800B54B92 /* IQUIScrollView+Additions.swift in Sources */,
@@ -416,6 +423,7 @@
 				10D3A05122C28CF800B54B92 /* IQBarButtonItem.swift in Sources */,
 				10D3A05022C28CF800B54B92 /* IQTitleBarButtonItem.swift in Sources */,
 				10EC3C7D22BD52E1000A615D /* CalenderVC.swift in Sources */,
+				1006D4C022C4B2890028AD5B /* DoctorsViewController.swift in Sources */,
 				10D3A05922C28CF800B54B92 /* IQKeyboardManager.swift in Sources */,
 				10D3A05822C28CF800B54B92 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				10E004FF22AECEA70009155C /* HealthCareManagement.xcdatamodeld in Sources */,
