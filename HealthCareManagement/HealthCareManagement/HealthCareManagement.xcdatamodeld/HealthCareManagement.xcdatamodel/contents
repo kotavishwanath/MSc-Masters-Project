@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Attributes" representedClassName="Attributes" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="BloodPressureVitalInfo" representedClassName="BloodPressureVitalInfo" syncable="YES" codeGenerationType="class">
         <attribute name="alert_high_diastolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="alert_high_systolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -20,6 +23,8 @@
     <entity name="PatientsContactInfo" representedClassName="PatientsContactInfo" syncable="YES" codeGenerationType="class">
         <attribute name="accessLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointment_Time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appointmentDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="display_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dob" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,6 +45,11 @@
         <attribute name="uhi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="SubAttributes" representedClassName="SubAttributes" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubAttributes" inverseName="attributes" inverseEntity="SubAttributes" syncable="YES"/>
+    </entity>
     <entity name="TemperatureVitalInfo" representedClassName="TemperatureVitalInfo" syncable="YES" codeGenerationType="class">
         <attribute name="alert_high_temperature" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
         <attribute name="alert_low_temperature" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -47,9 +57,11 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Attributes" positionX="-54" positionY="135" width="128" height="60"/>
         <element name="BloodPressureVitalInfo" positionX="-63" positionY="126" width="128" height="180"/>
-        <element name="PatientsContactInfo" positionX="-63" positionY="-18" width="128" height="360"/>
-        <element name="TemperatureVitalInfo" positionX="-54" positionY="135" width="128" height="105"/>
         <element name="DoctorsInfo" positionX="-54" positionY="135" width="128" height="105"/>
+        <element name="PatientsContactInfo" positionX="-63" positionY="-18" width="128" height="390"/>
+        <element name="SubAttributes" positionX="-45" positionY="144" width="128" height="90"/>
+        <element name="TemperatureVitalInfo" positionX="-54" positionY="135" width="128" height="105"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  CalenderView.swift
 //  myCalender2
 //
-//  Created by Muskan on 10/22/17.
+//  Created by Vishwanath on 07/3/19.
 //  Copyright © 2017 akhil. All rights reserved.
 //
 
@@ -54,11 +54,18 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     var todaysDate = 0
     var firstWeekDayOfMonth = 0   //(Sunday-Saturday 1-7)
   
-    var bookedSlotDate = [12,27,4]
+    var bookedSlotDate = [12, 2]
+    
+    var slots:[Int] = []
+    let timePicker = UIDatePicker()
+    var timeSlot = ""
+    var dateSlot = ""
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        print("------")
+        print(bookedSlotDate)
+        print(slots)
         initializeView()
     }
     
@@ -136,6 +143,26 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
         return cell
     }
     
+    func openTimePicker()  {
+        timePicker.datePickerMode = UIDatePicker.Mode.time
+        timePicker.backgroundColor = UIColor.blue
+        timePicker.frame = CGRect(x: 0.0, y: (self.frame.height/2 + 160), width: self.frame.width, height: 150.0)
+        timePicker.backgroundColor = UIColor.lightGray
+        addSubview(timePicker)
+        self.bringSubviewToFront(timePicker)
+        timePicker.addTarget(self, action: #selector(CalenderView.startTimeDiveChanged), for: UIControl.Event.valueChanged)
+    }
+    
+    @objc func startTimeDiveChanged(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        timeSlot = formatter.string(from: sender.date)
+        timePicker.removeFromSuperview() // if you want to remove time picker
+        
+        delegate?.didTapDate(date: "\(dateSlot)", time: "Time: \(timeSlot) ", available: true)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell=collectionView.cellForItem(at: indexPath)
         let calcDate = indexPath.row-firstWeekDayOfMonth+2
@@ -143,13 +170,15 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
             cell?.backgroundColor=UIColor.clear
             let lbl = cell?.subviews[1] as! UILabel
             lbl.textColor=UIColor.red
-            
-            delegate?.didTapDate(date: "", available: false)
+            delegate?.didTapDate(date: "",time: "" , available: false)
         } else {
             cell?.backgroundColor=Colors.darkRed
             let lbl = cell?.subviews[1] as! UILabel
             lbl.textColor=UIColor.white
-            delegate?.didTapDate(date: "Date:\(calcDate)/\(currentMonthIndex)/\(currentYear)", available: true)
+            bookedSlotDate.append(calcDate)
+            openTimePicker()
+            dateSlot = "Date:\(calcDate)/\(currentMonthIndex)/\(currentYear)"
+//             delegate?.didTapDate(date: "Date:\(calcDate)/\(currentMonthIndex)/\(currentYear)", time: "Time: \(timeSlot) ", available: true)
         }
        
     }
@@ -162,7 +191,9 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
         if  bookedSlotDate.contains(calcDate) {
             cell?.backgroundColor=UIColor.clear
             let lbl = cell?.subviews[1] as! UILabel
-            lbl.textColor=UIColor.red
+            lbl.textColor=UIColor.black
+
+            bookedSlotDate.removeLast()
          
         } else {
             cell?.backgroundColor=UIColor.clear
@@ -267,7 +298,7 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
 
 
 protocol CalenderDelegate {
-    func didTapDate(date:String, available:Bool)
+    func didTapDate(date:String, time:String, available:Bool)
 }
 class dateCVCell: UICollectionViewCell {
     override init(frame: CGRect) {

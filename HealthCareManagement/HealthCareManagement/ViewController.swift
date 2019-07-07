@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var passwod: UITextField!
     @IBOutlet weak var keepSignIn: UIButton!
+    
+    var appointmentDate = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
