@@ -8,10 +8,15 @@
         <attribute name="alert_high_systolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="alert_low_diastolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="alert_low_systolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="diastolic" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="diastolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="doctor_notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="goal_diastolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="goal_systolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="normal_diastolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="normal_systolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="systolic" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="systolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="DoctorsInfo" representedClassName="DoctorsInfo" syncable="YES" codeGenerationType="class">
@@ -19,6 +24,16 @@
         <attribute name="gmc_number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="GlucoseInfo" representedClassName="GlucoseInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="alert_high" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="alert_low" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="doctor_notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="glucose_value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="goal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="PatientsContactInfo" representedClassName="PatientsContactInfo" syncable="YES" codeGenerationType="class">
         <attribute name="accessLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -45,23 +60,37 @@
         <attribute name="uhi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="PulseOxiInfo" representedClassName="PulseOxiInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="alert_low_pulse" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="doctor_notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="goal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pulseoxi_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="SubAttributes" representedClassName="SubAttributes" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="attributes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubAttributes" inverseName="attributes" inverseEntity="SubAttributes" syncable="YES"/>
     </entity>
     <entity name="TemperatureVitalInfo" representedClassName="TemperatureVitalInfo" syncable="YES" codeGenerationType="class">
-        <attribute name="alert_high_temperature" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
-        <attribute name="alert_low_temperature" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="temprature_info" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="alert_high_temperature" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="alert_low_temperature" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="doctor_notoes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="goal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="temprature_info" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Attributes" positionX="-54" positionY="135" width="128" height="60"/>
-        <element name="BloodPressureVitalInfo" positionX="-63" positionY="126" width="128" height="180"/>
-        <element name="DoctorsInfo" positionX="-54" positionY="135" width="128" height="105"/>
-        <element name="PatientsContactInfo" positionX="-63" positionY="-18" width="128" height="390"/>
-        <element name="SubAttributes" positionX="-45" positionY="144" width="128" height="90"/>
-        <element name="TemperatureVitalInfo" positionX="-54" positionY="135" width="128" height="105"/>
+        <element name="Attributes" positionX="75.88671875" positionY="-38.3203125" width="128" height="60"/>
+        <element name="BloodPressureVitalInfo" positionX="-72.71875" positionY="-121.16015625" width="128" height="255"/>
+        <element name="DoctorsInfo" positionX="-12.0546875" positionY="179.65234375" width="128" height="105"/>
+        <element name="PatientsContactInfo" positionX="-240.07421875" positionY="-117.03515625" width="128" height="390"/>
+        <element name="SubAttributes" positionX="-71.34375" positionY="72.67578125" width="128" height="73"/>
+        <element name="TemperatureVitalInfo" positionX="77.75" positionY="50.34765625" width="128" height="165"/>
+        <element name="PulseOxiInfo" positionX="-81" positionY="27" width="128" height="150"/>
+        <element name="GlucoseInfo" positionX="-72" positionY="36" width="128" height="165"/>
     </elements>
 </model>

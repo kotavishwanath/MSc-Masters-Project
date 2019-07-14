@@ -23,13 +23,24 @@ class DashboardViewController: UIViewController {
     }
 
     @IBAction func healthStatusButton(_ sender: Any) {
+        //HealthStatusVC
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "HealthStatusVC") as! HealthStatusVC
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
     @IBAction func emergencyButton(_ sender: Any) {
     }
+    
     @IBAction func pillboxButton(_ sender: Any) {
     }
+    
     @IBAction func monitorButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MonitorDashboardVC") as! MonitorDashboardVC
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
     @IBAction func appointmentBookingButton(_ sender: Any) {
         let vc = CalenderVC()
         vc.uhino = uhinumber
@@ -101,7 +112,12 @@ class DashboardViewController: UIViewController {
     @IBAction func telemedicineButton(_ sender: Any) {
         
     }
+    
     @IBAction func logut(_ sender: Any) {
+        
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.removeObject(forKey: "UHI")
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         navigationController?.pushViewController(vc, animated: true)

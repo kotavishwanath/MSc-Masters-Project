@@ -114,7 +114,7 @@ class ViewController: UIViewController {
         do {
             let patientsinfo = try managedContext.fetch(fetchRequest)
             for data in patientsinfo {
-                if (uname == (data.value(forKey: "username") as? String)) && (pass == (data.value(forKey: "password") as? String)){
+                if (uname == (data.value(forKey: "username") as! String)) && (pass == (data.value(forKey: "password") as! String)){
                     print(data.value(forKey: "uhi") as! Int)
                     print(data)
                 /*  let alert = UIAlertController(title: "Logged In Successfully", message: "", preferredStyle: .alert)
@@ -122,8 +122,16 @@ class ViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil) */
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
-                    vc.name = (data.value(forKey: "username") as? String)!
-                    vc.uhinumber = "\(data.value(forKey: "uhi") as! Int)"
+                    
+                    let patientname = (data.value(forKey: "username") as? String)!
+                    let patientUHI = "\(data.value(forKey: "uhi") as! Int)"
+                    
+                    UserDefaults.standard.set(patientname, forKey: "username")
+                    UserDefaults.standard.set(patientUHI, forKey: "UHI")
+                    UserDefaults.standard.synchronize()
+                    
+                    vc.name = patientname
+                    vc.uhinumber = patientUHI
                     navigationController?.pushViewController(vc, animated: true)
                     return
                 }

@@ -188,9 +188,13 @@ class CalenderVC: UIViewController, CalenderDelegate {
     }
     
     @objc func dismissVC(sender: UIBarButtonItem) {
-        
+        //        //username UHI
+        let name = UserDefaults.standard.object(forKey: "username") as! String
+        let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
+        vc.name = name
+        vc.uhinumber = uhi
         navigationController?.pushViewController(vc, animated: true)
         
       // self.dismiss(animated: true, completion: nil)
