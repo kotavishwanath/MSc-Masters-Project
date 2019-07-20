@@ -89,8 +89,14 @@ class ViewController: UIViewController {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "DoctorsViewController") as! DoctorsViewController
                     //https://www.gmc-uk.org/registration-and-licensing/the-medical-register/a-guide-to-the-medical-register/find-a-doctors-record
-                    vc.doctorname = "Name: \((data.value(forKey: "first_name") as? String)!) \((data.value(forKey: "last_name") as? String)!)"
+                    let dcotorName = "Name: \((data.value(forKey: "first_name") as? String)!) \((data.value(forKey: "last_name") as? String)!)"
+                    let gmcNumber = "GMC Ref. No.: \(uname)"
+                    vc.doctorname = dcotorName
                     vc.gmcNumber = "GMC Ref. No.: \(uname)"
+                    
+                    UserDefaults.standard.set(dcotorName, forKey: "DoctorName")
+                    UserDefaults.standard.set(gmcNumber, forKey: "GMCNumber")
+                    UserDefaults.standard.synchronize()
                     navigationController?.pushViewController(vc, animated: true)
                     return
                 }

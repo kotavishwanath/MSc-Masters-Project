@@ -2461,7 +2461,7 @@
                                         </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_arrow_right_thik" translatesAutoresizingMaskIntoConstraints="NO" id="3TD-1P-3n3">
-                                        <rect key="frame" x="383" y="10.5" width="22" height="77"/>
+                                        <rect key="frame" x="389" y="21" width="16" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="3TD-1P-3n3" secondAttribute="height" multiplier="2:7" id="RWu-oU-zMy"/>
                                         </constraints>
@@ -3261,6 +3261,7 @@
                                 </constraints>
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
+                                    <action selector="backButton:" destination="aZp-7f-hBb" eventType="touchUpInside" id="YCT-6e-PnL"/>
                                     <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="ecb-pf-BgF"/>
                                 </connections>
                             </button>
@@ -3707,12 +3708,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Session:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jg-ON-aqB">
-                                <rect key="frame" x="20" y="807" width="374" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next Session:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jg-ON-aqB">
+                                <rect key="frame" x="20" y="807" width="374" height="67"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="jIm-hB-oLw"/>
+                                    <constraint firstAttribute="height" constant="67" id="jIm-hB-oLw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3766,10 +3767,34 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F45-yu-Nby"/>
                     </view>
+                    <connections>
+                        <outlet property="bpData" destination="ZhQ-7e-tgC" id="FgT-zR-hyn"/>
+                        <outlet property="bpUpdatedDate" destination="gec-wv-qOA" id="Lbr-z7-h10"/>
+                        <outlet property="bpView" destination="wZc-Wu-ZgW" id="5Ja-B4-Vqu"/>
+                        <outlet property="emergencyContactName" destination="RZn-2m-nAy" id="k4e-fD-7HM"/>
+                        <outlet property="glucoseData" destination="JbH-I7-dBG" id="spP-0t-HAP"/>
+                        <outlet property="glucoseUpdatedDate" destination="ce6-bf-Y8a" id="u0v-kc-4ir"/>
+                        <outlet property="glucoseView" destination="Yar-Vv-kY2" id="Ved-Hk-4Hi"/>
+                        <outlet property="heartRateData" destination="dCc-kJ-hGk" id="q5d-je-vke"/>
+                        <outlet property="heartRateUpdatedDate" destination="i9n-9P-Jzy" id="exv-rs-qTJ"/>
+                        <outlet property="heartRateView" destination="cKU-Eb-iXT" id="HRY-kU-Yqe"/>
+                        <outlet property="hemoData" destination="tlR-VV-u7V" id="hAE-1S-ehP"/>
+                        <outlet property="hemoUpdatedDate" destination="Jyw-xp-iu0" id="JNh-Le-Cci"/>
+                        <outlet property="hemoglobinView" destination="iS9-it-QKB" id="tMU-6P-xV5"/>
+                        <outlet property="nextSession" destination="7jg-ON-aqB" id="uoM-gL-ay8"/>
+                        <outlet property="patientName" destination="RWj-YO-QAc" id="buk-nl-lYW"/>
+                        <outlet property="pulseOxiData" destination="75G-2d-r61" id="RI9-NS-AUp"/>
+                        <outlet property="pulseOxiUpdatedDate" destination="PPW-kW-TJb" id="X7R-RN-IrL"/>
+                        <outlet property="pulseOxiView" destination="ftb-Za-jAM" id="WLZ-Yy-qzz"/>
+                        <outlet property="tempData" destination="bzF-Zf-reG" id="tYr-sx-LBn"/>
+                        <outlet property="tempUpdatedDate" destination="tAJ-Cp-HR4" id="BDc-X5-Yth"/>
+                        <outlet property="temperatureView" destination="kH8-sg-RZF" id="Ugs-88-TIW"/>
+                        <outlet property="uhiNumber" destination="IdJ-3U-6He" id="IP3-NW-97K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wlU-PG-Iq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335" y="1778"/>
+            <point key="canvasLocation" x="334.78260869565219" y="1777.9017857142856"/>
         </scene>
         <!--Blood PressureVC-->
         <scene sceneID="m5O-kO-if4">
