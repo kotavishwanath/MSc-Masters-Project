@@ -21,11 +21,42 @@ class HeartRateVC: UIViewController {
     
     var heartRate: [NSManagedObject] = []
     let currentdate = NSDate()
+    var UHI = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         print(currentdate)
+        fetchDoctorsInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchDoctorsInfo()
+    }
+    
+    func fetchDoctorsInfo(){
+        UHI = UserDefaults.standard.object(forKey: "UHI") as! String
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequestHeartRate =
+            NSFetchRequest<NSManagedObject>(entityName: "HeartRateInfo")
+        do{
+            let heartRateInfo = try managedContext.fetch(fetchRequestHeartRate)
+            for heartData in heartRateInfo{
+                if (UHI == heartData.value(forKey: "patientID") as? String){
+                    goal.text = "\(heartData.value(forKey: "goal") as! Int) bpm"
+                    alertLow.text = "\(heartData.value(forKey: "alert_low") as! Int) bpm"
+                    alertHigh.text = "\(heartData.value(forKey: "alert_high") as! Int) bpm"
+                    doctorNotes.text = heartData.value(forKey: "doctor_notes") as? String
+                }
+            }
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

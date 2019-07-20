@@ -18,6 +18,7 @@
 		106F032222DBBDA200A8EBA2 /* GlucoseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F032122DBBDA200A8EBA2 /* GlucoseVC.swift */; };
 		106F032422DCA1D700A8EBA2 /* HeartRateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F032322DCA1D700A8EBA2 /* HeartRateVC.swift */; };
 		106F032622DCA20900A8EBA2 /* HemoglobinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F032522DCA20900A8EBA2 /* HemoglobinVC.swift */; };
+		106F032822E357AB00A8EBA2 /* PatientProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F032722E357AB00A8EBA2 /* PatientProfileVC.swift */; };
 		10D3A04E22C28CF800B54B92 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3A03822C28CF700B54B92 /* IQTextView.swift */; };
 		10D3A04F22C28CF800B54B92 /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3A03A22C28CF700B54B92 /* IQPreviousNextView.swift */; };
 		10D3A05022C28CF800B54B92 /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D3A03B22C28CF700B54B92 /* IQTitleBarButtonItem.swift */; };
@@ -79,6 +80,7 @@
 		106F032122DBBDA200A8EBA2 /* GlucoseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseVC.swift; sourceTree = "<group>"; };
 		106F032322DCA1D700A8EBA2 /* HeartRateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateVC.swift; sourceTree = "<group>"; };
 		106F032522DCA20900A8EBA2 /* HemoglobinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HemoglobinVC.swift; sourceTree = "<group>"; };
+		106F032722E357AB00A8EBA2 /* PatientProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientProfileVC.swift; sourceTree = "<group>"; };
 		10D3A03822C28CF700B54B92 /* IQTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTextView.swift; sourceTree = "<group>"; };
 		10D3A03A22C28CF700B54B92 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQPreviousNextView.swift; sourceTree = "<group>"; };
 		10D3A03B22C28CF700B54B92 /* IQTitleBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQTitleBarButtonItem.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				10E004F822AECEA70009155C /* ViewController.swift */,
 				10EC3C7A22BD41B6000A615D /* DashboardViewController.swift */,
 				10E004FA22AECEA70009155C /* Main.storyboard */,
+				106F032722E357AB00A8EBA2 /* PatientProfileVC.swift */,
 				106F032522DCA20900A8EBA2 /* HemoglobinVC.swift */,
 				106F032322DCA1D700A8EBA2 /* HeartRateVC.swift */,
 				106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */,
@@ -453,6 +456,7 @@
 				10D3A05022C28CF800B54B92 /* IQTitleBarButtonItem.swift in Sources */,
 				10EC3C7D22BD52E1000A615D /* CalenderVC.swift in Sources */,
 				106F032622DCA20900A8EBA2 /* HemoglobinVC.swift in Sources */,
+				106F032822E357AB00A8EBA2 /* PatientProfileVC.swift in Sources */,
 				1006D4C022C4B2890028AD5B /* DoctorsViewController.swift in Sources */,
 				10D3A05922C28CF800B54B92 /* IQKeyboardManager.swift in Sources */,
 				1019BF7822D89D0100CFA579 /* MonitorDashboardVC.swift in Sources */,

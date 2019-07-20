@@ -18,11 +18,40 @@ class HemoglobinVC: UIViewController {
     
     var hemoglobin: [NSManagedObject] = []
     let currentdate = NSDate()
+    var UHI = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         print(currentdate)
+        
+        fetchDoctorsInfo()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        fetchDoctorsInfo()
+    }
+    
+    func fetchDoctorsInfo(){
+        UHI = UserDefaults.standard.object(forKey: "UHI") as! String
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequestHemo =
+            NSFetchRequest<NSManagedObject>(entityName: "HemoglobinInfo")
+        do{
+            let hemoInfo = try managedContext.fetch(fetchRequestHemo)
+            for hemoData in hemoInfo{
+                if (UHI == hemoData.value(forKey: "patientID") as? String){
+                    doctorNotes.text = hemoData.value(forKey: "doctor_notes") as? String
+                }
+            }
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
     }
     
     @IBAction func backButton(_ sender: Any) {

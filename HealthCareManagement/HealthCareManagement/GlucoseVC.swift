@@ -20,12 +20,45 @@ class GlucoseVC: UIViewController {
     
     var glucose: [NSManagedObject] = []
     let currentdate = NSDate()
+    var UHI = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.isHidden = true
         print(currentdate)
+        
+        fetchDoctorsInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchDoctorsInfo()
+    }
+    
+    func fetchDoctorsInfo(){
+        UHI = UserDefaults.standard.object(forKey: "UHI") as! String
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequestGlucose =
+            NSFetchRequest<NSManagedObject>(entityName: "GlucoseInfo")
+        do{
+            let glucoseInfo = try managedContext.fetch(fetchRequestGlucose)
+            for glucoseData in glucoseInfo{
+                if (UHI == glucoseData.value(forKey: "patientID") as? String){
+                    glucoseGoal.text = "\(glucoseData.value(forKey: "goal") as! Int) mg/dl"
+                    alertHighValue.text = "\(glucoseData.value(forKey: "alert_high") as! Int) mg/dl"
+                    alertLowValue.text = "\(glucoseData.value(forKey: "alert_low") as! Int) mg/dl"
+                    doctorNotes.text = glucoseData.value(forKey: "doctor_notes") as? String
+                }
+            }
+            
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {

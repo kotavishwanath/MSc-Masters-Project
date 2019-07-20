@@ -21,11 +21,42 @@ class TemperatureVC: UIViewController {
     
     var temperature: [NSManagedObject] = []
     let currentdate = NSDate()
+    var UHI = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fetchDoctorsInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchDoctorsInfo()
+    }
+    
+    func fetchDoctorsInfo(){
+        UHI = UserDefaults.standard.object(forKey: "UHI") as! String
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequestTemp =
+            NSFetchRequest<NSManagedObject>(entityName: "TemperatureVitalInfo")
+        do{
+            let tempInfo = try managedContext.fetch(fetchRequestTemp)
+            for tempData in tempInfo{
+                if (UHI == tempData.value(forKey: "patientID") as? String){
+                    tempGoal.text = String(format: "%.1f °F", tempData.value(forKey: "goal") as! Float)
+                    tempAlertHigh.text = String(format: "%.1f °F", tempData.value(forKey: "alert_high_temperature") as! Float)
+                    tempAlertLow.text = String(format: "%.1f °F", tempData.value(forKey: "alert_low_temperature") as! Float)
+                    
+                    doctorNotesOfTemperature.text = tempData.value(forKey: "doctor_notoes") as? String
+                }
+            }
+            
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {

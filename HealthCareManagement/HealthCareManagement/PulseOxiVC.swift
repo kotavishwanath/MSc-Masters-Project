@@ -16,13 +16,46 @@ class PulseOxiVC: UIViewController {
     @IBOutlet weak var oxiGoal: UILabel!
     @IBOutlet weak var enterOxiValue: UITextField!
     @IBOutlet weak var doctorsNotes: UILabel!
+    @IBOutlet weak var alertLow: UILabel!
     
     var pulseOxi: [NSManagedObject] = []
     let currentdate = NSDate()
+    var UHI = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        fetchDoctorsInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchDoctorsInfo()
+    }
+    
+    func fetchDoctorsInfo(){
+        UHI = UserDefaults.standard.object(forKey: "UHI") as! String
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequestPulseOxi =
+            NSFetchRequest<NSManagedObject>(entityName: "PulseOxiInfo")
+        do{
+            let pluseOxiInfo = try managedContext.fetch(fetchRequestPulseOxi)
+            for pulseData in pluseOxiInfo{
+                if (UHI == pulseData.value(forKey: "patientID") as? String){
+                    oxiGoal.text = String(format: ".1f %", pulseData.value(forKey: "goal") as! Float)
+                    alertLow.text = String(format: ".1f %", pulseData.value(forKey: "alert_low_pulse") as! Float)
+                    doctorsNotes.text = pulseData.value(forKey: "doctor_notes") as? String
+                }
+            }
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
