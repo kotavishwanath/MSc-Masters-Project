@@ -123,7 +123,7 @@ class ViewController: UIViewController {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
                     
-                    let patientname = (data.value(forKey: "username") as? String)!
+                    let patientname = (data.value(forKey: "display_name") as? String)!
                     let patientUHI = "\(data.value(forKey: "uhi") as! Int)"
                     
                     UserDefaults.standard.set(patientname, forKey: "username")

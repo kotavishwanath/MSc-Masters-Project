@@ -60,7 +60,10 @@ class BloodPressureVC: UIViewController {
                 try managedContext.save()
                 bloodpressure.append(person)
                 
-                currentBPValue.text = "\(String(describing: systolicTxt.text))/\(String(describing: diastolicTxt.text))"
+                let systolic = systolicTxt.text!
+                let diastolic = diastolicTxt.text!
+                
+                currentBPValue.text = "\(systolic)/\(diastolic)"
                 let date = "\(currentdate)"
                 let displayDate = date.components(separatedBy: " ")
                 savedDate.text = displayDate[0]

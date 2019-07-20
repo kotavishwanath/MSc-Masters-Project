@@ -24,7 +24,8 @@ class GlucoseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.isHidden = true
+        print(currentdate)
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -58,7 +59,8 @@ class GlucoseVC: UIViewController {
                 try managedContext.save()
                 glucose.append(person)
                 
-                currentGlucoseValue.text = "\(String(describing: enterGlucoseValue.text))"
+                let glusoceVal = enterGlucoseValue.text!
+                currentGlucoseValue.text = glusoceVal
                 let date = "\(currentdate)"
                 let displayDate = date.components(separatedBy: " ")
                 updateDate.text = displayDate[0]

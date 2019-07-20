@@ -35,6 +35,23 @@
         <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="HeartRateInfo" representedClassName="HeartRateInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="alert_high" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="alert_low" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="doctor_notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="goal" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="heartrate_value" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="HemoglobinInfo" representedClassName="HemoglobinInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="doctor_notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hemoglobin_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="PatientsContactInfo" representedClassName="PatientsContactInfo" syncable="YES" codeGenerationType="class">
         <attribute name="accessLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -92,5 +109,7 @@
         <element name="TemperatureVitalInfo" positionX="77.75" positionY="50.34765625" width="128" height="165"/>
         <element name="PulseOxiInfo" positionX="-81" positionY="27" width="128" height="150"/>
         <element name="GlucoseInfo" positionX="-72" positionY="36" width="128" height="165"/>
+        <element name="HeartRateInfo" positionX="-63" positionY="45" width="128" height="165"/>
+        <element name="HemoglobinInfo" positionX="-54" positionY="54" width="128" height="120"/>
     </elements>
 </model>

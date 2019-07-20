@@ -57,7 +57,8 @@ class PulseOxiVC: UIViewController {
                 try managedContext.save()
                 pulseOxi.append(person)
                 
-                currentOxiValue.text = "\(String(describing: enterOxiValue.text))"
+                let oxiValue = enterOxiValue.text!
+                currentOxiValue.text = oxiValue
                 let date = "\(currentdate)"
                 let displayDate = date.components(separatedBy: " ")
                 updatedDate.text = displayDate[0]
