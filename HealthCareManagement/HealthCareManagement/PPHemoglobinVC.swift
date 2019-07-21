@@ -10,21 +10,24 @@ import UIKit
 
 class PPHemoglobinVC: UIViewController {
 
+    @IBOutlet weak var currentValue: UILabel!
+    @IBOutlet weak var patientUHI: UILabel!
+    @IBOutlet weak var doctorNotes: UITextView!
+    @IBOutlet weak var medicineName: UITextField!
+    @IBOutlet weak var timesPerDay: UITextField!
+    @IBOutlet weak var beforeMealBtn: UIButton!
+    @IBOutlet weak var afterMealBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addMedication(_ sender: Any) {
     }
-    */
-
+    @IBAction func backBtnClicked(_ sender: Any) {
+    }
+    @IBAction func submitBtnClicked(_ sender: Any) {
+    }
+    
 }

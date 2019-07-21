@@ -10,21 +10,30 @@ import UIKit
 
 class PPHeartRateVC: UIViewController {
 
+    @IBOutlet weak var patientUHI: UILabel!
+    @IBOutlet weak var currentValue: UILabel!
+    @IBOutlet weak var alertMaxValue: UITextField!
+    @IBOutlet weak var alertMinValue: UITextField!
+    @IBOutlet weak var goal: UITextField!
+    @IBOutlet weak var timesPerDay: UITextField!
+    @IBOutlet weak var medicinName: UITextField!
+    @IBOutlet weak var doctorNotes: UITextView!
+    @IBOutlet weak var beforeMealbtn: UIButton!
+    @IBOutlet weak var afterMealBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func beforeMealBtnClicked(_ sender: Any) {
     }
-    */
-
+    @IBAction func afterMealBtnClicked(_ sender: Any) {
+    }
+    @IBAction func addMedication(_ sender: Any) {
+    }
+    @IBAction func backBtnClicked(_ sender: Any) {
+    }
+    @IBAction func submitBtnClicked(_ sender: Any) {
+    }
+    
 }

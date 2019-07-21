@@ -3891,7 +3891,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sys. Max Val:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djo-OS-m3M">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sys. Min Val:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Djo-OS-m3M">
                                 <rect key="frame" x="8" y="234" width="135.5" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="oOB-AL-ueX"/>
@@ -3900,7 +3900,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dia. Max Val:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwL-Qy-ff1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dia. Min Val:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwL-Qy-ff1">
                                 <rect key="frame" x="8" y="269" width="135.5" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="PK1-kf-LDs"/>
@@ -3972,6 +3972,7 @@
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="XQU-PX-isc"/>
+                                    <action selector="backButtonClicked:" destination="pj6-wh-pjb" eventType="touchUpInside" id="ZhH-1p-dUO"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hjq-1z-232">
@@ -3980,7 +3981,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hjq-1z-232" secondAttribute="height" multiplier="386:103" id="JyB-xX-RhU"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -3993,7 +3993,7 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oup-mM-kod"/>
+                                    <action selector="beforMealClicked:" destination="pj6-wh-pjb" eventType="touchUpInside" id="2bq-U4-yOo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCB-Y4-JFg">
@@ -4005,13 +4005,16 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="51P-ko-SSj"/>
+                                    <action selector="afterMealClicked:" destination="pj6-wh-pjb" eventType="touchUpInside" id="xM0-VG-pQb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJc-k6-KWe">
                                 <rect key="frame" x="360" y="544" width="34" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Add "/>
+                                <connections>
+                                    <action selector="addMedicineButton:" destination="pj6-wh-pjb" eventType="touchUpInside" id="M71-FU-kuu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhU-H9-veZ">
                                 <rect key="frame" x="123" y="778" width="168" height="39"/>
@@ -4023,7 +4026,7 @@
                                     <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="m4I-48-myt"/>
+                                    <action selector="submitButtonClicked:" destination="pj6-wh-pjb" eventType="touchUpInside" id="i1K-pk-XtW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -4104,6 +4107,21 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EnT-UX-aAN"/>
                     </view>
+                    <connections>
+                        <outlet property="afterMealBtn" destination="aCB-Y4-JFg" id="AnA-oZ-CJ0"/>
+                        <outlet property="beforeMealBtn" destination="kyz-WP-EUV" id="7Mj-i3-xYx"/>
+                        <outlet property="currentValue" destination="D8a-Kw-s7x" id="PQy-jP-i7u"/>
+                        <outlet property="diastolicMaxValue" destination="FTx-xa-IpL" id="XNE-tJ-0Ra"/>
+                        <outlet property="diastolicMinValue" destination="3fz-4U-3Hr" id="AFT-bi-CWf"/>
+                        <outlet property="doctorNotes" destination="hjq-1z-232" id="Ssa-kI-b9Z"/>
+                        <outlet property="goalDiastolicValue" destination="W4l-nd-upR" id="MmR-6V-Tjn"/>
+                        <outlet property="goalSystolicValue" destination="n2y-UK-5dA" id="as6-Yi-fQ4"/>
+                        <outlet property="medicineName" destination="Nu3-j6-fVo" id="ZJc-ey-FNU"/>
+                        <outlet property="numberOftimes" destination="4Qf-rm-vG1" id="Obo-eT-rae"/>
+                        <outlet property="patientUHI" destination="vsB-a7-Jwk" id="PIA-BZ-Vc3"/>
+                        <outlet property="systolicMaxValue" destination="V8V-m7-r6K" id="1HG-BQ-Xmb"/>
+                        <outlet property="systolicMinValue" destination="daV-0C-yge" id="Npg-A6-yCt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zlk-hg-g08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4246,7 +4264,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0fy-9I-bKU" secondAttribute="height" multiplier="386:129" id="ShP-Hu-xof"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -4294,7 +4311,6 @@
                                     <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="DJZ-iu-PZM"/>
                                     <action selector="submitButtonClicked:" destination="mri-wD-tMx" eventType="touchUpInside" id="PHP-mJ-gdZ"/>
                                 </connections>
                             </button>
@@ -4507,6 +4523,7 @@
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="XrJ-tq-rmy"/>
+                                    <action selector="backButtonClicked:" destination="och-df-bhi" eventType="touchUpInside" id="Pj8-Mx-qpR"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7Fc-aB-rvF">
@@ -4515,7 +4532,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7Fc-aB-rvF" secondAttribute="height" multiplier="386:137" id="aTE-Nm-sgg"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -4528,7 +4544,7 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tvT-FC-zVo"/>
+                                    <action selector="beforeMealBtnClicked:" destination="och-df-bhi" eventType="touchUpInside" id="9qt-8J-Ajs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qw-px-APa">
@@ -4540,13 +4556,16 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gve-9a-kZi"/>
+                                    <action selector="afterMealBtnClicked:" destination="och-df-bhi" eventType="touchUpInside" id="62a-PB-SPS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q2p-Up-yIe">
                                 <rect key="frame" x="360" y="472" width="34" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Add "/>
+                                <connections>
+                                    <action selector="addMedication:" destination="och-df-bhi" eventType="touchUpInside" id="a7f-Me-IYB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Mo-wz-ym9">
                                 <rect key="frame" x="123" y="740" width="168" height="39"/>
@@ -4558,7 +4577,7 @@
                                     <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="SUt-5f-Hks"/>
+                                    <action selector="submitButtonClicked:" destination="och-df-bhi" eventType="touchUpInside" id="Djg-2h-9Ou"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -4621,6 +4640,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hqv-AE-bXN"/>
                     </view>
+                    <connections>
+                        <outlet property="afterMealBtn" destination="4qw-px-APa" id="Rwe-a2-owK"/>
+                        <outlet property="alertMinValue" destination="GAj-6n-yFF" id="v2t-eg-ARw"/>
+                        <outlet property="beforeMealBtn" destination="dWe-oq-M4C" id="cTw-Za-216"/>
+                        <outlet property="currentValue" destination="KEd-t6-Xuh" id="cjb-wX-Qkw"/>
+                        <outlet property="doctorNotes" destination="7Fc-aB-rvF" id="CrY-bU-zJV"/>
+                        <outlet property="goal" destination="U6l-A9-oF0" id="XNy-I2-mE3"/>
+                        <outlet property="howmanyTimes" destination="VOm-MQ-b0r" id="Snc-Vp-ntE"/>
+                        <outlet property="medicineName" destination="Kgu-k3-mp7" id="g8p-nC-bG1"/>
+                        <outlet property="patientUHI" destination="M3K-OC-CJm" id="WHP-Yh-pvd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nmz-iE-tzO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4757,6 +4787,7 @@
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="ELC-vl-vfe"/>
+                                    <action selector="backButtonClicked:" destination="9Bj-Wq-Zmr" eventType="touchUpInside" id="HAe-4J-ueL"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cfD-zw-S7z">
@@ -4765,7 +4796,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="cfD-zw-S7z" secondAttribute="height" multiplier="386:137" id="Upc-yi-rAo"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -4778,7 +4808,7 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zDO-5E-T8s"/>
+                                    <action selector="beforeMealBtnClicked:" destination="9Bj-Wq-Zmr" eventType="touchUpInside" id="h3O-nA-z8U"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4QR-Xt-DsW">
@@ -4790,13 +4820,16 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YTk-ls-vze"/>
+                                    <action selector="afterMealBtnClicked:" destination="9Bj-Wq-Zmr" eventType="touchUpInside" id="haA-aS-sBY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEX-ux-Nfc">
                                 <rect key="frame" x="360" y="472" width="34" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Add "/>
+                                <connections>
+                                    <action selector="addMedication:" destination="9Bj-Wq-Zmr" eventType="touchUpInside" id="Wg3-GX-eYR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXN-9Y-S0j">
                                 <rect key="frame" x="123" y="740" width="168" height="39"/>
@@ -4808,7 +4841,7 @@
                                     <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="azr-ve-jvU"/>
+                                    <action selector="submitBtnClicked:" destination="9Bj-Wq-Zmr" eventType="touchUpInside" id="zIH-fO-V4X"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -4871,6 +4904,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MvY-ON-3vP"/>
                     </view>
+                    <connections>
+                        <outlet property="afterMealBtn" destination="4QR-Xt-DsW" id="eXS-S7-u2i"/>
+                        <outlet property="alertMaxValue" destination="jSN-JB-Tbp" id="ADo-ZM-oi8"/>
+                        <outlet property="alertMinValue" destination="DhO-kt-1AI" id="GR7-ga-Iye"/>
+                        <outlet property="beforeMealBtn" destination="jE2-lb-nt2" id="Bzc-fe-zsd"/>
+                        <outlet property="currentValue" destination="Bzd-f5-sEF" id="tAi-I9-euf"/>
+                        <outlet property="doctorNotes" destination="cfD-zw-S7z" id="O5b-8G-weR"/>
+                        <outlet property="goal" destination="dxA-xC-rMl" id="lk3-a8-aRY"/>
+                        <outlet property="howManyTimes" destination="7Fe-hK-z6t" id="O5X-aF-wiV"/>
+                        <outlet property="medicineName" destination="GU9-e3-dbw" id="81g-lV-L5c"/>
+                        <outlet property="patientUHI" destination="N72-BN-nzg" id="XSW-0u-sKh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bQ3-41-gXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5006,6 +5051,7 @@
                                 </constraints>
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
+                                    <action selector="backBtnClicked:" destination="IJH-5H-2rC" eventType="touchUpInside" id="Pi7-I0-49w"/>
                                     <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="BFR-mw-h17"/>
                                 </connections>
                             </button>
@@ -5015,7 +5061,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9VF-Tm-bEF" secondAttribute="height" multiplier="386:137" id="nPl-wy-IHu"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -5028,7 +5073,7 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ct5-AH-4G6"/>
+                                    <action selector="beforeMealBtnClicked:" destination="IJH-5H-2rC" eventType="touchUpInside" id="3BK-xn-XhO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWS-6H-3RH">
@@ -5040,13 +5085,16 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PUV-ub-ULj"/>
+                                    <action selector="afterMealBtnClicked:" destination="IJH-5H-2rC" eventType="touchUpInside" id="PK8-u5-OPs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GX0-Rd-Tfy">
                                 <rect key="frame" x="360" y="472" width="34" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Add "/>
+                                <connections>
+                                    <action selector="addMedication:" destination="IJH-5H-2rC" eventType="touchUpInside" id="5kq-hh-Tp1"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYC-Hm-1tF">
                                 <rect key="frame" x="123" y="740" width="168" height="39"/>
@@ -5058,7 +5106,7 @@
                                     <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="IQh-Wa-7kS"/>
+                                    <action selector="submitBtnClicked:" destination="IJH-5H-2rC" eventType="touchUpInside" id="LRx-Yh-M85"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -5121,6 +5169,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W5v-s1-ehu"/>
                     </view>
+                    <connections>
+                        <outlet property="afterMealBtn" destination="UWS-6H-3RH" id="7dA-Vc-fWX"/>
+                        <outlet property="alertMaxValue" destination="v3L-nN-Bey" id="I0h-fv-7vL"/>
+                        <outlet property="alertMinValue" destination="0PI-Hm-lR2" id="CgL-mO-Ojo"/>
+                        <outlet property="beforeMealbtn" destination="kij-Ed-QpL" id="cmD-iQ-XCX"/>
+                        <outlet property="currentValue" destination="peZ-Gw-Z6C" id="C4c-5w-MLT"/>
+                        <outlet property="doctorNotes" destination="9VF-Tm-bEF" id="Tal-2F-Jlp"/>
+                        <outlet property="goal" destination="B44-zb-YqG" id="Pds-as-xe3"/>
+                        <outlet property="medicinName" destination="iyL-jy-D4g" id="DbA-zk-g5f"/>
+                        <outlet property="patientUHI" destination="k5f-FW-VrS" id="U8V-WW-W2i"/>
+                        <outlet property="timesPerDay" destination="mNH-my-rFJ" id="ke6-pq-tNd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lsp-8c-Fax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -5211,6 +5271,7 @@
                                 </constraints>
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
+                                    <action selector="backBtnClicked:" destination="UNr-L1-wGq" eventType="touchUpInside" id="2Tx-ix-GR4"/>
                                     <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="Mg8-JO-hrw"/>
                                 </connections>
                             </button>
@@ -5220,7 +5281,6 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8sv-5n-aee" secondAttribute="height" multiplier="193:52" id="tJ0-I9-17X"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -5232,9 +5292,6 @@
                                 </constraints>
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
-                                <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pil-IO-a12"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-Qy-3MD">
                                 <rect key="frame" x="134" y="511" width="34" height="33"/>
@@ -5244,14 +5301,14 @@
                                 </constraints>
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
-                                <connections>
-                                    <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qpi-Wu-7TA"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7m-q0-DH8">
                                 <rect key="frame" x="360" y="340.5" width="34" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Add "/>
+                                <connections>
+                                    <action selector="addMedication:" destination="UNr-L1-wGq" eventType="touchUpInside" id="kyv-af-NCa"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Qb-2Q-xV0">
                                 <rect key="frame" x="123" y="576" width="168" height="39"/>
@@ -5263,7 +5320,7 @@
                                     <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="4L3-6I-Mtg"/>
+                                    <action selector="submitBtnClicked:" destination="UNr-L1-wGq" eventType="touchUpInside" id="gBk-X5-QEd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -5310,6 +5367,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TZB-if-UOn"/>
                     </view>
+                    <connections>
+                        <outlet property="afterMealBtn" destination="oeX-Qy-3MD" id="xUR-PI-E1Z"/>
+                        <outlet property="beforeMealBtn" destination="ruS-wC-QZT" id="10D-SA-6J1"/>
+                        <outlet property="currentValue" destination="keI-cI-g3F" id="sT3-Tz-q0Y"/>
+                        <outlet property="doctorNotes" destination="8sv-5n-aee" id="iA5-Ls-YNg"/>
+                        <outlet property="medicineName" destination="ncC-E7-X6E" id="i19-wK-H9q"/>
+                        <outlet property="patientUHI" destination="bdc-Od-GA0" id="Blo-gV-qtx"/>
+                        <outlet property="timesPerDay" destination="uFh-Km-02m" id="L58-Rt-yNz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iv-6D-jDK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,21 +10,35 @@ import UIKit
 
 class PPBloodPressureVC: UIViewController {
 
+    @IBOutlet weak var patientUHI: UILabel!
+    @IBOutlet weak var currentValue: UILabel!
+    @IBOutlet weak var systolicMaxValue: UITextField!
+    @IBOutlet weak var diastolicMaxValue: UITextField!
+    @IBOutlet weak var systolicMinValue: UITextField!
+    @IBOutlet weak var diastolicMinValue: UITextField!
+    @IBOutlet weak var goalSystolicValue: UITextField!
+    @IBOutlet weak var goalDiastolicValue: UITextField!
+    @IBOutlet weak var doctorNotes: UITextView!
+    @IBOutlet weak var medicineName: UITextField!
+    @IBOutlet weak var numberOftimes: UITextField!
+    @IBOutlet weak var beforeMealBtn: UIButton!
+    @IBOutlet weak var afterMealBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func beforMealClicked(_ sender: Any) {
     }
-    */
-
+    @IBAction func afterMealClicked(_ sender: Any) {
+    }
+    
+    @IBAction func addMedicineButton(_ sender: Any) {
+    }
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+    }
+    @IBAction func submitButtonClicked(_ sender: Any) {
+    }
+    
 }
