@@ -23,10 +23,18 @@ class HeartRateVC: UIViewController {
     let currentdate = NSDate()
     var UHI = String()
     
+    var h = ""
+    var d = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         print(currentdate)
+        
+        currentHeartRateValue.text = h
+        let dateComponents = d.components(separatedBy: " ")
+        updatedDate.text = "\(dateComponents[0]) \(dateComponents[1])"
+        
         fetchDoctorsInfo()
     }
     

@@ -36,6 +36,13 @@ class PatientProfileVC: UIViewController {
     @IBOutlet weak var hemoData: UILabel!
     @IBOutlet weak var hemoUpdatedDate: UILabel!
     
+    var bloodPressureValue = String()
+    var temperatureValue = String()
+    var pulseoxiValue = String()
+    var glucoseValue = String()
+    var heartRateValue = String()
+    var hemoValue = String()
+    
     var UHI = String()
     
     override func viewDidLoad() {
@@ -118,6 +125,7 @@ class PatientProfileVC: UIViewController {
                     let systolicValue = bpData.value(forKeyPath: "systolic") as! Int
                     let diastolicValue = bpData.value(forKeyPath: "diastolic") as! Int
                     self.bpData.text = "\(systolicValue)/\(diastolicValue)"
+                    bloodPressureValue = "Current Value: \(systolicValue)/\(diastolicValue) mmHG"
                     let d = bpData.value(forKey: "date") as! NSDate
                     bpUpdatedDate.text = "\(d)"
                 }
@@ -129,6 +137,7 @@ class PatientProfileVC: UIViewController {
                 if (UHI == tempData.value(forKey: "patientID") as? String){
                     let temp = tempData.value(forKey: "temprature_info") as! Float
                     self.tempData.text = String(format: "%.1f", temp)
+                    temperatureValue = "Current Value: \( String(format: "%.1f", temp)) °F"
                     let d = tempData.value(forKey: "date") as! NSDate
                     tempUpdatedDate.text = "\(d)"
                 }
@@ -138,6 +147,7 @@ class PatientProfileVC: UIViewController {
                 if (UHI == pulseData.value(forKey: "patientID") as? String){
                     let pulse = pulseData.value(forKey: "pulseoxi_value") as! Float
                     pulseOxiData.text = String(format: "%.1f", pulse)
+                    pulseoxiValue = "Current Value: \(String(format: "%.1f", pulse)) %"
                     let d = pulseData.value(forKey: "date") as! NSDate
                     pulseOxiUpdatedDate.text = "\(d)"
                 }
@@ -147,6 +157,7 @@ class PatientProfileVC: UIViewController {
                 if (UHI == glucoseData.value(forKey: "patientID") as? String){
                     let glucose = glucoseData.value(forKey: "glucose_value") as! Int
                     self.glucoseData.text = "\(glucose)"
+                    glucoseValue = "Current Value: \(glucose) mg/dl"
                     let d = glucoseData.value(forKey: "date") as! NSDate
                     glucoseUpdatedDate.text = "\(d)"
                 }
@@ -156,6 +167,7 @@ class PatientProfileVC: UIViewController {
                 if (UHI == heartData.value(forKey: "patientID") as? String){
                     let rate = heartData.value(forKey: "heartrate_value") as! Int
                     heartRateData.text = "\(rate)"
+                    heartRateValue = "Current Value: \(rate) bpm"
                     let d = heartData.value(forKey: "date") as! NSDate
                     heartRateUpdatedDate.text = "\(d)"
                 }
@@ -165,6 +177,7 @@ class PatientProfileVC: UIViewController {
                 if (UHI == hemoData.value(forKey: "patientID") as? String){
                     let hemo = hemoData.value(forKey: "hemoglobin_value") as! Float
                     self.hemoData.text = String(format: "%.1f", hemo)
+                    hemoValue = "Current Value: \(String(format: "%.1f", hemo)) %"
                     let d = hemoData.value(forKey: "date") as! NSDate
                     hemoUpdatedDate.text = "\(d)"
                 }

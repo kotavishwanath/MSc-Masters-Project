@@ -24,10 +24,17 @@ class BloodPressureVC: UIViewController {
     let currentdate = NSDate()
     var UHI = String()
     
+    var bp = ""
+    var d = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         print(currentdate)
+        
+        currentBPValue.text = bp
+        let dateComponents = d.components(separatedBy: " ")
+        savedDate.text = "\(dateComponents[0]) \(dateComponents[1])"
         
         fetchDoctorsInfo()
     }

@@ -20,10 +20,17 @@ class HemoglobinVC: UIViewController {
     let currentdate = NSDate()
     var UHI = String()
     
+    var hemo = ""
+    var d = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         print(currentdate)
+        
+        currentHemoglobinValue.text = hemo
+        let dateComponents = d.components(separatedBy: " ")
+        updatedDate.text = "\(dateComponents[0]) \(dateComponents[1])"
         
         fetchDoctorsInfo()
     }

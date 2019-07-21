@@ -22,9 +22,16 @@ class PulseOxiVC: UIViewController {
     let currentdate = NSDate()
     var UHI = String()
     
+    var p = ""
+    var d = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        currentOxiValue.text = p
+        let dateComponents = d.components(separatedBy: " ")
+        updatedDate.text = "\(dateComponents[0]) \(dateComponents[1])"
         
         fetchDoctorsInfo()
     }

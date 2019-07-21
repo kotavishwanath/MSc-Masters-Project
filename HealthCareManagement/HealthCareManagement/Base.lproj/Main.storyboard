@@ -3825,7 +3825,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Values :" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8a-Kw-s7x">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Value:" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8a-Kw-s7x">
                                 <rect key="frame" x="8" y="114" width="386" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Zfr-vc-Xme"/>
@@ -3984,7 +3984,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyz-WP-EUV">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kyz-WP-EUV">
                                 <rect key="frame" x="134" y="665.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="6D4-ZH-nnN"/>
@@ -3996,7 +3996,7 @@
                                     <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oup-mM-kod"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCB-Y4-JFg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCB-Y4-JFg">
                                 <rect key="frame" x="134" y="714.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="F8g-Xa-cRo"/>
@@ -4236,6 +4236,7 @@
                                 </constraints>
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
+                                    <action selector="backButton:" destination="mri-wD-tMx" eventType="touchUpInside" id="DeV-Wy-GUL"/>
                                     <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="sEp-j7-PlU"/>
                                 </connections>
                             </button>
@@ -4249,7 +4250,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w68-gu-WBf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w68-gu-WBf">
                                 <rect key="frame" x="134" y="572.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="QyC-mz-mL3"/>
@@ -4258,10 +4259,11 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
+                                    <action selector="beforeMealClicked:" destination="mri-wD-tMx" eventType="touchUpInside" id="SH1-f3-llv"/>
                                     <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vmg-A6-Gp4"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f51-lG-O2K">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f51-lG-O2K">
                                 <rect key="frame" x="134" y="621.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="1vk-bJ-fil"/>
@@ -4270,6 +4272,7 @@
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
                                 <connections>
+                                    <action selector="afterMealClicked:" destination="mri-wD-tMx" eventType="touchUpInside" id="tM2-xA-FiN"/>
                                     <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HiE-he-vtg"/>
                                 </connections>
                             </button>
@@ -4277,6 +4280,9 @@
                                 <rect key="frame" x="360" y="451" width="34" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                 <state key="normal" title="Add "/>
+                                <connections>
+                                    <action selector="addMedicineButton:" destination="mri-wD-tMx" eventType="touchUpInside" id="VZo-o0-uGe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8sh-Vk-bu9">
                                 <rect key="frame" x="123" y="740" width="168" height="39"/>
@@ -4289,6 +4295,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="DJZ-iu-PZM"/>
+                                    <action selector="submitButtonClicked:" destination="mri-wD-tMx" eventType="touchUpInside" id="PHP-mJ-gdZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -4352,6 +4359,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WIC-5T-6d9"/>
                     </view>
+                    <connections>
+                        <outlet property="afterMealBtn" destination="f51-lG-O2K" id="fTn-Sb-Tby"/>
+                        <outlet property="alertMaxValue" destination="6b9-di-QkX" id="hoP-fd-04Q"/>
+                        <outlet property="alertMinValue" destination="QtY-Fs-qCd" id="uLt-8z-Aqv"/>
+                        <outlet property="beforeMealBtn" destination="w68-gu-WBf" id="1dh-nq-a7u"/>
+                        <outlet property="currentValue" destination="Bxa-sF-x4j" id="xfw-gL-ElB"/>
+                        <outlet property="doctorNotes" destination="0fy-9I-bKU" id="N1x-79-Is1"/>
+                        <outlet property="goalValue" destination="HEP-nH-E5h" id="McV-3d-n6g"/>
+                        <outlet property="medicineName" destination="U4d-zV-bAJ" id="aTv-Nd-MWO"/>
+                        <outlet property="patientUHI" destination="Nt2-zE-Jh5" id="nsq-Zp-Q7p"/>
+                        <outlet property="timesADay" destination="pHb-nd-EFj" id="IEU-gA-jsC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epi-Wd-yHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -4500,7 +4519,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-oq-M4C">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWe-oq-M4C">
                                 <rect key="frame" x="134" y="593.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="Uwg-0s-Eka"/>
@@ -4512,7 +4531,7 @@
                                     <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tvT-FC-zVo"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qw-px-APa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qw-px-APa">
                                 <rect key="frame" x="134" y="642.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="gQx-ft-uR7"/>
@@ -4750,7 +4769,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jE2-lb-nt2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jE2-lb-nt2">
                                 <rect key="frame" x="134" y="593.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="Ubh-Gw-eQN"/>
@@ -4762,7 +4781,7 @@
                                     <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zDO-5E-T8s"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4QR-Xt-DsW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4QR-Xt-DsW">
                                 <rect key="frame" x="134" y="642.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="aZE-Kw-anh"/>
@@ -5000,7 +5019,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kij-Ed-QpL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kij-Ed-QpL">
                                 <rect key="frame" x="134" y="593.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="1sY-cX-WY5"/>
@@ -5012,7 +5031,7 @@
                                     <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ct5-AH-4G6"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWS-6H-3RH">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWS-6H-3RH">
                                 <rect key="frame" x="134" y="642.5" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="OmC-Mb-r1L"/>
@@ -5205,7 +5224,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruS-wC-QZT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruS-wC-QZT">
                                 <rect key="frame" x="134" y="462" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="ejY-ml-I4f"/>
@@ -5217,7 +5236,7 @@
                                     <action selector="keepMeSignInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pil-IO-a12"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-Qy-3MD">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-Qy-3MD">
                                 <rect key="frame" x="134" y="511" width="34" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="Okb-K0-ULf"/>

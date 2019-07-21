@@ -23,8 +23,16 @@ class TemperatureVC: UIViewController {
     let currentdate = NSDate()
     var UHI = String()
     
+    var te = ""
+    var d = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentTempValue.text = te
+        let dateComponents = d.components(separatedBy: " ")
+        updateDate.text = "\(dateComponents[0]) \(dateComponents[1])"
+        
         fetchDoctorsInfo()
     }
     

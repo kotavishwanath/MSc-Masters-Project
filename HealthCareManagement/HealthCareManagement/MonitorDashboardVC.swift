@@ -36,11 +36,21 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
     var manager:CBCentralManager!
     var UHI = String()
     
+    var bloodPressureValue = String()
+    var bloodPressureDate = String()
+    var temperatureValue = String()
+    var temperatureDate = String()
+    var pulseoxiValue = String()
+    var pulseoxiDate = String()
+    var glucoseDate = String()
+    var glucValue = String()
+    var heartValue = String()
+    var heartDate = String()
+    var hemoglValue = String()
+    var hemobloginDate = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        manager          = CBCentralManager()
-        manager.delegate = self
         
         self.navigationController?.navigationBar.isHidden = true
         
@@ -116,6 +126,8 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                    bpValue.text = "\(systolicValue)/\(diastolicValue)"
                    let d = bpData.value(forKey: "date") as! NSDate
                    bpUpdatedDate.text = "\(d)"
+                   bloodPressureValue = "\(systolicValue)/\(diastolicValue)"
+                   bloodPressureDate = "\(d)"
                 }
             }
             
@@ -127,6 +139,8 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     tempValue.text = String(format: "%.1f", temp)
                     let d = tempData.value(forKey: "date") as! NSDate
                     tempUpdatedDate.text = "\(d)"
+                    temperatureValue = "\(String(format: "%.1f", temp))"
+                    temperatureDate = "\(d)"
                 }
             }
             
@@ -136,6 +150,8 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     pluseOxiValue.text = String(format: "%.1f", pulse)
                     let d = pulseData.value(forKey: "date") as! NSDate
                     pulseOxiUpdatedDate.text = "\(d)"
+                    pulseoxiValue = "\(String(format: "%.1f", pulse))"
+                    pulseoxiDate = "\(d)"
                 }
             }
             
@@ -145,6 +161,8 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     glucoseValue.text = "\(glucose)"
                     let d = glucoseData.value(forKey: "date") as! NSDate
                     glucoseUpdatedDate.text = "\(d)"
+                    glucValue = "\(glucose)"
+                    glucoseDate = "\(d)"
                 }
             }
             
@@ -154,6 +172,8 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     heartRateValue.text = "\(rate)"
                     let d = heartData.value(forKey: "date") as! NSDate
                     heartRateUpdatedDate.text = "\(d)"
+                    heartValue = "\(rate)"
+                    heartDate = "\(d)"
                 }
             }
             
@@ -163,6 +183,8 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     hemoglobinValue.text = String(format: "%.1f", hemo)
                     let d = hemoData.value(forKey: "date") as! NSDate
                     hemoUpdatedDate.text = "\(d)"
+                    hemoglValue = String(format: "%.1f", hemo)
+                    hemobloginDate = "\(d)"
                 }
             }
             
@@ -182,42 +204,55 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
     }
     
     @IBAction func bluetoothBtnClicked(_ sender: Any) {
-        
+        manager          = CBCentralManager()
+        manager.delegate = self
     }
     
     @objc func bpviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "BloodPressureVC") as! BloodPressureVC
+        vc.bp = bloodPressureValue
+        vc.d = bloodPressureDate
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func tempviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TemperatureVC") as! TemperatureVC
+        vc.te = temperatureValue
+        vc.d = temperatureDate
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func oxiviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PulseOxiVC") as! PulseOxiVC
+        vc.p = pulseoxiValue
+        vc.d = pulseoxiDate
         navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func glucoseTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "GlucoseVC") as! GlucoseVC
+        vc.g = glucValue
+        vc.d = glucoseDate
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func heartRateTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "HeartRateVC") as! HeartRateVC
+        vc.h = heartValue
+        vc.d = heartDate
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func hemoglobinTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "HemoglobinVC") as! HemoglobinVC
+        vc.hemo = hemoglValue
+        vc.d = hemobloginDate
         navigationController?.pushViewController(vc, animated: true)
     }
     

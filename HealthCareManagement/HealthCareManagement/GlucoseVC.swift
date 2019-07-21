@@ -22,11 +22,18 @@ class GlucoseVC: UIViewController {
     let currentdate = NSDate()
     var UHI = String()
     
+    var g = ""
+    var d = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.isHidden = true
         print(currentdate)
+        
+        currentGlucoseValue.text = g
+        let dateComponents = d.components(separatedBy: " ")
+        updateDate.text = "\(dateComponents[0]) \(dateComponents[1])"
         
         fetchDoctorsInfo()
     }
