@@ -19,16 +19,25 @@ class PPTemperatureVC: UIViewController {
     @IBOutlet weak var timesADay: UITextField!
     @IBOutlet weak var beforeMealBtn: UIButton!
     @IBOutlet weak var afterMealBtn: UIButton!
+    @IBOutlet weak var submitbtn: UIButton!
+    
+    var tempValue = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        currentValue.text = tempValue
+        patientUHI.text = (UserDefaults.standard.object(forKey: "PatientUHINumber") as! String)
         beforeMealBtn.setImage(UIImage(named: "empty_check"), for: .normal)
         afterMealBtn.setImage(UIImage(named: "empty_check"), for: .normal)
-        
+        submitbtn.layer.borderWidth = 1
+        submitbtn.layer.borderColor = UIColor.blue.cgColor
+        submitbtn.layer.cornerRadius = 4.0
     }
     
     @IBAction func backButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PatientProfileVC") as! PatientProfileVC
+        navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func beforeMealClicked(_ sender: Any) {
     }

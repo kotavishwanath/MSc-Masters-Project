@@ -191,36 +191,42 @@ class PatientProfileVC: UIViewController {
     @objc func bpviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPBloodPressureVC") as! PPBloodPressureVC
+        vc.bpValue = bloodPressureValue
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func tempviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPTemperatureVC") as! PPTemperatureVC
+        vc.tempValue = temperatureValue
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func oxiviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPPulseOxiMeterVC") as! PPPulseOxiMeterVC
+        vc.oxiValue = pulseoxiValue
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func glucoseTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPGlucoseVC") as! PPGlucoseVC
+        vc.glucose = glucoseValue
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func heartRateTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPHeartRateVC") as! PPHeartRateVC
+        vc.heartRate = heartRateValue
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func hemoglobinTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPHemoglobinVC") as! PPHemoglobinVC
+        vc.hemo = hemoValue
         navigationController?.pushViewController(vc, animated: true)
     }
     

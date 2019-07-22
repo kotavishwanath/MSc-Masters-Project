@@ -14,6 +14,8 @@ class DoctorsViewController: UIViewController {
     @IBOutlet weak var GMCNumber: UILabel!
     @IBOutlet weak var submitbtn: UIButton!
     @IBOutlet weak var uhinumberTxt: UITextField!
+    @IBOutlet weak var dob: UITextField!
+    @IBOutlet weak var name: UITextField!
     
     var doctorname: String = ""
     var gmcNumber: String = ""
@@ -32,6 +34,13 @@ class DoctorsViewController: UIViewController {
         uhinumberTxt.layer.borderWidth = 1
         uhinumberTxt.layer.cornerRadius = 5.0
         
+        dob.layer.borderColor = UIColor.black.cgColor
+        dob.layer.borderWidth = 1
+        dob.layer.cornerRadius = 5.0
+        
+        name.layer.borderColor = UIColor.black.cgColor
+        name.layer.borderWidth = 1
+        name.layer.cornerRadius = 5.0
     }
     
     @IBAction func submitButton(_ sender: Any) {

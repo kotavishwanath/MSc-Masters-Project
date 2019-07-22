@@ -23,10 +23,16 @@ class PPBloodPressureVC: UIViewController {
     @IBOutlet weak var numberOftimes: UITextField!
     @IBOutlet weak var beforeMealBtn: UIButton!
     @IBOutlet weak var afterMealBtn: UIButton!
+    @IBOutlet weak var submitbtn: UIButton!
+    
+    var bpValue = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        currentValue.text = bpValue
+        patientUHI.text = (UserDefaults.standard.object(forKey: "PatientUHINumber") as! String)
+        submitbtn.layer.borderWidth = 1
+        submitbtn.layer.borderColor = UIColor.blue.cgColor
+        submitbtn.layer.cornerRadius = 4.0
     }
     @IBAction func beforMealClicked(_ sender: Any) {
     }
@@ -37,6 +43,9 @@ class PPBloodPressureVC: UIViewController {
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PatientProfileVC") as! PatientProfileVC
+        navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func submitButtonClicked(_ sender: Any) {
     }

@@ -15,6 +15,7 @@ class HemoglobinVC: UIViewController {
     @IBOutlet weak var doctorNotes: UILabel!
     @IBOutlet weak var updatedDate: UILabel!
     @IBOutlet weak var enterHemoglobinValue: UITextField!
+    @IBOutlet weak var idealValue: UILabel!
     
     var hemoglobin: [NSManagedObject] = []
     let currentdate = NSDate()
@@ -46,6 +47,7 @@ class HemoglobinVC: UIViewController {
         }
         let managedContext =
             appDelegate.persistentContainer.viewContext
+        let fetchPatient = NSFetchRequest<NSManagedObject>(entityName: "PatientsContactInfo")
         let fetchRequestHemo =
             NSFetchRequest<NSManagedObject>(entityName: "HemoglobinInfo")
         do{
@@ -53,6 +55,18 @@ class HemoglobinVC: UIViewController {
             for hemoData in hemoInfo{
                 if (UHI == hemoData.value(forKey: "patientID") as? String){
                     doctorNotes.text = hemoData.value(forKey: "doctor_notes") as? String
+                }
+            }
+            
+            let patient = try managedContext.fetch(fetchPatient)
+            for data in patient{
+                if (Int(UHI) == data.value(forKey: "uhi") as? Int){
+                   let gender = data.value(forKey: "mothers_madin_name") as! String
+                    if gender == "M" || gender == "m"{
+                        idealValue.text = "13.5 to 17.5 %"
+                    }else{
+                        idealValue.text = "12.0 to 15.5 %"
+                    }
                 }
             }
         }catch let error as NSError {

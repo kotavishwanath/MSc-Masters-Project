@@ -18,11 +18,16 @@ class PPPulseOxiMeterVC: UIViewController {
     @IBOutlet weak var howmanyTimes: UITextField!
     @IBOutlet weak var beforeMealBtn: UIButton!
     @IBOutlet weak var afterMealBtn: UIButton!
+    @IBOutlet weak var submitbtn: UIButton!
     
+    var oxiValue = String()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        currentValue.text = oxiValue
+        patientUHI.text = (UserDefaults.standard.object(forKey: "PatientUHINumber") as! String)
+        submitbtn.layer.borderWidth = 1
+        submitbtn.layer.borderColor = UIColor.blue.cgColor
+        submitbtn.layer.cornerRadius = 4.0
     }
     @IBAction func beforeMealBtnClicked(_ sender: Any) {
     }
@@ -31,6 +36,9 @@ class PPPulseOxiMeterVC: UIViewController {
     @IBAction func addMedication(_ sender: Any) {
     }
     @IBAction func backButtonClicked(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PatientProfileVC") as! PatientProfileVC
+        navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func submitButtonClicked(_ sender: Any) {
     }
