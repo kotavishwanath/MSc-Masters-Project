@@ -1,30 +1,29 @@
 //
-//  BloodPressureVC.swift
+//  HeartRateVC.swift
 //  HealthCareManagement
 //
-//  Created by Vishwanath Kota on 12/07/19.
+//  Created by Vishwanath Kota on 15/07/19.
 //  Copyright © 2019 University Of Hertfordshire. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class BloodPressureVC: UIViewController {
+class HeartRateVC: UIViewController {
 
-    @IBOutlet weak var currentBPValue: UILabel!
-    @IBOutlet weak var savedDate: UILabel!
+    @IBOutlet weak var enterHeartRate: UITextField!
+    @IBOutlet weak var currentHeartRateValue: UILabel!
+    @IBOutlet weak var updatedDate: UILabel!
     @IBOutlet weak var goal: UILabel!
-    @IBOutlet weak var systolicTxt: UITextField!
-    @IBOutlet weak var diastolicTxt: UITextField!
     @IBOutlet weak var alertHigh: UILabel!
     @IBOutlet weak var alertLow: UILabel!
     @IBOutlet weak var doctorNotes: UILabel!
     
-    var bloodpressure: [NSManagedObject] = []
+    var heartRate: [NSManagedObject] = []
     let currentdate = NSDate()
     var UHI = String()
     
-    var bp = ""
+    var h = ""
     var d = ""
     
     override func viewDidLoad() {
@@ -32,9 +31,13 @@ class BloodPressureVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         print(currentdate)
         
-        currentBPValue.text = bp
+        currentHeartRateValue.text = h
         let dateComponents = d.components(separatedBy: " ")
-        savedDate.text = "\(dateComponents[0]) \(dateComponents[1])"
+        if (dateComponents.count > 1){
+            updatedDate.text = "\(dateComponents[0]) \(dateComponents[1])"
+        }else{
+            updatedDate.text = "No Data"
+        }
         
         fetchDoctorsInfo()
     }
@@ -51,43 +54,31 @@ class BloodPressureVC: UIViewController {
         }
         let managedContext =
             appDelegate.persistentContainer.viewContext
-        let fetchRequestBP =
-            NSFetchRequest<NSManagedObject>(entityName: "BloodPressureVitalInfo")
+        let fetchRequestHeartRate =
+            NSFetchRequest<NSManagedObject>(entityName: "HeartRateInfo")
         do{
-            let BPInfo = try managedContext.fetch(fetchRequestBP)
-            for bpData in BPInfo{
-                if (UHI == bpData.value(forKey: "patientID") as? String){
-                    let goalSys = bpData.value(forKey: "goal_systolic") as! Int
-                    let goalDia = bpData.value(forKey: "goal_diastolic") as! Int
-                    goal.text = "\(goalSys)/\(goalDia)"
-                    
-                    let alertHighSys = bpData.value(forKey: "alert_high_systolic") as! Int
-                    let alertHighDia = bpData.value(forKey: "alert_high_diastolic") as! Int
-                    alertHigh.text = "\(alertHighSys)/\(alertHighDia) mmHg"
-                    
-                    let alertLowSys = bpData.value(forKey: "alert_low_systolic") as! Int
-                    let alertLowDia = bpData.value(forKey: "alert_low_diastolic") as! Int
-                    alertLow.text = "\(alertLowSys)/\(alertLowDia) mmHg"
-                    
-                    doctorNotes.text = bpData.value(forKey: "doctor_notes") as? String
+            let heartRateInfo = try managedContext.fetch(fetchRequestHeartRate)
+            for heartData in heartRateInfo{
+                if (UHI == heartData.value(forKey: "patientID") as? String){
+                    goal.text = "\(heartData.value(forKey: "goal") as! Int) bpm"
+                    alertLow.text = "\(heartData.value(forKey: "alert_low") as! Int) bpm"
+                    alertHigh.text = "\(heartData.value(forKey: "alert_high") as! Int) bpm"
+                    doctorNotes.text = heartData.value(forKey: "doctor_notes") as? String
                 }
             }
-            
         }catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-    
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MonitorDashboardVC") as! MonitorDashboardVC
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func saveButton(_ sender: Any) {
-        
+    @IBAction func saveButtonClicked(_ sender: Any) {
         // for the first time
-        if(systolicTxt.text != "" && diastolicTxt.text != ""){
+        if(currentHeartRateValue.text != ""){
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
@@ -95,34 +86,30 @@ class BloodPressureVC: UIViewController {
             let managedContext =
                 appDelegate.persistentContainer.viewContext
             let entity =
-                NSEntityDescription.entity(forEntityName: "BloodPressureVitalInfo",
+                NSEntityDescription.entity(forEntityName: "HeartRateInfo",
                                            in: managedContext)!
             let person = NSManagedObject(entity: entity,
                                          insertInto: managedContext)
             let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
             
             person.setValue(uhi, forKey: "patientID")
-            person.setValue(Int16(systolicTxt.text!), forKey: "systolic")
-            person.setValue(Int16(diastolicTxt.text!), forKey: "diastolic")
+            person.setValue(Int16(enterHeartRate.text!), forKey: "heartrate_value")
             person.setValue(NSDate(), forKey: "date")
-            person.setValue("mmHg", forKey: "unit")
+            person.setValue("bpm", forKey: "unit")
             
             do {
                 try managedContext.save()
-                bloodpressure.append(person)
+                heartRate.append(person)
                 
-                let systolic = systolicTxt.text!
-                let diastolic = diastolicTxt.text!
-                
-                currentBPValue.text = "\(systolic)/\(diastolic)"
+                let rate = enterHeartRate.text!
+                currentHeartRateValue.text = rate
                 let date = "\(currentdate)"
                 let displayDate = date.components(separatedBy: " ")
-                savedDate.text = displayDate[0]
+                updatedDate.text = displayDate[0]
                 
-                systolicTxt.text = ""
-                diastolicTxt.text = ""
+                enterHeartRate.text = ""
                 
-                let alert = UIAlertController(title: "Saved", message: "Your blood pressure values have been saved successfully", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Saved", message: "Your Heartrate values have been saved successfully", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
@@ -132,5 +119,4 @@ class BloodPressureVC: UIViewController {
         }
         
     }
-
 }

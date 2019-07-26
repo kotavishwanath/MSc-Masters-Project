@@ -211,7 +211,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
     @objc func bpviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "BloodPressureVC") as! BloodPressureVC
-        vc.bp = bloodPressureValue
+        if (bloodPressureValue != ""){
+             vc.bp = bloodPressureValue
+        }else{
+            vc.bp = "No Data"
+        }
         vc.d = bloodPressureDate
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -219,7 +223,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
     @objc func tempviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TemperatureVC") as! TemperatureVC
-        vc.te = temperatureValue
+        if (temperatureValue != ""){
+             vc.te = temperatureValue
+        }else{
+            vc.te = "No Data"
+        }
         vc.d = temperatureDate
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -227,7 +235,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
     @objc func oxiviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PulseOxiVC") as! PulseOxiVC
-        vc.p = pulseoxiValue
+        if (pulseoxiValue != ""){
+            vc.p = pulseoxiValue
+        }else{
+            vc.p = "No Data"
+        }
         vc.d = pulseoxiDate
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -235,7 +247,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
     @objc func glucoseTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "GlucoseVC") as! GlucoseVC
-        vc.g = glucValue
+        if (glucValue != ""){
+             vc.g = glucValue
+        }else {
+             vc.g = "No Data"
+        }
         vc.d = glucoseDate
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -243,7 +259,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
     @objc func heartRateTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "HeartRateVC") as! HeartRateVC
-        vc.h = heartValue
+        if (heartValue != ""){
+            vc.h = heartValue
+        }else {
+            vc.h = "No Data"
+        }
         vc.d = heartDate
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -251,7 +271,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
     @objc func hemoglobinTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "HemoglobinVC") as! HemoglobinVC
-        vc.hemo = hemoglValue
+        if (hemoglValue != ""){
+            vc.hemo = hemoglValue
+        }else{
+            vc.hemo = "No Data"
+        }
         vc.d = hemobloginDate
         navigationController?.pushViewController(vc, animated: true)
     }

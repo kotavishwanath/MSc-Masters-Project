@@ -20,6 +20,11 @@ class DoctorsViewController: UIViewController {
     var doctorname: String = ""
     var gmcNumber: String = ""
     
+    var nameAry = NSMutableArray()
+    var uhiAry = NSMutableArray()
+    var dobAry = NSMutableArray()
+    var imgAry = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         submitbtn.layer.borderWidth = 1
@@ -43,8 +48,61 @@ class DoctorsViewController: UIViewController {
         name.layer.cornerRadius = 5.0
     }
     
+    func fetchDetails(name: String, dateOfbirth: String, uhi: String){
+        let patientIdentifier = Int(uhi)
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "PatientsContactInfo")
+        do {
+            let patientsinfo = try managedContext.fetch(fetchRequest)
+            for data in patientsinfo {
+                if (patientIdentifier == Int(data.value(forKey: "uhi") as! Int)) || (dateOfbirth == data.value(forKey: "dob") as! String) || (name == data.value(forKey: "last_name") as! String){ //first_name
+                    let fullname = "\(data.value(forKey: "first_name") as! String)) \(data.value(forKey: "last_name") as! String))"
+                    let birthDate = "\(data.value(forKey: "dob") as! String)"
+                    let identifier = "\((data.value(forKey: "uhi") as! Int))"
+                    let imgData = data.value(forKey: "profile_picture") as! NSData
+                    let img = UIImage(data: imgData as Data)
+                    nameAry.add(fullname)
+                    dobAry.add(birthDate)
+                    uhiAry.add(identifier)
+                    imgAry.add(img ?? UIImage(named: "Profile") as Any)
+                    return
+                }
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        let alert = UIAlertController(title: "Patient not found", message: "Please check patients details correctly", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func submitButton(_ sender: Any) {
         
+//        let uhinumber = uhinumberTxt.text
+//        let dateOfbirth = dob.text
+//        let names = name.text
+    
+//        fetchDetails(name: names!, dateOfbirth: dateOfbirth!, uhi: uhinumber!)
+//        navigateToDahboard(number: Int(uhinumber!)!)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "DisplayPatientsListVC") as! DisplayPatientsListVC
+        vc.patientName = name.text!
+        vc.patientDOB = dob.text!
+        vc.patientUHI = uhinumberTxt.text!
+        navigationController?.pushViewController(vc, animated: true)
+        
+        
+    }
+    
+    func navigateToDahboard(number: Int){
         let uhi = Int(uhinumberTxt.text!)
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {

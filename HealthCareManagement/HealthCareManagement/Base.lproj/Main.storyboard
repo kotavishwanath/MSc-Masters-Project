@@ -3074,7 +3074,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNm-vX-v39">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Patient Last Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NNm-vX-v39">
                                 <rect key="frame" x="80.5" y="403" width="253" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IlB-fZ-OzE"/>
@@ -3306,6 +3306,110 @@
             </objects>
             <point key="canvasLocation" x="-420.28985507246381" y="803.57142857142856"/>
         </scene>
+        <!--Display Patients ListVC-->
+        <scene sceneID="uuv-Ya-oS9">
+            <objects>
+                <viewController storyboardIdentifier="DisplayPatientsListVC" id="xM4-XR-uO6" customClass="DisplayPatientsListVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TZV-45-8DM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HpT-JL-J33">
+                                <rect key="frame" x="0.0" y="107" width="414" height="755"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="patientCell" id="wZh-fb-O7g" customClass="PatientsListCell" customModule="HealthCareManagement" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wZh-fb-O7g" id="s6E-wM-kKs">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="89.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ud3-2w-51E">
+                                                    <rect key="frame" x="9" y="5" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="Xsf-x2-n7a"/>
+                                                        <constraint firstAttribute="width" constant="80" id="heC-90-7qm"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVz-Xz-uh3">
+                                                    <rect key="frame" x="97" y="6" width="91" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gY4-Jn-Vd7">
+                                                    <rect key="frame" x="97" y="34.5" width="97" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uhi Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVM-qq-Bvx">
+                                                    <rect key="frame" x="97" y="62" width="92" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hVz-Xz-uh3" firstAttribute="leading" secondItem="gY4-Jn-Vd7" secondAttribute="leading" id="9Vk-wH-EBH"/>
+                                                <constraint firstItem="oVM-qq-Bvx" firstAttribute="leading" secondItem="gY4-Jn-Vd7" secondAttribute="leading" id="BTh-MM-QSK"/>
+                                                <constraint firstItem="gY4-Jn-Vd7" firstAttribute="centerY" secondItem="Ud3-2w-51E" secondAttribute="centerY" id="Hpg-qo-7vC"/>
+                                                <constraint firstItem="gY4-Jn-Vd7" firstAttribute="leading" secondItem="Ud3-2w-51E" secondAttribute="trailing" constant="8" id="ZC0-dL-0r7"/>
+                                                <constraint firstItem="Ud3-2w-51E" firstAttribute="leading" secondItem="s6E-wM-kKs" secondAttribute="leading" constant="9" id="af8-Ms-qpb"/>
+                                                <constraint firstItem="oVM-qq-Bvx" firstAttribute="top" secondItem="gY4-Jn-Vd7" secondAttribute="bottom" constant="6.5" id="mwm-Yl-FM9"/>
+                                                <constraint firstItem="Ud3-2w-51E" firstAttribute="centerY" secondItem="s6E-wM-kKs" secondAttribute="centerY" id="q9j-0K-6Fr"/>
+                                                <constraint firstItem="gY4-Jn-Vd7" firstAttribute="top" secondItem="hVz-Xz-uh3" secondAttribute="bottom" constant="7.5" id="wuy-Fy-ECL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="patientNameLabel" destination="hVz-Xz-uh3" id="N6K-ef-osG"/>
+                                            <outlet property="patientProfilePicture" destination="Ud3-2w-51E" id="JhT-u0-qSf"/>
+                                            <outlet property="patientsDOBLabel" destination="gY4-Jn-Vd7" id="xsw-FI-RCv"/>
+                                            <outlet property="patientsUHINumber" destination="oVM-qq-Bvx" id="Teq-ZN-UeU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patients List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JzZ-TZ-vZo">
+                                <rect key="frame" x="148" y="59.5" width="118" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BF6-Nz-pL5">
+                                <rect key="frame" x="20" y="50" width="49" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="Z2S-1h-2NA"/>
+                                    <constraint firstAttribute="height" constant="44" id="qJg-On-O8T"/>
+                                </constraints>
+                                <state key="normal" title="&lt; Back" image="back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="xM4-XR-uO6" eventType="touchUpInside" id="JGx-MJ-JOy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HpT-JL-J33" firstAttribute="bottom" secondItem="Xf6-7I-L28" secondAttribute="bottom" id="Hn9-HQ-oam"/>
+                            <constraint firstItem="HpT-JL-J33" firstAttribute="leading" secondItem="Xf6-7I-L28" secondAttribute="leading" id="JHB-Ex-JqI"/>
+                            <constraint firstItem="BF6-Nz-pL5" firstAttribute="leading" secondItem="Xf6-7I-L28" secondAttribute="leading" constant="20" id="K7W-Sz-yi7"/>
+                            <constraint firstItem="HpT-JL-J33" firstAttribute="top" secondItem="BF6-Nz-pL5" secondAttribute="bottom" constant="13" id="QUS-Ue-3tl"/>
+                            <constraint firstItem="JzZ-TZ-vZo" firstAttribute="centerX" secondItem="TZV-45-8DM" secondAttribute="centerX" id="Vsk-bF-uhv"/>
+                            <constraint firstItem="HpT-JL-J33" firstAttribute="trailing" secondItem="Xf6-7I-L28" secondAttribute="trailing" id="W5F-Pc-C04"/>
+                            <constraint firstItem="BF6-Nz-pL5" firstAttribute="centerY" secondItem="JzZ-TZ-vZo" secondAttribute="centerY" id="fiU-7B-gf3"/>
+                            <constraint firstItem="BF6-Nz-pL5" firstAttribute="top" secondItem="Xf6-7I-L28" secondAttribute="top" constant="6" id="sPQ-Gf-c5w"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xf6-7I-L28"/>
+                    </view>
+                    <connections>
+                        <outlet property="patientsListTblView" destination="HpT-JL-J33" id="YNj-Zi-Rjn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y9y-zy-tLY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-511.59420289855075" y="1736.3839285714284"/>
+        </scene>
         <!--Patient ProfileVC-->
         <scene sceneID="91X-Tr-1JJ">
             <objects>
@@ -3341,7 +3445,6 @@
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="aZp-7f-hBb" eventType="touchUpInside" id="YCT-6e-PnL"/>
-                                    <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="ecb-pf-BgF"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZc-Wu-ZgW">
@@ -4050,7 +4153,6 @@
                                 </constraints>
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
-                                    <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="XQU-PX-isc"/>
                                     <action selector="backButtonClicked:" destination="pj6-wh-pjb" eventType="touchUpInside" id="ZhH-1p-dUO"/>
                                 </connections>
                             </button>
@@ -4335,7 +4437,6 @@
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
                                     <action selector="backButton:" destination="mri-wD-tMx" eventType="touchUpInside" id="DeV-Wy-GUL"/>
-                                    <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="sEp-j7-PlU"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0fy-9I-bKU">
@@ -4603,7 +4704,6 @@
                                 </constraints>
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
-                                    <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="XrJ-tq-rmy"/>
                                     <action selector="backButtonClicked:" destination="och-df-bhi" eventType="touchUpInside" id="Pj8-Mx-qpR"/>
                                 </connections>
                             </button>
@@ -4868,7 +4968,6 @@
                                 </constraints>
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
-                                    <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="ELC-vl-vfe"/>
                                     <action selector="backButtonClicked:" destination="9Bj-Wq-Zmr" eventType="touchUpInside" id="HAe-4J-ueL"/>
                                 </connections>
                             </button>
@@ -5135,7 +5234,6 @@
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
                                     <action selector="backBtnClicked:" destination="IJH-5H-2rC" eventType="touchUpInside" id="Pi7-I0-49w"/>
-                                    <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="BFR-mw-h17"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9VF-Tm-bEF">
@@ -5356,7 +5454,6 @@
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
                                     <action selector="backBtnClicked:" destination="UNr-L1-wGq" eventType="touchUpInside" id="2Tx-ix-GR4"/>
-                                    <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="Mg8-JO-hrw"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8sv-5n-aee">

@@ -1,41 +1,44 @@
 //
-//  PulseOxiVC.swift
+//  HemoglobinVC.swift
 //  HealthCareManagement
 //
-//  Created by Vishwanath Kota on 14/07/19.
+//  Created by Vishwanath Kota on 15/07/19.
 //  Copyright © 2019 University Of Hertfordshire. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class PulseOxiVC: UIViewController {
+class HemoglobinVC: UIViewController {
 
-    @IBOutlet weak var currentOxiValue: UILabel!
+    @IBOutlet weak var currentHemoglobinValue: UILabel!
+    @IBOutlet weak var doctorNotes: UILabel!
     @IBOutlet weak var updatedDate: UILabel!
-    @IBOutlet weak var oxiGoal: UILabel!
-    @IBOutlet weak var enterOxiValue: UITextField!
-    @IBOutlet weak var doctorsNotes: UILabel!
-    @IBOutlet weak var alertLow: UILabel!
+    @IBOutlet weak var enterHemoglobinValue: UITextField!
+    @IBOutlet weak var idealValue: UILabel!
     
-    var pulseOxi: [NSManagedObject] = []
+    var hemoglobin: [NSManagedObject] = []
     let currentdate = NSDate()
     var UHI = String()
     
-    var p = ""
+    var hemo = ""
     var d = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        print(currentdate)
         
-        currentOxiValue.text = p
+        currentHemoglobinValue.text = hemo
         let dateComponents = d.components(separatedBy: " ")
-        updatedDate.text = "\(dateComponents[0]) \(dateComponents[1])"
+        if (dateComponents.count > 1){
+            updatedDate.text = "\(dateComponents[0]) \(dateComponents[1])"
+        }else{
+            updatedDate.text = "No Data"
+        }
         
         fetchDoctorsInfo()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         fetchDoctorsInfo()
     }
@@ -48,15 +51,26 @@ class PulseOxiVC: UIViewController {
         }
         let managedContext =
             appDelegate.persistentContainer.viewContext
-        let fetchRequestPulseOxi =
-            NSFetchRequest<NSManagedObject>(entityName: "PulseOxiInfo")
+        let fetchPatient = NSFetchRequest<NSManagedObject>(entityName: "PatientsContactInfo")
+        let fetchRequestHemo =
+            NSFetchRequest<NSManagedObject>(entityName: "HemoglobinInfo")
         do{
-            let pluseOxiInfo = try managedContext.fetch(fetchRequestPulseOxi)
-            for pulseData in pluseOxiInfo{
-                if (UHI == pulseData.value(forKey: "patientID") as? String){
-                    oxiGoal.text = String(format: ".1f %", pulseData.value(forKey: "goal") as! Float)
-                    alertLow.text = String(format: ".1f %", pulseData.value(forKey: "alert_low_pulse") as! Float)
-                    doctorsNotes.text = pulseData.value(forKey: "doctor_notes") as? String
+            let hemoInfo = try managedContext.fetch(fetchRequestHemo)
+            for hemoData in hemoInfo{
+                if (UHI == hemoData.value(forKey: "patientID") as? String){
+                    doctorNotes.text = hemoData.value(forKey: "doctor_notes") as? String
+                }
+            }
+            
+            let patient = try managedContext.fetch(fetchPatient)
+            for data in patient{
+                if (Int(UHI) == data.value(forKey: "uhi") as? Int){
+                   let gender = data.value(forKey: "mothers_madin_name") as! String
+                    if gender == "M" || gender == "m"{
+                        idealValue.text = "13.5 to 17.5 %"
+                    }else{
+                        idealValue.text = "12.0 to 15.5 %"
+                    }
                 }
             }
         }catch let error as NSError {
@@ -65,16 +79,15 @@ class PulseOxiVC: UIViewController {
         
     }
     
-    @IBAction func backButtonClicked(_ sender: Any) {
+    @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MonitorDashboardVC") as! MonitorDashboardVC
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
-        
         // for the first time
-        if(enterOxiValue.text != ""){
+        if(enterHemoglobinValue.text != ""){
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
@@ -82,30 +95,30 @@ class PulseOxiVC: UIViewController {
             let managedContext =
                 appDelegate.persistentContainer.viewContext
             let entity =
-                NSEntityDescription.entity(forEntityName: "PulseOxiInfo",
+                NSEntityDescription.entity(forEntityName: "HemoglobinInfo",
                                            in: managedContext)!
             let person = NSManagedObject(entity: entity,
                                          insertInto: managedContext)
             let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
             
             person.setValue(uhi, forKey: "patientID")
-            person.setValue(Float(enterOxiValue.text!), forKey: "pulseoxi_value")
+            person.setValue(Float(enterHemoglobinValue.text!), forKey: "hemoglobin_value")
             person.setValue(NSDate(), forKey: "date")
             person.setValue("%", forKey: "unit")
             
             do {
                 try managedContext.save()
-                pulseOxi.append(person)
+                hemoglobin.append(person)
                 
-                let oxiValue = enterOxiValue.text!
-                currentOxiValue.text = oxiValue
+                let hemoValue = enterHemoglobinValue.text!
+                currentHemoglobinValue.text = hemoValue
                 let date = "\(currentdate)"
                 let displayDate = date.components(separatedBy: " ")
                 updatedDate.text = displayDate[0]
                 
-                enterOxiValue.text = ""
+                enterHemoglobinValue.text = ""
                 
-                let alert = UIAlertController(title: "Saved", message: "Your pulse oximeter values have been saved successfully", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Saved", message: "Your Hemoglobin values have been saved successfully", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
@@ -113,7 +126,6 @@ class PulseOxiVC: UIViewController {
                 print("Could not save. \(error), \(error.userInfo)")
             }
         }
-        
         
     }
     

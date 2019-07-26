@@ -31,7 +31,11 @@ class TemperatureVC: UIViewController {
         
         currentTempValue.text = te
         let dateComponents = d.components(separatedBy: " ")
-        updateDate.text = "\(dateComponents[0]) \(dateComponents[1])"
+        if (dateComponents.count > 1){
+            updateDate.text = "\(dateComponents[0]) \(dateComponents[1])"
+        }else{
+            updateDate.text = "No Data"
+        }
         
         fetchDoctorsInfo()
     }

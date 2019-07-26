@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10036F7822EB0BBB00568A09 /* DisplayPatientsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10036F7722EB0BBB00568A09 /* DisplayPatientsListVC.swift */; };
+		10036F7A22EB235500568A09 /* PatientsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10036F7922EB235500568A09 /* PatientsListCell.swift */; };
 		1006D4C022C4B2890028AD5B /* DoctorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006D4BF22C4B2880028AD5B /* DoctorsViewController.swift */; };
 		1006D4C222C4B90F0028AD5B /* DoctorRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006D4C122C4B90E0028AD5B /* DoctorRegistrationViewController.swift */; };
 		100AAAA122B8FDC800E3FAA2 /* RegestrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100AAAA022B8FDC800E3FAA2 /* RegestrationViewController.swift */; };
@@ -75,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10036F7722EB0BBB00568A09 /* DisplayPatientsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayPatientsListVC.swift; sourceTree = "<group>"; };
+		10036F7922EB235500568A09 /* PatientsListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsListCell.swift; sourceTree = "<group>"; };
 		1006D4BF22C4B2880028AD5B /* DoctorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsViewController.swift; sourceTree = "<group>"; };
 		1006D4C122C4B90E0028AD5B /* DoctorRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorRegistrationViewController.swift; sourceTree = "<group>"; };
 		100AAAA022B8FDC800E3FAA2 /* RegestrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegestrationViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10036F7B22EB3A4F00568A09 /* Monitor Module */ = {
+			isa = PBXGroup;
+			children = (
+				106F032522DCA20900A8EBA2 /* HemoglobinVC.swift */,
+				106F032322DCA1D700A8EBA2 /* HeartRateVC.swift */,
+				106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */,
+				106F032122DBBDA200A8EBA2 /* GlucoseVC.swift */,
+				106F031D22DB37F500A8EBA2 /* TemperatureVC.swift */,
+				106F031B22DB347D00A8EBA2 /* HealthStatusVC.swift */,
+				1019BF7922D8B99600CFA579 /* BloodPressureVC.swift */,
+				1019BF7722D89D0100CFA579 /* MonitorDashboardVC.swift */,
+			);
+			path = "Monitor Module";
+			sourceTree = "<group>";
+		};
 		10D3A03622C28CF700B54B92 /* IQKeyboardManagerSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +267,7 @@
 				10D3A03622C28CF700B54B92 /* IQKeyboardManagerSwift */,
 				10EC3C7E22BD52F6000A615D /* Calender View */,
 				10EC3C8522BD6208000A615D /* Calender Controller */,
+				10036F7B22EB3A4F00568A09 /* Monitor Module */,
 				10E004F622AECEA70009155C /* AppDelegate.swift */,
 				100AAAA022B8FDC800E3FAA2 /* RegestrationViewController.swift */,
 				10E004F822AECEA70009155C /* ViewController.swift */,
@@ -255,21 +275,15 @@
 				10E004FA22AECEA70009155C /* Main.storyboard */,
 				106F032722E357AB00A8EBA2 /* PatientProfileVC.swift */,
 				106F032922E389A900A8EBA2 /* PPTemperatureVC.swift */,
-				106F032522DCA20900A8EBA2 /* HemoglobinVC.swift */,
 				106F032B22E389E000A8EBA2 /* PPBloodPressureVC.swift */,
 				106F032D22E38A1200A8EBA2 /* PPPulseOxiMeterVC.swift */,
 				106F032F22E38A3B00A8EBA2 /* PPGlucoseVC.swift */,
 				106F033122E38A6300A8EBA2 /* PPHeartRateVC.swift */,
 				106F033322E38A9300A8EBA2 /* PPHemoglobinVC.swift */,
-				106F032322DCA1D700A8EBA2 /* HeartRateVC.swift */,
-				106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */,
-				106F032122DBBDA200A8EBA2 /* GlucoseVC.swift */,
-				106F031D22DB37F500A8EBA2 /* TemperatureVC.swift */,
-				106F031B22DB347D00A8EBA2 /* HealthStatusVC.swift */,
-				1019BF7922D8B99600CFA579 /* BloodPressureVC.swift */,
-				1019BF7722D89D0100CFA579 /* MonitorDashboardVC.swift */,
 				1006D4C122C4B90E0028AD5B /* DoctorRegistrationViewController.swift */,
 				1006D4BF22C4B2880028AD5B /* DoctorsViewController.swift */,
+				10036F7722EB0BBB00568A09 /* DisplayPatientsListVC.swift */,
+				10036F7922EB235500568A09 /* PatientsListCell.swift */,
 				10E0050022AECEAA0009155C /* Assets.xcassets */,
 				10E0050222AECEAA0009155C /* LaunchScreen.storyboard */,
 				10E0050522AECEAA0009155C /* Info.plist */,
@@ -455,12 +469,14 @@
 				1006D4C222C4B90F0028AD5B /* DoctorRegistrationViewController.swift in Sources */,
 				10EC3C8422BD52F6000A615D /* WeekdaysView.swift in Sources */,
 				106F033422E38A9300A8EBA2 /* PPHemoglobinVC.swift in Sources */,
+				10036F7A22EB235500568A09 /* PatientsListCell.swift in Sources */,
 				106F032E22E38A1200A8EBA2 /* PPPulseOxiMeterVC.swift in Sources */,
 				10D3A05322C28CF800B54B92 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				10D3A05A22C28CF800B54B92 /* IQUIScrollView+Additions.swift in Sources */,
 				106F032422DCA1D700A8EBA2 /* HeartRateVC.swift in Sources */,
 				106F031E22DB37F500A8EBA2 /* TemperatureVC.swift in Sources */,
 				10E004F722AECEA70009155C /* AppDelegate.swift in Sources */,
+				10036F7822EB0BBB00568A09 /* DisplayPatientsListVC.swift in Sources */,
 				106F031C22DB347D00A8EBA2 /* HealthStatusVC.swift in Sources */,
 				10D3A05C22C28CF800B54B92 /* IQUITextFieldView+Additions.swift in Sources */,
 				106F032A22E389A900A8EBA2 /* PPTemperatureVC.swift in Sources */,
