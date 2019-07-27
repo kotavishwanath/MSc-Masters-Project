@@ -137,10 +137,12 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                 if (UHI == tempData.value(forKey: "patientID") as? String){
                     let temp = tempData.value(forKey: "temprature_info") as! Float
                     tempValue.text = String(format: "%.1f", temp)
-                    let d = tempData.value(forKey: "date") as! NSDate
-                    tempUpdatedDate.text = "\(d)"
-                    temperatureValue = "\(String(format: "%.1f", temp))"
-                    temperatureDate = "\(d)"
+                    if (tempData.value(forKey: "date") != nil){
+                        let d = tempData.value(forKey: "date") as! NSDate
+                        tempUpdatedDate.text = "\(d)"
+                        temperatureValue = "\(String(format: "%.1f", temp))"
+                        temperatureDate = "\(d)"
+                    }
                 }
             }
             

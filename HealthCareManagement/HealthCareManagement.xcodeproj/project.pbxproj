@@ -176,6 +176,15 @@
 			path = "Monitor Module";
 			sourceTree = "<group>";
 		};
+		10036F7C22EC3B7E00568A09 /* Regestration Module */ = {
+			isa = PBXGroup;
+			children = (
+				100AAAA022B8FDC800E3FAA2 /* RegestrationViewController.swift */,
+				1006D4C122C4B90E0028AD5B /* DoctorRegistrationViewController.swift */,
+			);
+			path = "Regestration Module";
+			sourceTree = "<group>";
+		};
 		10D3A03622C28CF700B54B92 /* IQKeyboardManagerSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,11 +274,11 @@
 			isa = PBXGroup;
 			children = (
 				10D3A03622C28CF700B54B92 /* IQKeyboardManagerSwift */,
-				10EC3C7E22BD52F6000A615D /* Calender View */,
 				10EC3C8522BD6208000A615D /* Calender Controller */,
+				10EC3C7E22BD52F6000A615D /* Calender View */,
 				10036F7B22EB3A4F00568A09 /* Monitor Module */,
 				10E004F622AECEA70009155C /* AppDelegate.swift */,
-				100AAAA022B8FDC800E3FAA2 /* RegestrationViewController.swift */,
+				10036F7C22EC3B7E00568A09 /* Regestration Module */,
 				10E004F822AECEA70009155C /* ViewController.swift */,
 				10EC3C7A22BD41B6000A615D /* DashboardViewController.swift */,
 				10E004FA22AECEA70009155C /* Main.storyboard */,
@@ -280,7 +289,6 @@
 				106F032F22E38A3B00A8EBA2 /* PPGlucoseVC.swift */,
 				106F033122E38A6300A8EBA2 /* PPHeartRateVC.swift */,
 				106F033322E38A9300A8EBA2 /* PPHemoglobinVC.swift */,
-				1006D4C122C4B90E0028AD5B /* DoctorRegistrationViewController.swift */,
 				1006D4BF22C4B2880028AD5B /* DoctorsViewController.swift */,
 				10036F7722EB0BBB00568A09 /* DisplayPatientsListVC.swift */,
 				10036F7922EB235500568A09 /* PatientsListCell.swift */,

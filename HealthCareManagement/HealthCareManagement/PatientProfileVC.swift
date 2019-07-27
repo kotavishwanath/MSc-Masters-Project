@@ -138,8 +138,11 @@ class PatientProfileVC: UIViewController {
                     let temp = tempData.value(forKey: "temprature_info") as! Float
                     self.tempData.text = String(format: "%.1f", temp)
                     temperatureValue = "Current Value: \( String(format: "%.1f", temp)) °F"
-                    let d = tempData.value(forKey: "date") as! NSDate
-                    tempUpdatedDate.text = "\(d)"
+                    if (tempData.value(forKey: "date") != nil){
+                        let d = tempData.value(forKey: "date") as! NSDate
+                        tempUpdatedDate.text = "\(d)"
+                    }
+                    
                 }
             }
             
@@ -191,42 +194,66 @@ class PatientProfileVC: UIViewController {
     @objc func bpviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPBloodPressureVC") as! PPBloodPressureVC
-        vc.bpValue = bloodPressureValue
+        if (bloodPressureValue != ""){
+            vc.bpValue = bloodPressureValue
+        }else {
+            vc.bpValue = "New Patient"
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func tempviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPTemperatureVC") as! PPTemperatureVC
-        vc.tempValue = temperatureValue
+        if (temperatureValue != ""){
+            vc.tempValue = temperatureValue
+        }else {
+            vc.tempValue = "New Patient"
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func oxiviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPPulseOxiMeterVC") as! PPPulseOxiMeterVC
-        vc.oxiValue = pulseoxiValue
+        if (pulseoxiValue != ""){
+            vc.oxiValue = pulseoxiValue
+        }else {
+            vc.oxiValue = "New Patient"
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func glucoseTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPGlucoseVC") as! PPGlucoseVC
-        vc.glucose = glucoseValue
+        if (glucoseValue != ""){
+            vc.glucose = glucoseValue
+        }else {
+            vc.glucose = "New Patient"
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func heartRateTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPHeartRateVC") as! PPHeartRateVC
-        vc.heartRate = heartRateValue
+        if (heartRateValue != ""){
+            vc.heartRate = heartRateValue
+        }else {
+            vc.heartRate = "New Patient"
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func hemoglobinTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPHemoglobinVC") as! PPHemoglobinVC
-        vc.hemo = hemoValue
+        if (hemoValue != ""){
+            vc.hemo = hemoValue
+        }else {
+            vc.hemo = "New Patient"
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
