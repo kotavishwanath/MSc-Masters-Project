@@ -126,8 +126,10 @@ class PatientProfileVC: UIViewController {
                     let diastolicValue = bpData.value(forKeyPath: "diastolic") as! Int
                     self.bpData.text = "\(systolicValue)/\(diastolicValue)"
                     bloodPressureValue = "Current Value: \(systolicValue)/\(diastolicValue) mmHG"
-                    let d = bpData.value(forKey: "date") as! NSDate
-                    bpUpdatedDate.text = "\(d)"
+                    if (bpData.value(forKey: "date") != nil){
+                        let d = bpData.value(forKey: "date") as! NSDate
+                        bpUpdatedDate.text = "\(d)"
+                    }
                 }
             }
             
@@ -151,8 +153,10 @@ class PatientProfileVC: UIViewController {
                     let pulse = pulseData.value(forKey: "pulseoxi_value") as! Float
                     pulseOxiData.text = String(format: "%.1f", pulse)
                     pulseoxiValue = "Current Value: \(String(format: "%.1f", pulse)) %"
-                    let d = pulseData.value(forKey: "date") as! NSDate
-                    pulseOxiUpdatedDate.text = "\(d)"
+                    if (pulseData.value(forKey: "date") != nil){
+                        let d = pulseData.value(forKey: "date") as! NSDate
+                        pulseOxiUpdatedDate.text = "\(d)"
+                    }
                 }
             }
             
@@ -161,8 +165,10 @@ class PatientProfileVC: UIViewController {
                     let glucose = glucoseData.value(forKey: "glucose_value") as! Int
                     self.glucoseData.text = "\(glucose)"
                     glucoseValue = "Current Value: \(glucose) mg/dl"
-                    let d = glucoseData.value(forKey: "date") as! NSDate
-                    glucoseUpdatedDate.text = "\(d)"
+                    if (glucoseData.value(forKey: "date") != nil){
+                        let d = glucoseData.value(forKey: "date") as! NSDate
+                        glucoseUpdatedDate.text = "\(d)"
+                    }
                 }
             }
             
@@ -171,8 +177,10 @@ class PatientProfileVC: UIViewController {
                     let rate = heartData.value(forKey: "heartrate_value") as! Int
                     heartRateData.text = "\(rate)"
                     heartRateValue = "Current Value: \(rate) bpm"
-                    let d = heartData.value(forKey: "date") as! NSDate
-                    heartRateUpdatedDate.text = "\(d)"
+                    if (heartData.value(forKey: "date") != nil){
+                        let d = heartData.value(forKey: "date") as! NSDate
+                        heartRateUpdatedDate.text = "\(d)"
+                    }
                 }
             }
             
@@ -181,8 +189,10 @@ class PatientProfileVC: UIViewController {
                     let hemo = hemoData.value(forKey: "hemoglobin_value") as! Float
                     self.hemoData.text = String(format: "%.1f", hemo)
                     hemoValue = "Current Value: \(String(format: "%.1f", hemo)) %"
-                    let d = hemoData.value(forKey: "date") as! NSDate
-                    hemoUpdatedDate.text = "\(d)"
+                    if (hemoData.value(forKey: "date") != nil){
+                        let d = hemoData.value(forKey: "date") as! NSDate
+                        hemoUpdatedDate.text = "\(d)"
+                    }
                 }
             }
             

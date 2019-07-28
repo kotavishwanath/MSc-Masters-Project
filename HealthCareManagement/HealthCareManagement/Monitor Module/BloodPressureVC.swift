@@ -63,15 +63,15 @@ class BloodPressureVC: UIViewController {
                 if (UHI == bpData.value(forKey: "patientID") as? String){
                     let goalSys = bpData.value(forKey: "goal_systolic") as! Int
                     let goalDia = bpData.value(forKey: "goal_diastolic") as! Int
-                    goal.text = "\(goalSys)/\(goalDia)"
+                    goal.text = "\(goalSys)/\(goalDia) mm Hg"
                     
                     let alertHighSys = bpData.value(forKey: "alert_high_systolic") as! Int
                     let alertHighDia = bpData.value(forKey: "alert_high_diastolic") as! Int
-                    alertHigh.text = "\(alertHighSys)/\(alertHighDia) mmHg"
+                    alertHigh.text = "\(alertHighSys)/\(alertHighDia) mm Hg"
                     
                     let alertLowSys = bpData.value(forKey: "alert_low_systolic") as! Int
                     let alertLowDia = bpData.value(forKey: "alert_low_diastolic") as! Int
-                    alertLow.text = "\(alertLowSys)/\(alertLowDia) mmHg"
+                    alertLow.text = "\(alertLowSys)/\(alertLowDia) mm Hg"
                     
                     doctorNotes.text = bpData.value(forKey: "doctor_notes") as? String
                 }

@@ -58,8 +58,8 @@ class PulseOxiVC: UIViewController {
             let pluseOxiInfo = try managedContext.fetch(fetchRequestPulseOxi)
             for pulseData in pluseOxiInfo{
                 if (UHI == pulseData.value(forKey: "patientID") as? String){
-                    oxiGoal.text = String(format: ".1f %", pulseData.value(forKey: "goal") as! Float)
-                    alertLow.text = String(format: ".1f %", pulseData.value(forKey: "alert_low_pulse") as! Float)
+                    oxiGoal.text = String(format: "%.1f %", pulseData.value(forKey: "goal") as! Float)
+                    alertLow.text = String(format: "%.1f %", pulseData.value(forKey: "alert_low_pulse") as! Float)
                     doctorsNotes.text = pulseData.value(forKey: "doctor_notes") as? String
                 }
             }

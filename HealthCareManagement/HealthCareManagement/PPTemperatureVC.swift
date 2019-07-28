@@ -64,7 +64,6 @@ class PPTemperatureVC: UIViewController {
                                        in: managedContext)!
         let tempData = NSManagedObject(entity: entity,
                                      insertInto: managedContext)
-        
         do{
             let patientInfo = try managedContext.fetch(fetchRequest)
             for data in patientInfo{

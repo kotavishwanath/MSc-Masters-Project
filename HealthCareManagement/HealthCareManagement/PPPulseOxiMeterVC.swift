@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PPPulseOxiMeterVC: UIViewController {
     @IBOutlet weak var patientUHI: UILabel!
@@ -21,10 +22,16 @@ class PPPulseOxiMeterVC: UIViewController {
     @IBOutlet weak var submitbtn: UIButton!
     
     var oxiValue = String()
+    var UHINumber = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentValue.text = oxiValue
         patientUHI.text = (UserDefaults.standard.object(forKey: "PatientUHINumber") as! String)
+        let number = patientUHI.text!.components(separatedBy: " ")
+        UHINumber = number[1]
+        beforeMealBtn.setImage(UIImage(named: "empty_check"), for: .normal)
+        afterMealBtn.setImage(UIImage(named: "empty_check"), for: .normal)
         submitbtn.layer.borderWidth = 1
         submitbtn.layer.borderColor = UIColor.blue.cgColor
         submitbtn.layer.cornerRadius = 4.0
@@ -41,5 +48,41 @@ class PPPulseOxiMeterVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func submitButtonClicked(_ sender: Any) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "PatientsContactInfo")
+        
+        let entity =
+            NSEntityDescription.entity(forEntityName: "PulseOxiInfo",
+                                       in: managedContext)!
+        let pulseOxiData = NSManagedObject(entity: entity,
+                                       insertInto: managedContext)
+        do{
+            let patientInfo = try managedContext.fetch(fetchRequest)
+            for data in patientInfo{
+                if (Int64(UHINumber) == data.value(forKey: "uhi") as? Int64){
+                    
+                    pulseOxiData.setValue(UHINumber, forKey: "patientID")
+                    
+                    let minValue = Float(alertMinValue.text!)
+                    pulseOxiData.setValue(minValue, forKey: "alert_low_pulse")
+                    
+                    let goalVal = Float(goal.text!)
+                    pulseOxiData.setValue(goalVal, forKey: "goal")
+                    
+                    let note = doctorNotes.text
+                    pulseOxiData.setValue(note, forKey: "doctor_notes")
+                    
+                     try managedContext.save()
+                }
+            }
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
 }

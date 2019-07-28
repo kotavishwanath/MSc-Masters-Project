@@ -124,10 +124,12 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                    let systolicValue = bpData.value(forKeyPath: "systolic") as! Int
                    let diastolicValue = bpData.value(forKeyPath: "diastolic") as! Int
                    bpValue.text = "\(systolicValue)/\(diastolicValue)"
-                   let d = bpData.value(forKey: "date") as! NSDate
-                   bpUpdatedDate.text = "\(d)"
-                   bloodPressureValue = "\(systolicValue)/\(diastolicValue)"
-                   bloodPressureDate = "\(d)"
+                    if ( bpData.value(forKey: "date") != nil){
+                        let d = bpData.value(forKey: "date") as! NSDate
+                        bpUpdatedDate.text = "\(d)"
+                        bloodPressureValue = "\(systolicValue)/\(diastolicValue)"
+                        bloodPressureDate = "\(d)"
+                    }
                 }
             }
             
@@ -150,10 +152,12 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                 if (UHI == pulseData.value(forKey: "patientID") as? String){
                     let pulse = pulseData.value(forKey: "pulseoxi_value") as! Float
                     pluseOxiValue.text = String(format: "%.1f", pulse)
-                    let d = pulseData.value(forKey: "date") as! NSDate
-                    pulseOxiUpdatedDate.text = "\(d)"
-                    pulseoxiValue = "\(String(format: "%.1f", pulse))"
-                    pulseoxiDate = "\(d)"
+                    if (pulseData.value(forKey: "date") != nil){
+                        let d = pulseData.value(forKey: "date") as! NSDate
+                        pulseOxiUpdatedDate.text = "\(d)"
+                        pulseoxiValue = "\(String(format: "%.1f", pulse))"
+                        pulseoxiDate = "\(d)"
+                    }
                 }
             }
             
@@ -161,10 +165,12 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                 if (UHI == glucoseData.value(forKey: "patientID") as? String){
                     let glucose = glucoseData.value(forKey: "glucose_value") as! Int
                     glucoseValue.text = "\(glucose)"
-                    let d = glucoseData.value(forKey: "date") as! NSDate
-                    glucoseUpdatedDate.text = "\(d)"
-                    glucValue = "\(glucose)"
-                    glucoseDate = "\(d)"
+                    if (glucoseData.value(forKey: "date") != nil){
+                        let d = glucoseData.value(forKey: "date") as! NSDate
+                        glucoseUpdatedDate.text = "\(d)"
+                        glucValue = "\(glucose)"
+                        glucoseDate = "\(d)"
+                    }
                 }
             }
             
@@ -172,10 +178,12 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                 if (UHI == heartData.value(forKey: "patientID") as? String){
                     let rate = heartData.value(forKey: "heartrate_value") as! Int
                     heartRateValue.text = "\(rate)"
-                    let d = heartData.value(forKey: "date") as! NSDate
-                    heartRateUpdatedDate.text = "\(d)"
-                    heartValue = "\(rate)"
-                    heartDate = "\(d)"
+                    if (heartData.value(forKey: "date") != nil){
+                        let d = heartData.value(forKey: "date") as! NSDate
+                        heartRateUpdatedDate.text = "\(d)"
+                        heartValue = "\(rate)"
+                        heartDate = "\(d)"
+                    }
                 }
             }
             
@@ -183,10 +191,12 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                 if (UHI == hemoData.value(forKey: "patientID") as? String){
                     let hemo = hemoData.value(forKey: "hemoglobin_value") as! Float
                     hemoglobinValue.text = String(format: "%.1f", hemo)
-                    let d = hemoData.value(forKey: "date") as! NSDate
-                    hemoUpdatedDate.text = "\(d)"
-                    hemoglValue = String(format: "%.1f", hemo)
-                    hemobloginDate = "\(d)"
+                    if (hemoData.value(forKey: "date") != nil){
+                        let d = hemoData.value(forKey: "date") as! NSDate
+                        hemoUpdatedDate.text = "\(d)"
+                        hemoglValue = String(format: "%.1f", hemo)
+                        hemobloginDate = "\(d)"
+                    }
                 }
             }
             
