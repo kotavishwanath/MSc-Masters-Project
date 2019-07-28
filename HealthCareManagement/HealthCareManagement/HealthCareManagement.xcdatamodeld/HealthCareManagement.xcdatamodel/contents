@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Attributes" representedClassName="Attributes" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <entity name="BloodPressureVitalInfo" representedClassName="BloodPressureVitalInfo" syncable="YES" codeGenerationType="class">
         <attribute name="alert_high_diastolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="alert_high_systolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -51,6 +48,14 @@
         <attribute name="hemoglobin_value" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="MedicalPrescription" representedClassName="MedicalPrescription" syncable="YES" codeGenerationType="class">
+        <attribute name="after_meal" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="before_meal" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="medicine_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="times_a_day" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="PatientsContactInfo" representedClassName="PatientsContactInfo" syncable="YES" codeGenerationType="class">
         <attribute name="accessLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -101,15 +106,15 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Attributes" positionX="75.88671875" positionY="-38.3203125" width="128" height="60"/>
+        <element name="MedicalPrescription" positionX="75.88671875" positionY="-38.3203125" width="128" height="135"/>
         <element name="BloodPressureVitalInfo" positionX="-72.71875" positionY="-121.16015625" width="128" height="255"/>
         <element name="DoctorsInfo" positionX="-12.0546875" positionY="179.65234375" width="128" height="105"/>
-        <element name="PatientsContactInfo" positionX="-240.07421875" positionY="-117.03515625" width="128" height="390"/>
-        <element name="SubAttributes" positionX="-71.34375" positionY="72.67578125" width="128" height="73"/>
-        <element name="TemperatureVitalInfo" positionX="77.75" positionY="50.34765625" width="128" height="165"/>
-        <element name="PulseOxiInfo" positionX="-81" positionY="27" width="128" height="150"/>
         <element name="GlucoseInfo" positionX="-72" positionY="36" width="128" height="165"/>
         <element name="HeartRateInfo" positionX="-63" positionY="45" width="128" height="165"/>
         <element name="HemoglobinInfo" positionX="-54" positionY="54" width="128" height="120"/>
+        <element name="PatientsContactInfo" positionX="-240.07421875" positionY="-117.03515625" width="128" height="390"/>
+        <element name="PulseOxiInfo" positionX="-81" positionY="27" width="128" height="150"/>
+        <element name="SubAttributes" positionX="-71.34375" positionY="72.67578125" width="128" height="73"/>
+        <element name="TemperatureVitalInfo" positionX="77.75" positionY="50.34765625" width="128" height="165"/>
     </elements>
 </model>

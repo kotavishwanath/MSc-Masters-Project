@@ -33,6 +33,9 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func pillboxButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PillBoxViewController") as! PillBoxViewController
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func monitorButton(_ sender: Any) {

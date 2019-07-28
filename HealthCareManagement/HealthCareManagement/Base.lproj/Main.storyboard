@@ -2802,6 +2802,69 @@
             </objects>
             <point key="canvasLocation" x="2445" y="255"/>
         </scene>
+        <!--Pill Box View Controller-->
+        <scene sceneID="TJF-xX-lXl">
+            <objects>
+                <viewController storyboardIdentifier="PillBoxViewController" id="fgA-OM-mU1" customClass="PillBoxViewController" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vu1-sH-TCM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pill Box" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2a2-z7-xHJ">
+                                <rect key="frame" x="104" y="54.5" width="207" height="31"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrA-Dg-ZxK">
+                                <rect key="frame" x="20" y="48" width="49" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="17f-pi-a4H"/>
+                                    <constraint firstAttribute="width" constant="49" id="Mxq-BR-e43"/>
+                                </constraints>
+                                <state key="normal" title="&lt; Back" image="back"/>
+                                <connections>
+                                    <action selector="backBtn:" destination="9MW-My-Hq0" eventType="touchUpInside" id="HhE-tl-42h"/>
+                                    <action selector="backButton:" destination="F0D-4f-sgy" eventType="touchUpInside" id="brc-Jo-aH0"/>
+                                    <action selector="backButtonClicked:" destination="fgA-OM-mU1" eventType="touchUpInside" id="PeL-8i-3d1"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Yo-9e-0S1">
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Swz-Sb-3Ez">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Swz-Sb-3Ez" id="xlK-jd-oyH">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2a2-z7-xHJ" firstAttribute="centerY" secondItem="MrA-Dg-ZxK" secondAttribute="centerY" id="O54-qA-ddB"/>
+                            <constraint firstItem="2Yo-9e-0S1" firstAttribute="top" secondItem="MrA-Dg-ZxK" secondAttribute="bottom" constant="8" id="SO8-4N-Vbo"/>
+                            <constraint firstItem="2Yo-9e-0S1" firstAttribute="bottom" secondItem="sdK-Td-oQK" secondAttribute="bottom" id="UPv-Sc-zoy"/>
+                            <constraint firstItem="2a2-z7-xHJ" firstAttribute="centerX" secondItem="sdK-Td-oQK" secondAttribute="centerX" id="VtZ-9h-NTe"/>
+                            <constraint firstItem="2Yo-9e-0S1" firstAttribute="trailing" secondItem="sdK-Td-oQK" secondAttribute="trailing" id="d3r-M2-cwg"/>
+                            <constraint firstItem="2Yo-9e-0S1" firstAttribute="leading" secondItem="sdK-Td-oQK" secondAttribute="leading" id="ge5-cG-NbN"/>
+                            <constraint firstItem="MrA-Dg-ZxK" firstAttribute="top" secondItem="sdK-Td-oQK" secondAttribute="top" constant="4" id="iYg-sy-aY6"/>
+                            <constraint firstItem="MrA-Dg-ZxK" firstAttribute="leading" secondItem="sdK-Td-oQK" secondAttribute="leading" constant="20" id="yTM-x5-YZL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sdK-Td-oQK"/>
+                    </view>
+                    <connections>
+                        <outlet property="pillsTblView" destination="2Yo-9e-0S1" id="Xdl-1T-Jjh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O1Q-cM-EQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1294.2028985507247" y="803.57142857142856"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="gIg-gb-gf4">
             <objects>
@@ -5270,9 +5333,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GX0-Rd-Tfy">
-                                <rect key="frame" x="360" y="464" width="34" height="30"/>
+                                <rect key="frame" x="321" y="464" width="73" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="Add "/>
+                                <state key="normal" title="Add More"/>
                                 <connections>
                                     <action selector="addMedication:" destination="IJH-5H-2rC" eventType="touchUpInside" id="5kq-hh-Tp1"/>
                                 </connections>
@@ -5473,6 +5536,9 @@
                                 </constraints>
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
+                                <connections>
+                                    <action selector="beforeMealBtnClicked:" destination="UNr-L1-wGq" eventType="touchUpInside" id="6ZW-WZ-eVB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oeX-Qy-3MD">
                                 <rect key="frame" x="134" y="503" width="34" height="33"/>
@@ -5482,11 +5548,14 @@
                                 </constraints>
                                 <state key="normal" image="empty_check"/>
                                 <state key="selected" image="check"/>
+                                <connections>
+                                    <action selector="afterMealBtnClicked:" destination="UNr-L1-wGq" eventType="touchUpInside" id="Q5U-ZY-MD3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c7m-q0-DH8">
-                                <rect key="frame" x="360" y="332.5" width="34" height="30"/>
+                                <rect key="frame" x="321" y="332.5" width="73" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
-                                <state key="normal" title="Add "/>
+                                <state key="normal" title="Add More"/>
                                 <connections>
                                     <action selector="addMedication:" destination="UNr-L1-wGq" eventType="touchUpInside" id="kyv-af-NCa"/>
                                 </connections>

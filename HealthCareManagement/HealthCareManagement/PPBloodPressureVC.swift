@@ -40,11 +40,43 @@ class PPBloodPressureVC: UIViewController {
         submitbtn.layer.cornerRadius = 4.0
     }
     @IBAction func beforMealClicked(_ sender: Any) {
+        beforeMealBtn.isSelected = true
+        afterMealBtn.isSelected = false
     }
     @IBAction func afterMealClicked(_ sender: Any) {
+        afterMealBtn.isSelected = true
+        beforeMealBtn.isSelected = false
     }
     
     @IBAction func addMedicineButton(_ sender: Any) {
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let BPEntity =
+            NSEntityDescription.entity(forEntityName: "MedicalPrescription",
+                                       in: managedContext)!
+        let BPMedication = NSManagedObject(entity: BPEntity,
+                                                    insertInto: managedContext)
+        if (medicineName.text != "" && numberOftimes.text != "" && (beforeMealBtn.isSelected || afterMealBtn.isSelected)){
+            BPMedication.setValue(UHINumber, forKey: "patientID")
+            BPMedication.setValue(medicineName.text!, forKey: "medicine_name")
+            BPMedication.setValue(Int(numberOftimes.text!), forKey: "times_a_day")
+            BPMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
+            BPMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
+            BPMedication.setValue("For BP", forKey: "info")
+            do{
+                try managedContext.save()
+                medicineName.text = ""
+                numberOftimes.text = ""
+                beforeMealBtn.setImage(UIImage(named: "empty_check"), for: .normal)
+                afterMealBtn.setImage(UIImage(named: "empty_check"), for: .normal)
+            }catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+        }
     }
     
     @IBAction func backButtonClicked(_ sender: Any) {
@@ -67,6 +99,12 @@ class PPBloodPressureVC: UIViewController {
                                        in: managedContext)!
         let bpData = NSManagedObject(entity: entity,
                                        insertInto: managedContext)
+        
+        let BPEntity =
+            NSEntityDescription.entity(forEntityName: "MedicalPrescription",
+                                       in: managedContext)!
+        let BPMedication = NSManagedObject(entity: BPEntity,
+                                           insertInto: managedContext)
         do{
             let patientInfo = try managedContext.fetch(fetchRequest)
             for data in patientInfo{
@@ -95,8 +133,38 @@ class PPBloodPressureVC: UIViewController {
                     let note = doctorNotes.text
                     bpData.setValue(note, forKey: "doctor_notes")
                     
+                    if (medicineName.text != "" && numberOftimes.text != "" && (beforeMealBtn.isSelected || afterMealBtn.isSelected)){
+                        BPMedication.setValue(UHINumber, forKey: "patientID")
+                        BPMedication.setValue(medicineName.text!, forKey: "medicine_name")
+                        BPMedication.setValue(Int(numberOftimes.text!), forKey: "times_a_day")
+                        BPMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
+                        BPMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
+                        BPMedication.setValue("For BP", forKey: "info")
+                    }else{
+                        let alert = UIAlertController(title: "Medication Message", message: "Do you want to submit details without any medication?", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+                        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (UIAlertAction) in
+                            do{
+                                try managedContext.save()
+                            }catch let error as NSError {
+                                print("Could not fetch. \(error), \(error.userInfo)")
+                            }
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "PatientProfileVC") as! PatientProfileVC
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                        return
+                    }
                     try managedContext.save()
                     //Also need to update the prescribtion
+                    let alert = UIAlertController(title: "Saved", message: "Values updated successfully", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (UIAlertAction) in
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "PatientProfileVC") as! PatientProfileVC
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         }catch let error as NSError {
