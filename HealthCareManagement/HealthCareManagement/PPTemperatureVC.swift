@@ -69,7 +69,7 @@ class PPTemperatureVC: UIViewController {
             tempeartureMedication.setValue(Int(timesADay.text!), forKey: "times_a_day")
             tempeartureMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
             tempeartureMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
-            tempeartureMedication.setValue("For Temperature", forKey: "info")
+            tempeartureMedication.setValue("This medicine is for Temperature", forKey: "info")
             do{
                 try managedContext.save()
                 medicineName.text = ""
@@ -127,7 +127,7 @@ class PPTemperatureVC: UIViewController {
                         tempeartureMedication.setValue(Int(timesADay.text!), forKey: "times_a_day")
                         tempeartureMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
                         tempeartureMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
-                        tempeartureMedication.setValue("For Temperature", forKey: "info")
+                        tempeartureMedication.setValue("This medicine is for Temperature", forKey: "info")
                     } else {
                         let alert = UIAlertController(title: "Medication Message", message: "Do you want to submit details without any medication?", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))

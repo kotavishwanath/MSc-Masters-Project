@@ -54,7 +54,7 @@ class PPHemoglobinVC: UIViewController {
             hemoMedication.setValue(Int(timesPerDay.text!), forKey: "times_a_day")
             hemoMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
             hemoMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
-            hemoMedication.setValue("For Hemoglobin", forKey: "info")
+            hemoMedication.setValue("This medicine is for Hemoglobin", forKey: "info")
             do{
                 try managedContext.save()
                 medicineName.text = ""
@@ -118,7 +118,7 @@ class PPHemoglobinVC: UIViewController {
                         hemoMedication.setValue(Int(timesPerDay.text!), forKey: "times_a_day")
                         hemoMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
                         hemoMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
-                        hemoMedication.setValue("For Hemoglobin", forKey: "info")
+                        hemoMedication.setValue("This medicine is for Hemoglobin", forKey: "info")
                     }else {
                         let alert = UIAlertController(title: "Medication Message", message: "Do you want to submit details without any medication?", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))

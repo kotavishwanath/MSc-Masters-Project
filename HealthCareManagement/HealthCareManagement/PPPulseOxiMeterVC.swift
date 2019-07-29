@@ -62,7 +62,7 @@ class PPPulseOxiMeterVC: UIViewController {
             pulseOxiMedication.setValue(Int(howmanyTimes.text!), forKey: "times_a_day")
             pulseOxiMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
             pulseOxiMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
-            pulseOxiMedication.setValue("For PulseOxi", forKey: "info")
+            pulseOxiMedication.setValue("This medicine is for PulseOxi", forKey: "info")
             do{
                 try managedContext.save()
                 medicineName.text = ""
@@ -122,7 +122,7 @@ class PPPulseOxiMeterVC: UIViewController {
                         pulseOxiMedication.setValue(Int(howmanyTimes.text!), forKey: "times_a_day")
                         pulseOxiMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
                         pulseOxiMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
-                        pulseOxiMedication.setValue("For PulseOxi", forKey: "info")
+                        pulseOxiMedication.setValue("This medicine is for PulseOxi", forKey: "info")
                     }else{
                         let alert = UIAlertController(title: "Medication Message", message: "Do you want to submit details without any medication?", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))

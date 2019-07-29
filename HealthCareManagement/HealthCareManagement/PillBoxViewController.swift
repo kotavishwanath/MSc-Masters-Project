@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class PillBoxViewController: UIViewController {
+class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var pillsTblView: UITableView!
     
     var medicineName = [String]()
@@ -17,8 +17,12 @@ class PillBoxViewController: UIViewController {
     var afterMeal = [Bool]()
     var beforeMeal = [Bool]()
     
+    var medicineList: [MedicationList] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        pillsTblView.delegate = self
+        pillsTblView.dataSource = self
         let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
 
         guard let appDelegate =
@@ -38,11 +42,14 @@ class PillBoxViewController: UIViewController {
                         let times = data.value(forKey: "times_a_day") as! Int
                         let afterM = data.value(forKey: "after_meal") as! Bool
                         let beforeM = data.value(forKey: "before_meal") as! Bool
+                        let note = data.value(forKey: "info") as? String ?? " "
                         
                         medicineName.append(name)
                         timeADay.append(times)
                         afterMeal.append(afterM)
                         beforeMeal.append(beforeM)
+                        
+                        medicineList.append(MedicationList(name: name, times: times, before: beforeM, after: afterM, notes: note ))
                         //Need to update in a table view
                     }
                 }
@@ -55,7 +62,22 @@ class PillBoxViewController: UIViewController {
         }
         
     }
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return medicineList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let medicineInfo = medicineList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MedicationCell") as! MedicationCell
+        cell.updateUI(info: medicineInfo)
+        return cell
+    }
+    
     @IBAction func backButtonClicked(_ sender: Any) {
         let name = UserDefaults.standard.object(forKey: "username") as! String
         let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
@@ -64,5 +86,20 @@ class PillBoxViewController: UIViewController {
         vc.name = name
         vc.uhinumber = uhi
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+class MedicationList{
+    var medicineName:String
+    var timesADay:Int
+    var beforeMeal:Bool
+    var afterMeal:Bool
+    var notes:String
+    init(name: String, times: Int, before: Bool, after: Bool, notes: String) {
+        self.medicineName = name
+        self.timesADay = times
+        self.beforeMeal = before
+        self.afterMeal = after
+        self.notes = notes
     }
 }

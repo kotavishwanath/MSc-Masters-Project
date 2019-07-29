@@ -62,7 +62,7 @@ class PPHeartRateVC: UIViewController {
             heartMedication.setValue(Int(timesPerDay.text!), forKey: "times_a_day")
             heartMedication.setValue(beforeMealbtn.isSelected, forKey: "before_meal")
             heartMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
-            heartMedication.setValue("For Heart Rate", forKey: "info")
+            heartMedication.setValue("This medicine is for Heart Rate", forKey: "info")
             do{
                 try managedContext.save()
                 medicinName.text = ""
@@ -126,7 +126,7 @@ class PPHeartRateVC: UIViewController {
                         heartMedication.setValue(Int(timesPerDay.text!), forKey: "times_a_day")
                         heartMedication.setValue(beforeMealbtn.isSelected, forKey: "before_meal")
                         heartMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
-                        heartMedication.setValue("For Heart Rate", forKey: "info")
+                        heartMedication.setValue("This medicine is for Hear Rate", forKey: "info")
                     }else{
                         let alert = UIAlertController(title: "Medication Message", message: "Do you want to submit details without any medication?", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))

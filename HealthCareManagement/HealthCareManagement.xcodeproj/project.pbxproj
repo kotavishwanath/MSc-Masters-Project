@@ -15,6 +15,7 @@
 		1019BF7822D89D0100CFA579 /* MonitorDashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1019BF7722D89D0100CFA579 /* MonitorDashboardVC.swift */; };
 		1019BF7A22D8B99600CFA579 /* BloodPressureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1019BF7922D8B99600CFA579 /* BloodPressureVC.swift */; };
 		102CE39022EDD4F90039FD69 /* PillBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CE38F22EDD4F90039FD69 /* PillBoxViewController.swift */; };
+		102CE39222EEDE8B0039FD69 /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CE39122EEDE8B0039FD69 /* MedicationCell.swift */; };
 		106F031C22DB347D00A8EBA2 /* HealthStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031B22DB347D00A8EBA2 /* HealthStatusVC.swift */; };
 		106F031E22DB37F500A8EBA2 /* TemperatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031D22DB37F500A8EBA2 /* TemperatureVC.swift */; };
 		106F032022DBB61F00A8EBA2 /* PulseOxiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */; };
@@ -86,6 +87,7 @@
 		1019BF7722D89D0100CFA579 /* MonitorDashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorDashboardVC.swift; sourceTree = "<group>"; };
 		1019BF7922D8B99600CFA579 /* BloodPressureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureVC.swift; sourceTree = "<group>"; };
 		102CE38F22EDD4F90039FD69 /* PillBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillBoxViewController.swift; sourceTree = "<group>"; };
+		102CE39122EEDE8B0039FD69 /* MedicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
 		106F031B22DB347D00A8EBA2 /* HealthStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatusVC.swift; sourceTree = "<group>"; };
 		106F031D22DB37F500A8EBA2 /* TemperatureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureVC.swift; sourceTree = "<group>"; };
 		106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseOxiVC.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				1006D4BF22C4B2880028AD5B /* DoctorsViewController.swift */,
 				10036F7722EB0BBB00568A09 /* DisplayPatientsListVC.swift */,
 				10036F7922EB235500568A09 /* PatientsListCell.swift */,
+				102CE39122EEDE8B0039FD69 /* MedicationCell.swift */,
 				10E0050022AECEAA0009155C /* Assets.xcassets */,
 				10E0050222AECEAA0009155C /* LaunchScreen.storyboard */,
 				10E0050522AECEAA0009155C /* Info.plist */,
@@ -507,6 +510,7 @@
 				10D3A05122C28CF800B54B92 /* IQBarButtonItem.swift in Sources */,
 				10D3A05022C28CF800B54B92 /* IQTitleBarButtonItem.swift in Sources */,
 				10EC3C7D22BD52E1000A615D /* CalenderVC.swift in Sources */,
+				102CE39222EEDE8B0039FD69 /* MedicationCell.swift in Sources */,
 				106F032622DCA20900A8EBA2 /* HemoglobinVC.swift in Sources */,
 				106F032822E357AB00A8EBA2 /* PatientProfileVC.swift in Sources */,
 				1006D4C022C4B2890028AD5B /* DoctorsViewController.swift in Sources */,
