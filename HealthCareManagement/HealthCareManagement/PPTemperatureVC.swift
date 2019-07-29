@@ -21,6 +21,7 @@ class PPTemperatureVC: UIViewController {
     @IBOutlet weak var beforeMealBtn: UIButton!
     @IBOutlet weak var afterMealBtn: UIButton!
     @IBOutlet weak var submitbtn: UIButton!
+    @IBOutlet weak var daysToTake: UITextField!
     
     var tempValue = String()
     var UHINumber = ""
@@ -70,12 +71,18 @@ class PPTemperatureVC: UIViewController {
             tempeartureMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
             tempeartureMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
             tempeartureMedication.setValue("This medicine is for Temperature", forKey: "info")
+            if (daysToTake.text == ""){
+                tempeartureMedication.setValue(1, forKey: "days_to_take")
+            }else {
+                tempeartureMedication.setValue(Int(daysToTake.text!), forKey: "days_to_take")
+            }
             do{
                 try managedContext.save()
                 medicineName.text = ""
                 timesADay.text = ""
                 beforeMealBtn.setImage(UIImage(named: "empty_check"), for: .normal)
                 afterMealBtn.setImage(UIImage(named: "empty_check"), for: .normal)
+                daysToTake.text = ""
             }catch let error as NSError {
                 print("Could not fetch. \(error), \(error.userInfo)")
             }
@@ -128,6 +135,11 @@ class PPTemperatureVC: UIViewController {
                         tempeartureMedication.setValue(beforeMealBtn.isSelected, forKey: "before_meal")
                         tempeartureMedication.setValue(afterMealBtn.isSelected, forKey: "after_meal")
                         tempeartureMedication.setValue("This medicine is for Temperature", forKey: "info")
+                        if (daysToTake.text == ""){
+                            tempeartureMedication.setValue(1, forKey: "days_to_take")
+                        }else {
+                            tempeartureMedication.setValue(Int(daysToTake.text!), forKey: "days_to_take")
+                        }
                     } else {
                         let alert = UIAlertController(title: "Medication Message", message: "Do you want to submit details without any medication?", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))

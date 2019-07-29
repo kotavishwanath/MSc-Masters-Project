@@ -52,6 +52,7 @@
     <entity name="MedicalPrescription" representedClassName="MedicalPrescription" syncable="YES" codeGenerationType="class">
         <attribute name="after_meal" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="before_meal" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="days_to_take" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="medicine_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="patientID" optional="YES" attributeType="String" syncable="YES"/>
@@ -106,7 +107,7 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MedicalPrescription" positionX="75.88671875" positionY="-38.3203125" width="128" height="135"/>
+        <element name="MedicalPrescription" positionX="75.88671875" positionY="-38.3203125" width="128" height="150"/>
         <element name="BloodPressureVitalInfo" positionX="-72.71875" positionY="-121.16015625" width="128" height="255"/>
         <element name="DoctorsInfo" positionX="-12.0546875" positionY="179.65234375" width="128" height="105"/>
         <element name="GlucoseInfo" positionX="-72" positionY="36" width="128" height="165"/>
