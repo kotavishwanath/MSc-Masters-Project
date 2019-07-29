@@ -12,6 +12,9 @@
 
 import UIKit
 import CoreData
+import HealthKit
+
+let healthKitStore:HKHealthStore = HKHealthStore()
 
 
 class ViewController: UIViewController {
@@ -24,6 +27,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var keepSignIn: UIButton!
     
     var appointmentDate = String()
+    var steps = Double()
+    var age = Int()
+    var bloodgroup = String()
+
+//    enum bloodType: Int {
+//       case HKBloodTypeNotSet = 0
+//       case HKBloodTypeAPositive
+//       case HKBloodTypeANegative
+//       case HKBloodTypeBPositive
+//       case HKBloodTypeBNegative
+//       case HKBloodTypeABPositive
+//       case HKBloodTypeABNegative
+//       case HKBloodTypeOPositive
+//       case HKBloodTypeONegative
+//    };
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -48,7 +67,95 @@ class ViewController: UIViewController {
         passwod.layer.borderColor = UIColor.black.cgColor
         passwod.layer.borderWidth = 1
         passwod.layer.cornerRadius = 5.0
-      
+        
+        integrateHealthKit()
+    }
+    
+    func integrateHealthKit() {
+        let healthKitTypesToRead: Set<HKObjectType> = [
+            HKObjectType.characteristicType(forIdentifier: .bloodType)!,
+            HKObjectType.characteristicType(forIdentifier: .dateOfBirth)!,
+            HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        ]
+        
+        let healthKitTypesToWrite: Set<HKSampleType> = []
+        
+        if !HKHealthStore.isHealthDataAvailable(){
+            print("Error Occured")
+            return
+        }
+        
+        healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite , read: healthKitTypesToRead) { (success, error) in
+            print("Read write authorization succeded")
+            self.getTodaysSteps { (steps) in
+                self.steps = steps
+            }
+           let (years, btype) = self.readProfilesFromHealthKit()
+            self.age = years ?? 0
+            UserDefaults.standard.set(self.steps, forKey: "Steps")
+            UserDefaults.standard.set(self.age, forKey:"Age")
+            UserDefaults.standard.synchronize()
+            
+        }
+    }
+   /*
+    func getBloodType(type: HKBloodTypeObject?) -> String{
+        var bloodType = ""
+        if (type != nil){
+            switch(type!){
+                case .HKBloodTypeAPositive:
+                    bloodType = "A+"
+                case .HKBloodTypeANegative:
+                    bloodType = "A-"
+               
+                    break
+            }
+            
+        }
+        
+        return bloodType
+    }
+    */
+    func readProfilesFromHealthKit() -> (age: Int?, bloodType: HKBloodTypeObject?){
+        
+        var age: Int?
+        var bloodType: HKBloodTypeObject?
+        
+        do{
+            let birthDay = try healthKitStore.dateOfBirthComponents()
+            let calender = Calendar.current
+            let currentYear = calender.component(.year, from: Date())
+            age = currentYear - birthDay.year!
+        }catch{
+            print("Couldnt fetch data")
+        }
+        
+        do {
+            bloodType = try healthKitStore.bloodType()
+        } catch {
+            print("Couldnt fetch data")
+        }
+        
+        return(age, bloodType)
+        
+    }
+    
+    func getTodaysSteps(completion: @escaping (Double) -> Void) {
+        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        
+        let now = Date()
+        let startOfDay = Calendar.current.startOfDay(for: now)
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
+            guard let result = result, let sum = result.sumQuantity() else {
+                completion(0.0)
+                return
+            }
+            completion(sum.doubleValue(for: HKUnit.count()))
+        }
+        
+        healthKitStore.execute(query)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -189,4 +296,3 @@ class ViewController: UIViewController {
     }
     
 }
-

@@ -11,7 +11,8 @@ import CoreBluetooth
 import CoreData
 
 class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
-
+    @IBOutlet weak var webvw: UIWebView!
+    
     @IBOutlet weak var bluetoothBtn: UIButton!
     @IBOutlet weak var bpView: UIView!
     @IBOutlet weak var temperatureView: UIView!
@@ -88,6 +89,13 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
         updateUI()
+        
+        let steps = UserDefaults.standard.object(forKey: "Steps") as! Double
+        let age = UserDefaults.standard.object(forKey: "Age") as! Int
+        //Steps Age
+        let str = "Your age is \(String(describing: age)) & Todays steps count is \(String(describing: steps))"
+        let marquee = "<html><body><marquee>\(str)</marquee></body></html>"
+        webvw.loadHTMLString(marquee, baseURL: nil)
     }
     
     func updateUI(){

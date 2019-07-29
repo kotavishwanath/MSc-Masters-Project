@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  myCalender2
+//  HealthCareManagement
 //
-//  Created by Vishwanath on 07/3/19.
-//  Copyright © 2017 akhil. All rights reserved.
+//  Created by Vishwanath Kota on 21/06/19.
+//  Copyright © 2019 University Of Hertfordshire. All rights reserved.
 //
 
 import UIKit

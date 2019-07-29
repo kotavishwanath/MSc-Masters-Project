@@ -51,9 +51,9 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AE1-xW-Dd3">
-                                <rect key="frame" x="59.5" y="493" width="293" height="45"/>
+                                <rect key="frame" x="63.5" y="493" width="286" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="293" id="dKp-r7-xVa"/>
+                                    <constraint firstAttribute="width" constant="286" id="dKp-r7-xVa"/>
                                     <constraint firstAttribute="height" constant="45" id="sCJ-XA-3DS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
@@ -2736,6 +2736,13 @@
                                     <constraint firstAttribute="trailing" secondItem="QhZ-u5-yM2" secondAttribute="trailing" constant="10" id="trV-lt-8tI"/>
                                 </constraints>
                             </view>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugm-kf-oXA">
+                                <rect key="frame" x="0.0" y="848" width="414" height="78"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="WWH-VI-VfD"/>
+                                </constraints>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -2747,8 +2754,10 @@
                             <constraint firstItem="JMO-NK-MXl" firstAttribute="width" secondItem="JMO-NK-MXl" secondAttribute="height" multiplier="4:9" id="9FW-Ug-MkN"/>
                             <constraint firstItem="1nb-9B-E1r" firstAttribute="top" secondItem="759-rh-QWd" secondAttribute="bottom" constant="2" id="9qB-dA-fFf"/>
                             <constraint firstItem="759-rh-QWd" firstAttribute="trailing" secondItem="bta-eo-dad" secondAttribute="trailing" id="AUQ-b8-H0f"/>
+                            <constraint firstItem="ugm-kf-oXA" firstAttribute="trailing" secondItem="bta-eo-dad" secondAttribute="trailing" id="Ak5-QD-ykv"/>
                             <constraint firstItem="yvN-sr-1bR" firstAttribute="width" secondItem="fLV-GX-sxq" secondAttribute="height" multiplier="5:56" id="BWa-Rb-bgh"/>
                             <constraint firstItem="5tT-Kl-cyJ" firstAttribute="width" secondItem="fLV-GX-sxq" secondAttribute="height" multiplier="5:56" id="FRL-rq-frS"/>
+                            <constraint firstAttribute="bottom" secondItem="ugm-kf-oXA" secondAttribute="bottom" constant="-30" id="FXb-lb-np4"/>
                             <constraint firstItem="uCF-Md-gN8" firstAttribute="width" secondItem="uCF-Md-gN8" secondAttribute="height" multiplier="4:9" id="GgL-5o-4dP"/>
                             <constraint firstItem="axj-ne-UkN" firstAttribute="top" secondItem="yjQ-Fj-4IR" secondAttribute="bottom" constant="2" id="KWj-FR-zbQ"/>
                             <constraint firstItem="VzO-ZB-hVa" firstAttribute="leading" secondItem="bta-eo-dad" secondAttribute="leading" id="Mxu-8j-i6p"/>
@@ -2759,6 +2768,7 @@
                             <constraint firstItem="RqO-qG-cMV" firstAttribute="leading" secondItem="bta-eo-dad" secondAttribute="leading" id="U1z-be-HDN"/>
                             <constraint firstItem="VzO-ZB-hVa" firstAttribute="trailing" secondItem="bta-eo-dad" secondAttribute="trailing" id="UML-qm-QGz"/>
                             <constraint firstItem="feO-u1-Isd" firstAttribute="centerY" secondItem="CjS-Mr-Mrn" secondAttribute="centerY" id="VlE-sa-TSf"/>
+                            <constraint firstItem="ugm-kf-oXA" firstAttribute="leading" secondItem="bta-eo-dad" secondAttribute="leading" id="W3l-Hb-MWW"/>
                             <constraint firstItem="uCF-Md-gN8" firstAttribute="trailing" secondItem="JMO-NK-MXl" secondAttribute="trailing" id="XCI-A0-nlU"/>
                             <constraint firstItem="bta-eo-dad" firstAttribute="trailing" secondItem="feO-u1-Isd" secondAttribute="trailing" constant="33" id="Zed-IH-Khg"/>
                             <constraint firstItem="Nfp-kU-ocJ" firstAttribute="width" secondItem="fLV-GX-sxq" secondAttribute="height" multiplier="5:56" id="Zfr-Ew-5mz"/>
@@ -2796,11 +2806,12 @@
                         <outlet property="tempUpdatedDate" destination="59E-po-CLq" id="3Kg-BJ-j62"/>
                         <outlet property="tempValue" destination="4bu-sN-BS3" id="M3o-hH-YV5"/>
                         <outlet property="temperatureView" destination="759-rh-QWd" id="oyD-RW-eac"/>
+                        <outlet property="webvw" destination="ugm-kf-oXA" id="tjZ-1o-7Ml"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3v-AV-pKX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2445" y="255"/>
+            <point key="canvasLocation" x="2444.9275362318845" y="254.46428571428569"/>
         </scene>
         <!--Pill Box View Controller-->
         <scene sceneID="TJF-xX-lXl">
