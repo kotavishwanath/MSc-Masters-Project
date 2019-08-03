@@ -305,12 +305,14 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         if central.state == .poweredOn
         {
             print("Searching for BLE Devices")
+            bluetoothBtn.isSelected = true
             bluetoothBtn.setImage(UIImage(named: "bluetooth_green"), for: .selected)
             // Scan for peripherals if BLE is turned on
         }
         else
         {
             // Can have different conditions for all states if needed - print generic message for now, i.e. Bluetooth isn't On
+            bluetoothBtn.isSelected = false
             print("Bluetooth switched off or not initialized")
             bluetoothBtn.setImage(UIImage(named: "bluetooth_offgray"), for: .normal)
             

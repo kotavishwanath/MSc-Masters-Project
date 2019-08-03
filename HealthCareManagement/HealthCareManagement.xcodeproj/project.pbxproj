@@ -17,6 +17,7 @@
 		102CE39022EDD4F90039FD69 /* PillBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CE38F22EDD4F90039FD69 /* PillBoxViewController.swift */; };
 		102CE39222EEDE8B0039FD69 /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CE39122EEDE8B0039FD69 /* MedicationCell.swift */; };
 		102CE39522EF4C3C0039FD69 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 102CE39422EF4C3B0039FD69 /* HealthKit.framework */; };
+		10336B0422F56D90004C4693 /* reminder_english.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10336B0322F56D90004C4693 /* reminder_english.wav */; };
 		106F031C22DB347D00A8EBA2 /* HealthStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031B22DB347D00A8EBA2 /* HealthStatusVC.swift */; };
 		106F031E22DB37F500A8EBA2 /* TemperatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031D22DB37F500A8EBA2 /* TemperatureVC.swift */; };
 		106F032022DBB61F00A8EBA2 /* PulseOxiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */; };
@@ -91,6 +92,7 @@
 		102CE39122EEDE8B0039FD69 /* MedicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationCell.swift; sourceTree = "<group>"; };
 		102CE39422EF4C3B0039FD69 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		102CE39622EF4C3C0039FD69 /* HealthCareManagement.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthCareManagement.entitlements; sourceTree = "<group>"; };
+		10336B0322F56D90004C4693 /* reminder_english.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reminder_english.wav; sourceTree = "<group>"; };
 		106F031B22DB347D00A8EBA2 /* HealthStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatusVC.swift; sourceTree = "<group>"; };
 		106F031D22DB37F500A8EBA2 /* TemperatureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureVC.swift; sourceTree = "<group>"; };
 		106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseOxiVC.swift; sourceTree = "<group>"; };
@@ -122,7 +124,7 @@
 		10D3A04B22C28CF700B54B92 /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
 		10D3A04C22C28CF700B54B92 /* IQUIView+Hierarchy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+Hierarchy.swift"; sourceTree = "<group>"; };
 		10D3A04D22C28CF700B54B92 /* IQNSArray+Sort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQNSArray+Sort.swift"; sourceTree = "<group>"; };
-		10E004F322AECEA70009155C /* HealthCareManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthCareManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		10E004F322AECEA70009155C /* HealthCare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthCare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10E004F622AECEA70009155C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10E004F822AECEA70009155C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		10E004FB22AECEA70009155C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -280,7 +282,7 @@
 		10E004F422AECEA70009155C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				10E004F322AECEA70009155C /* HealthCareManagement.app */,
+				10E004F322AECEA70009155C /* HealthCare.app */,
 				10E0050A22AECEAB0009155C /* HealthCareManagementTests.xctest */,
 				10E0051522AECEAB0009155C /* HealthCareManagementUITests.xctest */,
 			);
@@ -291,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				102CE39622EF4C3C0039FD69 /* HealthCareManagement.entitlements */,
+				10336B0322F56D90004C4693 /* reminder_english.wav */,
 				10D3A03622C28CF700B54B92 /* IQKeyboardManagerSwift */,
 				10EC3C8522BD6208000A615D /* Calender Controller */,
 				10EC3C7E22BD52F6000A615D /* Calender View */,
@@ -373,7 +376,7 @@
 			);
 			name = HealthCareManagement;
 			productName = HealthCareManagement;
-			productReference = 10E004F322AECEA70009155C /* HealthCareManagement.app */;
+			productReference = 10E004F322AECEA70009155C /* HealthCare.app */;
 			productType = "com.apple.product-type.application";
 		};
 		10E0050922AECEAB0009155C /* HealthCareManagementTests */ = {
@@ -467,6 +470,7 @@
 			files = (
 				10E0050422AECEAA0009155C /* LaunchScreen.storyboard in Resources */,
 				10E0050122AECEAA0009155C /* Assets.xcassets in Resources */,
+				10336B0422F56D90004C4693 /* reminder_english.wav in Resources */,
 				10D3A05722C28CF800B54B92 /* IQKeyboardManager.bundle in Resources */,
 				10E004FC22AECEA70009155C /* Main.storyboard in Resources */,
 			);
@@ -722,7 +726,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "herts.ac.uk.HealthCareManagement-1";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HealthCare;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -741,7 +745,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "herts.ac.uk.HealthCareManagement-1";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = HealthCare;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

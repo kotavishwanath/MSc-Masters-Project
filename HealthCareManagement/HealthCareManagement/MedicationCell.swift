@@ -10,6 +10,8 @@ import UIKit
 
 class MedicationCell: UITableViewCell {
     @IBOutlet weak var medicineName: UILabel!
+    @IBOutlet weak var beformeal: UILabel!
+    @IBOutlet weak var aftermeal: UILabel!
     @IBOutlet weak var howManyTimesADay: UILabel!
     @IBOutlet weak var beforeMealBtn: UIButton!
     @IBOutlet weak var afterMealBtn: UIButton!
