@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var pillsTblView: UITableView!
@@ -43,14 +44,25 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
                         let afterM = data.value(forKey: "after_meal") as! Bool
                         let beforeM = data.value(forKey: "before_meal") as! Bool
                         let note = data.value(forKey: "info") as? String ?? " "
+                        let daysToTake = data.value(forKey: "days_to_take") as! Int
                         
                         medicineName.append(name)
                         timeADay.append(times)
                         afterMeal.append(afterM)
                         beforeMeal.append(beforeM)
                         
+                        if (times == 1){
+                            oneTimeScheduleNotification(messgae: name, before: beforeM, after: afterM, days: daysToTake)
+                        }else if (times == 2){
+                            twoTimesScheduleNotification(messgae: name, before: beforeM, after: afterM, days: daysToTake)
+                        }else if (times == 3){
+                            threeTimesScheduleNotification(messgae: name, before: beforeM, after: afterM, days: daysToTake)
+                        }else {
+                            //Considering 4 times
+                            fourTimesScheduleNotification(messgae: name, before: beforeM, after: afterM, days: daysToTake)
+                        }
+                        
                         medicineList.append(MedicationList(name: name, times: times, before: beforeM, after: afterM, notes: note ))
-                        //Need to update in a table view
                     }
                 }
                 else{
@@ -86,6 +98,192 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
         vc.name = name
         vc.uhinumber = uhi
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func oneTimeScheduleNotification(messgae: String, before: Bool, after: Bool, days: Int){
+        
+        let content = UNMutableNotificationContent()
+        let patinetname = UserDefaults.standard.object(forKey: "username") as! String
+        content.title =  "Its time to take Medication"
+        content.body = "Please take \(messgae) medicine"
+        content.subtitle = (after) ? "Dear \(patinetname) please take medication after having Meal": "Dear \(patinetname) please take medication before Having Meal"
+        content.sound = UNNotificationSound.default
+        
+        let gregorian = Calendar(identifier: .gregorian)
+        let now = Date()
+        var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
+
+        let date = gregorian.date(from: components)!
+        
+        components.hour = 12
+        components.minute = 0
+        components.second = 0
+        
+        let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: date)
+        let trigger: UNCalendarNotificationTrigger
+        if (days > 1){
+            trigger  = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+        }else {
+            trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: false)
+        }
+
+        let request = UNNotificationRequest(identifier: "Medication Remainder", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+            if let error = error {
+                print("Error \(error.localizedDescription)")
+            }
+        })
+    }
+    
+    func twoTimesScheduleNotification(messgae: String, before: Bool, after: Bool, days: Int){
+        let content = UNMutableNotificationContent();
+        let patinetname = UserDefaults.standard.object(forKey: "username") as! String
+        content.title =  "Its time to take Medication"
+        content.body = "Please take \(messgae) medicine"
+        content.subtitle = (after) ? "Dear \(patinetname) please take medication after having Meal": "Dear \(patinetname) please take medication before Having Meal"
+        content.sound = UNNotificationSound.default
+        
+        let gregorian = Calendar(identifier: Calendar.Identifier.gregorian);
+        let now = Date();
+        var components = gregorian.dateComponents(in: .autoupdatingCurrent, from: now)
+        
+        let hours = [9,19];
+        
+        for hour in hours {
+            components.timeZone = TimeZone.current
+            components.hour = hour;
+            components.minute = 00;
+            components.second = 00;
+            
+            let date = gregorian.date(from: components);
+            let formatter = DateFormatter();
+            formatter.dateFormat = "MM-dd-yyyy HH:mm";
+            
+            guard let dates = date else {
+                return;
+            }
+            var fireDate: String?
+            fireDate = formatter.string(from: dates);
+            print("\(fireDate ?? "")"); // Just to Check
+            
+            let dailyTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: dates);
+            let trigger: UNCalendarNotificationTrigger
+            if (days > 1){
+                trigger = UNCalendarNotificationTrigger.init(dateMatching: dailyTrigger, repeats: true);
+            }else {
+                trigger = UNCalendarNotificationTrigger.init(dateMatching: dailyTrigger, repeats: false);
+            }
+            
+            let identifier = "Medication Remainder"
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { (error) in
+                if let error = error {
+                    print("Error \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    func threeTimesScheduleNotification(messgae: String, before: Bool, after: Bool, days: Int){
+        let content = UNMutableNotificationContent();
+        let patinetname = UserDefaults.standard.object(forKey: "username") as! String
+        content.title =  "Its time to take Medication"
+        content.body = "Please take \(messgae) medicine"
+        content.subtitle = (after) ? "Dear \(patinetname) please take medication after having Meal": "Dear \(patinetname) please take medication before Having Meal"
+        content.sound = UNNotificationSound.default
+        
+        let gregorian = Calendar(identifier: Calendar.Identifier.gregorian);
+        let now = Date();
+        var components = gregorian.dateComponents(in: .autoupdatingCurrent, from: now)
+        
+        let hours = [9,13,19];
+        
+        for hour in hours {
+            components.timeZone = TimeZone.current
+            components.hour = hour;
+            components.minute = 00;
+            components.second = 00;
+            
+            let date = gregorian.date(from: components);
+            let formatter = DateFormatter();
+            formatter.dateFormat = "MM-dd-yyyy HH:mm";
+            
+            guard let dates = date else {
+                return;
+            }
+            var fireDate: String?
+            fireDate = formatter.string(from: dates);
+            print("\(fireDate ?? "")"); // Just to Check
+            
+            let dailyTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: dates);
+            let trigger: UNCalendarNotificationTrigger
+            if (days > 1){
+                trigger = UNCalendarNotificationTrigger.init(dateMatching: dailyTrigger, repeats: true);
+            }else {
+                trigger = UNCalendarNotificationTrigger.init(dateMatching: dailyTrigger, repeats: false);
+            }
+            
+            let identifier = "Medication Remainder"
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { (error) in
+                if let error = error {
+                    print("Error \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    func fourTimesScheduleNotification(messgae: String, before: Bool, after: Bool, days: Int){
+        let content = UNMutableNotificationContent();
+        let patinetname = UserDefaults.standard.object(forKey: "username") as! String
+        content.title =  "Its time to take Medication"
+        content.body = "Please take \(messgae) medicine"
+        content.subtitle = (after) ? "Dear \(patinetname) please take medication after having Meal": "Dear \(patinetname) please take medication before Having Meal"
+        content.sound = UNNotificationSound.default
+        
+        let gregorian = Calendar(identifier: Calendar.Identifier.gregorian);
+        let now = Date();
+        var components = gregorian.dateComponents(in: .autoupdatingCurrent, from: now)
+        
+        let hours = [9,13,18,21];
+        
+        for hour in hours {
+            components.timeZone = TimeZone.current
+            components.hour = hour;
+            components.minute = 00;
+            components.second = 00;
+            
+            let date = gregorian.date(from: components);
+            let formatter = DateFormatter();
+            formatter.dateFormat = "MM-dd-yyyy HH:mm";
+            
+            guard let dates = date else {
+                return;
+            }
+            var fireDate: String?
+            fireDate = formatter.string(from: dates);
+            print("\(fireDate ?? "")"); // Just to Check
+            
+            let dailyTrigger = Calendar.current.dateComponents([.hour, .minute, .second], from: dates);
+            let trigger: UNCalendarNotificationTrigger
+            if (days > 1){
+                trigger = UNCalendarNotificationTrigger.init(dateMatching: dailyTrigger, repeats: true);
+            }else {
+                trigger = UNCalendarNotificationTrigger.init(dateMatching: dailyTrigger, repeats: false);
+            }
+            
+            let identifier = "Medication Remainder"
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { (error) in
+                if let error = error {
+                    print("Error \(error.localizedDescription)")
+                }
+            }
+        }
     }
 }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 enum MyTheme {
     case light
@@ -146,6 +147,12 @@ class CalenderVC: UIViewController, CalenderDelegate {
                         vc.name = (data.value(forKey: "username") as? String)!
                         vc.uhinumber = "\(data.value(forKey: "uhi") as! Int)"
                         self.navigationController?.pushViewController(vc, animated: true)
+                        
+                        //Enable notification
+                        let msg = "Appointment Remainder"
+//                        let date = "\(self.selectedDate) \(self.selectedTime)"
+                        self.scheduleNotification(message: msg, when: self.selectedDate, time: self.selectedTime)
+                        
                     }))
                     
                     self.present(alert, animated: true, completion: nil)
@@ -154,37 +161,47 @@ class CalenderVC: UIViewController, CalenderDelegate {
         }catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        /*
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        let entity =
-            NSEntityDescription.entity(forEntityName: "PatientsContactInfo",
-                                       in: managedContext)!
+    }
+    
+    func scheduleNotification(message: String, when: String, time: String){
+
+        let content = UNMutableNotificationContent()
+        let patinetname = UserDefaults.standard.object(forKey: "username") as! String
+        content.title =  "\(patinetname): \(message)"
+        content.body = "Please make sure you arrive 15 mins early"
+        content.sound = UNNotificationSound.default
         
-        let person = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
-        person.setValue(selectedDate, forKey: "appointmentDate")
-        do {
-            try managedContext.save()
-            patients.append(person)
-            
-            let alert = UIAlertController(title: "Successful", message: "Your appointment has been booked on \(selectedDate)", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (UIAlertAction) in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
-                self.navigationController?.pushViewController(vc, animated: true)
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
-            
-        } catch let error as NSError {
-            print("Could not save. \(error), \(error.userInfo)")
-        }
-         */
+        let gregorian = Calendar(identifier: .gregorian)
+        let now = Date()
+        var components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: now)
+        
+        let appdate = when.components(separatedBy: ":")
+//        let appdate = datetime[0].components(separatedBy: ":")
+        let apptime = time.components(separatedBy: ":") //8     42 PM
+        
+        // Change the time to 7:00:00 in your locale
+        let date = gregorian.date(from: components)!
+        let convertodate = appdate[1].toDate() ?? date
+        let appnotification = apptime[2].components(separatedBy: " ")
+        let notifyTime = appnotification[0]
+        
+        components.hour = Int(apptime[1].trimmingCharacters(in: .whitespaces))
+        components.minute = Int(notifyTime)
+        components.second = 0
+    
+        let triggerDaily = Calendar.current.dateComponents([.hour,.minute,.second,], from: convertodate)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+        
+        
+        let request = UNNotificationRequest(identifier: "Appointment", content: content, trigger: trigger)
+        print("INSIDE NOTIFICATION")
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {(error) in
+            if error != nil {
+                print("SOMETHING WENT WRONG")
+            }
+        })
+        
     }
     
     @objc func dismissVC(sender: UIBarButtonItem) {
@@ -224,3 +241,18 @@ class CalenderVC: UIViewController, CalenderDelegate {
     }
 }
 
+extension String {
+    
+    func toDate(withFormat format: String = "yyyy-MM-dd HH:mm:ss")-> Date?{
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Tehran")
+        dateFormatter.locale = Locale(identifier: "fa-IR")
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+        
+        return date
+        
+    }
+}
