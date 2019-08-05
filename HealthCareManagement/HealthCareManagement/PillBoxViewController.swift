@@ -17,6 +17,7 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
     var timeADay = [Int]()
     var afterMeal = [Bool]()
     var beforeMeal = [Bool]()
+    var daysToHave = [Int]()
     
     var medicineList: [MedicationList] = []
     
@@ -62,13 +63,19 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
                             fourTimesScheduleNotification(messgae: name, before: beforeM, after: afterM, days: daysToTake)
                         }
                         
-                        medicineList.append(MedicationList(name: name, times: times, before: beforeM, after: afterM, notes: note ))
+                        medicineList.append(MedicationList(name: name, times: times, before: beforeM, after: afterM, notes: note, days: daysToTake ))
                     }
                 }
                 else{
                     continue
                 }
             }
+            UserDefaults.standard.set(medicineName, forKey: "MedicineNamesList")
+            UserDefaults.standard.set(timeADay, forKey: "TimesADay")
+            UserDefaults.standard.set(daysToHave, forKey: "HowManyDays")
+//            UserDefaults.standard.set(medicineList, forKey: "List")
+            UserDefaults.standard.synchronize()
+            
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -293,11 +300,13 @@ class MedicationList{
     var beforeMeal:Bool
     var afterMeal:Bool
     var notes:String
-    init(name: String, times: Int, before: Bool, after: Bool, notes: String) {
+    var dayToTake: Int
+    init(name: String, times: Int, before: Bool, after: Bool, notes: String, days: Int) {
         self.medicineName = name
         self.timesADay = times
         self.beforeMeal = before
         self.afterMeal = after
         self.notes = notes
+        self.dayToTake = days
     }
 }

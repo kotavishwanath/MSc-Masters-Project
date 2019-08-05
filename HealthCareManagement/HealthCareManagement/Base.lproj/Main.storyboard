@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
         <!--Regestration View Controller-->
         <scene sceneID="Tdr-8f-h1k">
             <objects>
-                <viewController storyboardIdentifier="RegestrationViewController" id="F0D-4f-sgy" customClass="RegestrationViewController" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegestrationViewController" id="F0D-4f-sgy" customClass="RegestrationViewController" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMI-cR-0pc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -703,7 +703,7 @@
         <!--Blood PressureVC-->
         <scene sceneID="wcy-5A-r1z">
             <objects>
-                <viewController storyboardIdentifier="BloodPressureVC" id="9f3-TX-Tkz" customClass="BloodPressureVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BloodPressureVC" id="9f3-TX-Tkz" customClass="BloodPressureVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SmZ-mK-1i9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -825,7 +825,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Systolic" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QOP-U9-hgD" customClass="CustomTextField" customModule="HealthCareManagement" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Systolic" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QOP-U9-hgD" customClass="CustomTextField" customModule="HealthCare" customModuleProvider="target">
                                 <rect key="frame" x="66" y="346" width="88" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="HNe-dg-IV2"/>
@@ -847,7 +847,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Diastolic" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kV8-5v-SkX" customClass="CustomTextField" customModule="HealthCareManagement" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Diastolic" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kV8-5v-SkX" customClass="CustomTextField" customModule="HealthCare" customModuleProvider="target">
                                 <rect key="frame" x="183" y="346" width="88" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="wBO-2h-kFz"/>
@@ -1009,7 +1009,7 @@
         <!--TemperatureVC-->
         <scene sceneID="fsO-iv-yaG">
             <objects>
-                <viewController storyboardIdentifier="TemperatureVC" id="x6L-0K-cVV" customClass="TemperatureVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TemperatureVC" id="x6L-0K-cVV" customClass="TemperatureVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pJL-4r-xLb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1146,7 +1146,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Temperature °F" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ogh-0T-FL7" customClass="CustomTextField" customModule="HealthCareManagement" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Temperature °F" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ogh-0T-FL7" customClass="CustomTextField" customModule="HealthCare" customModuleProvider="target">
                                 <rect key="frame" x="71" y="342" width="227" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ogh-0T-FL7" secondAttribute="height" multiplier="227:44" id="GNr-qt-lYp"/>
@@ -1277,7 +1277,7 @@
         <!--Pulse OxiVC-->
         <scene sceneID="UgH-bd-Flc">
             <objects>
-                <viewController storyboardIdentifier="PulseOxiVC" id="jtC-Jo-ivK" customClass="PulseOxiVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PulseOxiVC" id="jtC-Jo-ivK" customClass="PulseOxiVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Jp-mx-7FO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1414,7 +1414,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Pulse Oximeter (%)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tqS-qz-hoW" customClass="CustomTextField" customModule="HealthCareManagement" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Pulse Oximeter (%)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tqS-qz-hoW" customClass="CustomTextField" customModule="HealthCare" customModuleProvider="target">
                                 <rect key="frame" x="61" y="342" width="227" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="tqS-qz-hoW" secondAttribute="height" multiplier="227:44" id="hzo-Ig-f8W"/>
@@ -1523,7 +1523,7 @@
         <!--GlucoseVC-->
         <scene sceneID="L87-tc-xZ6">
             <objects>
-                <viewController storyboardIdentifier="GlucoseVC" id="dAN-9m-8zE" customClass="GlucoseVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GlucoseVC" id="dAN-9m-8zE" customClass="GlucoseVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HGf-xb-WNH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1658,7 +1658,7 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Glucose (md/dl)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qH1-mN-hFO" customClass="CustomTextField" customModule="HealthCareManagement" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Glucose (md/dl)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qH1-mN-hFO" customClass="CustomTextField" customModule="HealthCare" customModuleProvider="target">
                                 <rect key="frame" x="80.5" y="332" width="227" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qH1-mN-hFO" secondAttribute="height" multiplier="227:44" id="6OZ-qA-IFe"/>
@@ -1787,7 +1787,7 @@
         <!--Heart RateVC-->
         <scene sceneID="4f9-dg-NQz">
             <objects>
-                <viewController storyboardIdentifier="HeartRateVC" id="U52-55-jh3" customClass="HeartRateVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeartRateVC" id="U52-55-jh3" customClass="HeartRateVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hyY-ks-bIT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1953,7 +1953,7 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Heart Rate (bpm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RW5-QW-FKo" customClass="CustomTextField" customModule="HealthCareManagement" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter Heart Rate (bpm)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RW5-QW-FKo" customClass="CustomTextField" customModule="HealthCare" customModuleProvider="target">
                                 <rect key="frame" x="77" y="325" width="227" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RW5-QW-FKo" secondAttribute="height" multiplier="227:44" id="duk-Re-FoN"/>
@@ -2058,7 +2058,7 @@
         <!--HemoglobinVC-->
         <scene sceneID="NRh-Q6-ubD">
             <objects>
-                <viewController storyboardIdentifier="HemoglobinVC" id="fOG-HC-gOW" customClass="HemoglobinVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HemoglobinVC" id="fOG-HC-gOW" customClass="HemoglobinVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fxy-Ip-psX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2155,7 +2155,7 @@
                                     <action selector="saveButtonClicked:" destination="fOG-HC-gOW" eventType="touchUpInside" id="Xew-T6-zhl"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter HbA1c(%)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-AM-fBo" customClass="CustomTextField" customModule="HealthCareManagement" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter HbA1c(%)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vn7-AM-fBo" customClass="CustomTextField" customModule="HealthCare" customModuleProvider="target">
                                 <rect key="frame" x="78" y="298" width="227" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vn7-AM-fBo" secondAttribute="height" multiplier="227:44" id="sSj-Rj-0wR"/>
@@ -2274,7 +2274,7 @@
         <!--Monitor DashboardVC-->
         <scene sceneID="Vbj-5i-jUb">
             <objects>
-                <viewController storyboardIdentifier="MonitorDashboardVC" id="RGC-XY-4X5" customClass="MonitorDashboardVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MonitorDashboardVC" id="RGC-XY-4X5" customClass="MonitorDashboardVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fLV-GX-sxq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2817,7 +2817,7 @@
         <!--Pill Box View Controller-->
         <scene sceneID="TJF-xX-lXl">
             <objects>
-                <viewController storyboardIdentifier="PillBoxViewController" id="fgA-OM-mU1" customClass="PillBoxViewController" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PillBoxViewController" id="fgA-OM-mU1" customClass="PillBoxViewController" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vu1-sH-TCM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2845,7 +2845,7 @@
                                 <rect key="frame" x="0.0" y="138" width="414" height="724"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MedicationCell" rowHeight="71" id="Swz-Sb-3Ez" customClass="MedicationCell" customModule="HealthCareManagement" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MedicationCell" rowHeight="71" id="Swz-Sb-3Ez" customClass="MedicationCell" customModule="HealthCare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Swz-Sb-3Ez" id="xlK-jd-oyH">
@@ -3005,7 +3005,7 @@
         <!--Dashboard View Controller-->
         <scene sceneID="Vte-aV-Jfa">
             <objects>
-                <viewController storyboardIdentifier="DashboardViewController" id="kaq-Zu-hCp" customClass="DashboardViewController" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" id="kaq-Zu-hCp" customClass="DashboardViewController" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HZw-Gr-Mbz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3171,7 +3171,7 @@
         <!--Health StatusVC-->
         <scene sceneID="mgH-cv-3FT">
             <objects>
-                <viewController storyboardIdentifier="HealthStatusVC" id="bJY-pb-NKx" customClass="HealthStatusVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HealthStatusVC" id="bJY-pb-NKx" customClass="HealthStatusVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z8T-Nj-w5Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3213,7 +3213,7 @@
         <!--Doctors View Controller-->
         <scene sceneID="5NR-G6-BGz">
             <objects>
-                <viewController storyboardIdentifier="DoctorsViewController" id="1Hj-0i-CmL" customClass="DoctorsViewController" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DoctorsViewController" id="1Hj-0i-CmL" customClass="DoctorsViewController" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0DE-c4-kNf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3350,7 +3350,7 @@
         <!--Doctor Registration View Controller-->
         <scene sceneID="AME-81-53F">
             <objects>
-                <viewController storyboardIdentifier="DoctorRegistrationViewController" id="9MW-My-Hq0" customClass="DoctorRegistrationViewController" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DoctorRegistrationViewController" id="9MW-My-Hq0" customClass="DoctorRegistrationViewController" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rDh-iM-zBG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3503,10 +3503,10 @@
             </objects>
             <point key="canvasLocation" x="-420.28985507246381" y="803.57142857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Tele MedicineVC-->
         <scene sceneID="RPL-SU-P0e">
             <objects>
-                <viewController id="MUE-IG-m9M" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeleMedicineVC" id="MUE-IG-m9M" customClass="TeleMedicineVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sOT-VB-Ihu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3525,92 +3525,175 @@
                                 </constraints>
                                 <state key="normal" title="&lt; Back" image="back"/>
                                 <connections>
-                                    <action selector="backButton:" destination="xM4-XR-uO6" eventType="touchUpInside" id="68m-HB-MCC"/>
+                                    <action selector="back:" destination="MUE-IG-m9M" eventType="touchUpInside" id="3ji-wc-DkU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4d-iJ-2pt">
-                                <rect key="frame" x="69" y="146" width="55" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4d-iJ-2pt">
+                                <rect key="frame" x="19" y="117" width="55" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address Line 1: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aax-g9-Ky3">
-                                <rect key="frame" x="69" y="176" width="121" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Line 1: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aax-g9-Ky3">
+                                <rect key="frame" x="19" y="156.5" width="121" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address Line 2: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea4-RB-L98">
-                                <rect key="frame" x="69" y="216" width="123" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Line 2: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea4-RB-L98">
+                                <rect key="frame" x="19" y="195" width="123" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Postcode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDR-vV-dx7">
-                                <rect key="frame" x="67" y="266" width="77" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postcode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDR-vV-dx7">
+                                <rect key="frame" x="19" y="236.5" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Telephone Number:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAD-zj-GI8">
-                                <rect key="frame" x="72" y="301" width="151" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone No.:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAD-zj-GI8">
+                                <rect key="frame" x="19" y="276" width="115" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VML-48-6Ry">
-                                <rect key="frame" x="82" y="337" width="113" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VML-48-6Ry">
+                                <rect key="frame" x="19" y="315" width="113" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make nice format of the tablets list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsk-AK-gPs">
-                                <rect key="frame" x="92" y="402" width="265" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuX-Wq-gyX">
-                                <rect key="frame" x="2" y="442" width="392" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuX-Wq-gyX">
+                                <rect key="frame" x="11" y="384" width="392" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iuX-Wq-gyX" secondAttribute="height" multiplier="98:17" id="bfV-E6-BMh"/>
+                                </constraints>
                                 <string key="text">Note: Please check the pharmacy details, if you are sure then click on send prescription button. You will get notified from the pharmacy soon. </string>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LQ-7e-Fx8">
-                                <rect key="frame" x="114" y="582" width="174" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LQ-7e-Fx8">
+                                <rect key="frame" x="120" y="503" width="174" height="39"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <state key="normal" title="Send Prescription">
                                     <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendPrescriptionBtn:" destination="MUE-IG-m9M" eventType="touchUpInside" id="bcR-OY-rdA"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcS-kl-sGS">
-                                <rect key="frame" x="152" y="647" width="118" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CcS-kl-sGS">
+                                <rect key="frame" x="148" y="562" width="118" height="39"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                                 <state key="normal" title="Call Pharma">
                                     <color key="titleColor" red="0.0" green="0.24969567710000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="callPharmaBtn:" destination="MUE-IG-m9M" eventType="touchUpInside" id="cRd-oH-CYO"/>
+                                </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pharma Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Hi-S5-bcI">
+                                <rect key="frame" x="163" y="112.5" width="225" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address Line 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0VR-LB-wge">
+                                <rect key="frame" x="163" y="152" width="225" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address Line 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zlc-o1-gV1">
+                                <rect key="frame" x="163" y="190.5" width="225" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Postcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5jy-uu-P16">
+                                <rect key="frame" x="163" y="232" width="225" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Telephone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WUL-vj-br5">
+                                <rect key="frame" x="163" y="271.5" width="225" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hpa-WD-Blo">
+                                <rect key="frame" x="163" y="310.5" width="225" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make nice format of the tablets list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPv-Qy-7DJ">
+                                <rect key="frame" x="75" y="685" width="265" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="0VR-LB-wge" firstAttribute="leading" secondItem="1Hi-S5-bcI" secondAttribute="leading" id="1lN-ss-Fza"/>
+                            <constraint firstItem="CcS-kl-sGS" firstAttribute="centerX" secondItem="7LQ-7e-Fx8" secondAttribute="centerX" id="3tQ-Ta-nhd"/>
+                            <constraint firstItem="iuX-Wq-gyX" firstAttribute="top" secondItem="hpa-WD-Blo" secondAttribute="bottom" constant="43.5" id="6Wp-yt-JQ1"/>
                             <constraint firstItem="7g7-pr-XQX" firstAttribute="centerX" secondItem="src-P7-JBq" secondAttribute="centerX" id="8Ls-JX-cjW"/>
+                            <constraint firstItem="7LQ-7e-Fx8" firstAttribute="top" secondItem="iuX-Wq-gyX" secondAttribute="bottom" constant="51" id="8qy-u8-Xuk"/>
+                            <constraint firstItem="0VR-LB-wge" firstAttribute="centerY" secondItem="Aax-g9-Ky3" secondAttribute="centerY" id="99T-SY-bc3"/>
+                            <constraint firstItem="iuX-Wq-gyX" firstAttribute="width" secondItem="sOT-VB-Ihu" secondAttribute="height" multiplier="7:16" id="99x-Mv-p6Q"/>
+                            <constraint firstItem="Aax-g9-Ky3" firstAttribute="top" secondItem="1Hi-S5-bcI" secondAttribute="bottom" constant="14" id="Cbj-vu-SBf"/>
+                            <constraint firstItem="hpa-WD-Blo" firstAttribute="centerY" secondItem="VML-48-6Ry" secondAttribute="centerY" id="DLE-sZ-iOo"/>
+                            <constraint firstItem="MDR-vV-dx7" firstAttribute="top" secondItem="zlc-o1-gV1" secondAttribute="bottom" constant="16" id="Dt1-7r-Pjw"/>
+                            <constraint firstItem="VML-48-6Ry" firstAttribute="leading" secondItem="RAD-zj-GI8" secondAttribute="leading" id="F9R-MP-9uc"/>
+                            <constraint firstItem="5jy-uu-P16" firstAttribute="leading" secondItem="zlc-o1-gV1" secondAttribute="leading" id="JU6-MT-eP6"/>
+                            <constraint firstItem="CcS-kl-sGS" firstAttribute="top" secondItem="7LQ-7e-Fx8" secondAttribute="bottom" constant="20" id="Nq4-sD-rzj"/>
+                            <constraint firstItem="5jy-uu-P16" firstAttribute="trailing" secondItem="zlc-o1-gV1" secondAttribute="trailing" id="OP1-d1-o9d"/>
                             <constraint firstItem="vsY-Ux-qsA" firstAttribute="top" secondItem="src-P7-JBq" secondAttribute="top" constant="10" id="Otu-Lx-eae"/>
+                            <constraint firstItem="ea4-RB-L98" firstAttribute="top" secondItem="0VR-LB-wge" secondAttribute="bottom" constant="13" id="PPQ-2I-RpO"/>
+                            <constraint firstItem="D4d-iJ-2pt" firstAttribute="leading" secondItem="src-P7-JBq" secondAttribute="leading" constant="19" id="Plk-MM-IwK"/>
+                            <constraint firstItem="RAD-zj-GI8" firstAttribute="top" secondItem="5jy-uu-P16" secondAttribute="bottom" constant="14" id="QWf-xR-wAe"/>
+                            <constraint firstItem="MDR-vV-dx7" firstAttribute="leading" secondItem="ea4-RB-L98" secondAttribute="leading" id="Qh5-gk-oDz"/>
+                            <constraint firstItem="hpa-WD-Blo" firstAttribute="leading" secondItem="WUL-vj-br5" secondAttribute="leading" id="SGZ-ll-Mzp"/>
+                            <constraint firstItem="1Hi-S5-bcI" firstAttribute="centerY" secondItem="D4d-iJ-2pt" secondAttribute="centerY" id="Tif-V2-fBr"/>
+                            <constraint firstItem="D4d-iJ-2pt" firstAttribute="top" secondItem="vsY-Ux-qsA" secondAttribute="bottom" constant="19" id="Tk5-ff-BsV"/>
+                            <constraint firstItem="WUL-vj-br5" firstAttribute="trailing" secondItem="5jy-uu-P16" secondAttribute="trailing" id="VDq-ON-8UB"/>
+                            <constraint firstItem="hpa-WD-Blo" firstAttribute="trailing" secondItem="WUL-vj-br5" secondAttribute="trailing" id="VTY-nC-DhC"/>
+                            <constraint firstItem="7LQ-7e-Fx8" firstAttribute="centerX" secondItem="iuX-Wq-gyX" secondAttribute="centerX" id="Xvr-mZ-sHZ"/>
+                            <constraint firstItem="1Hi-S5-bcI" firstAttribute="leading" secondItem="Aax-g9-Ky3" secondAttribute="trailing" constant="23" id="dAP-xU-dhh"/>
                             <constraint firstItem="vsY-Ux-qsA" firstAttribute="centerY" secondItem="7g7-pr-XQX" secondAttribute="centerY" id="dcp-i9-MCM"/>
+                            <constraint firstItem="Aax-g9-Ky3" firstAttribute="leading" secondItem="D4d-iJ-2pt" secondAttribute="leading" id="eHN-PE-HL4"/>
                             <constraint firstItem="vsY-Ux-qsA" firstAttribute="leading" secondItem="src-P7-JBq" secondAttribute="leading" constant="20" id="fER-rU-NZk"/>
+                            <constraint firstItem="zlc-o1-gV1" firstAttribute="leading" secondItem="0VR-LB-wge" secondAttribute="leading" id="gtL-xD-poz"/>
+                            <constraint firstItem="WUL-vj-br5" firstAttribute="centerY" secondItem="RAD-zj-GI8" secondAttribute="centerY" id="nth-Fr-jCC"/>
+                            <constraint firstItem="iuX-Wq-gyX" firstAttribute="centerX" secondItem="src-P7-JBq" secondAttribute="centerX" id="qZ6-Kh-yfL"/>
+                            <constraint firstItem="5jy-uu-P16" firstAttribute="centerY" secondItem="MDR-vV-dx7" secondAttribute="centerY" id="qnB-3W-dxa"/>
+                            <constraint firstItem="ea4-RB-L98" firstAttribute="leading" secondItem="Aax-g9-Ky3" secondAttribute="leading" id="sTx-QA-gbh"/>
+                            <constraint firstItem="zlc-o1-gV1" firstAttribute="trailing" secondItem="0VR-LB-wge" secondAttribute="trailing" id="vO0-95-dI1"/>
+                            <constraint firstItem="WUL-vj-br5" firstAttribute="leading" secondItem="5jy-uu-P16" secondAttribute="leading" id="wOq-bR-uT3"/>
+                            <constraint firstItem="src-P7-JBq" firstAttribute="trailing" secondItem="1Hi-S5-bcI" secondAttribute="trailing" constant="26" id="yBC-n9-gpK"/>
+                            <constraint firstItem="VML-48-6Ry" firstAttribute="top" secondItem="WUL-vj-br5" secondAttribute="bottom" constant="13.5" id="z9P-ZB-bcn"/>
+                            <constraint firstItem="zlc-o1-gV1" firstAttribute="centerY" secondItem="ea4-RB-L98" secondAttribute="centerY" id="zLN-eo-neV"/>
+                            <constraint firstItem="0VR-LB-wge" firstAttribute="trailing" secondItem="1Hi-S5-bcI" secondAttribute="trailing" id="zfH-24-uXm"/>
+                            <constraint firstItem="RAD-zj-GI8" firstAttribute="leading" secondItem="MDR-vV-dx7" secondAttribute="leading" id="zgr-cM-je0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="src-P7-JBq"/>
                     </view>
+                    <connections>
+                        <outlet property="callPharmaBtn" destination="CcS-kl-sGS" id="sOw-G5-m7O"/>
+                        <outlet property="emailAddressTxt" destination="hpa-WD-Blo" id="S71-Pt-TQZ"/>
+                        <outlet property="pharmaAddress1" destination="0VR-LB-wge" id="KF3-j3-hb4"/>
+                        <outlet property="pharmaAddress2" destination="zlc-o1-gV1" id="j8l-4o-fLw"/>
+                        <outlet property="pharmaName" destination="1Hi-S5-bcI" id="eEV-QT-o75"/>
+                        <outlet property="postcodeTxt" destination="5jy-uu-P16" id="Mqd-N5-SLh"/>
+                        <outlet property="sendPresctionBtn" destination="7LQ-7e-Fx8" id="u0j-oy-FFx"/>
+                        <outlet property="telephoneNum" destination="WUL-vj-br5" id="xhg-HY-GKs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nqI-W1-YNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3619,7 +3702,7 @@
         <!--Display Patients ListVC-->
         <scene sceneID="uuv-Ya-oS9">
             <objects>
-                <viewController storyboardIdentifier="DisplayPatientsListVC" id="xM4-XR-uO6" customClass="DisplayPatientsListVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DisplayPatientsListVC" id="xM4-XR-uO6" customClass="DisplayPatientsListVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TZV-45-8DM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3628,7 +3711,7 @@
                                 <rect key="frame" x="0.0" y="107" width="414" height="755"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="patientCell" id="wZh-fb-O7g" customClass="PatientsListCell" customModule="HealthCareManagement" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="patientCell" id="wZh-fb-O7g" customClass="PatientsListCell" customModule="HealthCare" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wZh-fb-O7g" id="s6E-wM-kKs">
@@ -3723,7 +3806,7 @@
         <!--Patient ProfileVC-->
         <scene sceneID="91X-Tr-1JJ">
             <objects>
-                <viewController storyboardIdentifier="PatientProfileVC" id="aZp-7f-hBb" customClass="PatientProfileVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PatientProfileVC" id="aZp-7f-hBb" customClass="PatientProfileVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vMG-WO-Z75">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4291,7 +4374,7 @@
         <!--Blood PressureVC-->
         <scene sceneID="m5O-kO-if4">
             <objects>
-                <viewController storyboardIdentifier="PPBloodPressureVC" id="pj6-wh-pjb" customClass="PPBloodPressureVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PPBloodPressureVC" id="pj6-wh-pjb" customClass="PPBloodPressureVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tut-2H-KZ9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4640,7 +4723,7 @@
         <!--TemperatureVC-->
         <scene sceneID="f2f-wl-9kU">
             <objects>
-                <viewController storyboardIdentifier="PPTemperatureVC" id="mri-wD-tMx" customClass="PPTemperatureVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PPTemperatureVC" id="mri-wD-tMx" customClass="PPTemperatureVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bWo-qp-jRZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -4925,7 +5008,7 @@
         <!--Pulse Oxi MeterVC-->
         <scene sceneID="ZFw-8e-tJE">
             <objects>
-                <viewController storyboardIdentifier="PPPulseOxiMeterVC" id="och-df-bhi" customClass="PPPulseOxiMeterVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PPPulseOxiMeterVC" id="och-df-bhi" customClass="PPPulseOxiMeterVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ahL-Gc-A2f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5207,7 +5290,7 @@
         <!--GlucoseVC-->
         <scene sceneID="EbZ-EW-scG">
             <objects>
-                <viewController storyboardIdentifier="PPGlucoseVC" id="9Bj-Wq-Zmr" customClass="PPGlucoseVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PPGlucoseVC" id="9Bj-Wq-Zmr" customClass="PPGlucoseVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8qp-TA-3gy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5490,7 +5573,7 @@
         <!--Heart RateVC-->
         <scene sceneID="TFK-Vd-ano">
             <objects>
-                <viewController storyboardIdentifier="PPHeartRateVC" id="IJH-5H-2rC" customClass="PPHeartRateVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PPHeartRateVC" id="IJH-5H-2rC" customClass="PPHeartRateVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OuQ-UA-2dr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -5773,7 +5856,7 @@
         <!--HemoglobinVC-->
         <scene sceneID="oGj-PS-bQk">
             <objects>
-                <viewController storyboardIdentifier="PPHemoglobinVC" id="UNr-L1-wGq" customClass="PPHemoglobinVC" customModule="HealthCareManagement" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PPHemoglobinVC" id="UNr-L1-wGq" customClass="PPHemoglobinVC" customModule="HealthCare" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JZa-L7-Kpz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

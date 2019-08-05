@@ -113,13 +113,20 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func telemedicineButton(_ sender: Any) {
-        
+//        TeleMedicineVC
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TeleMedicineVC") as! TeleMedicineVC
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func logut(_ sender: Any) {
         
         UserDefaults.standard.removeObject(forKey: "username")
         UserDefaults.standard.removeObject(forKey: "UHI")
+        //Remove medications
+        UserDefaults.standard.removeObject(forKey: "MedicineNamesList")
+        UserDefaults.standard.removeObject(forKey: "TimesADay") 
+        UserDefaults.standard.removeObject(forKey: "HowManyDays")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController

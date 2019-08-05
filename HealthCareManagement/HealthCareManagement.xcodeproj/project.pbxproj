@@ -18,6 +18,7 @@
 		102CE39222EEDE8B0039FD69 /* MedicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 102CE39122EEDE8B0039FD69 /* MedicationCell.swift */; };
 		102CE39522EF4C3C0039FD69 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 102CE39422EF4C3B0039FD69 /* HealthKit.framework */; };
 		10336B0422F56D90004C4693 /* reminder_english.wav in Resources */ = {isa = PBXBuildFile; fileRef = 10336B0322F56D90004C4693 /* reminder_english.wav */; };
+		1064B9CF22F8092E00CE84EA /* TeleMedicineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1064B9CE22F8092E00CE84EA /* TeleMedicineVC.swift */; };
 		106F031C22DB347D00A8EBA2 /* HealthStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031B22DB347D00A8EBA2 /* HealthStatusVC.swift */; };
 		106F031E22DB37F500A8EBA2 /* TemperatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031D22DB37F500A8EBA2 /* TemperatureVC.swift */; };
 		106F032022DBB61F00A8EBA2 /* PulseOxiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */; };
@@ -93,6 +94,7 @@
 		102CE39422EF4C3B0039FD69 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		102CE39622EF4C3C0039FD69 /* HealthCareManagement.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HealthCareManagement.entitlements; sourceTree = "<group>"; };
 		10336B0322F56D90004C4693 /* reminder_english.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reminder_english.wav; sourceTree = "<group>"; };
+		1064B9CE22F8092E00CE84EA /* TeleMedicineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeleMedicineVC.swift; sourceTree = "<group>"; };
 		106F031B22DB347D00A8EBA2 /* HealthStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStatusVC.swift; sourceTree = "<group>"; };
 		106F031D22DB37F500A8EBA2 /* TemperatureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureVC.swift; sourceTree = "<group>"; };
 		106F031F22DBB61F00A8EBA2 /* PulseOxiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseOxiVC.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 		10E004F522AECEA70009155C /* HealthCareManagement */ = {
 			isa = PBXGroup;
 			children = (
+				1064B9CE22F8092E00CE84EA /* TeleMedicineVC.swift */,
 				102CE39622EF4C3C0039FD69 /* HealthCareManagement.entitlements */,
 				10336B0322F56D90004C4693 /* reminder_english.wav */,
 				10D3A03622C28CF700B54B92 /* IQKeyboardManagerSwift */,
@@ -522,6 +525,7 @@
 				10EC3C8322BD52F6000A615D /* MonthView.swift in Sources */,
 				10D3A04E22C28CF800B54B92 /* IQTextView.swift in Sources */,
 				10D3A04F22C28CF800B54B92 /* IQPreviousNextView.swift in Sources */,
+				1064B9CF22F8092E00CE84EA /* TeleMedicineVC.swift in Sources */,
 				10D3A05622C28CF800B54B92 /* IQKeyboardManagerConstants.swift in Sources */,
 				10EC3C8222BD52F6000A615D /* CalenderView.swift in Sources */,
 				106F033022E38A3B00A8EBA2 /* PPGlucoseVC.swift in Sources */,
