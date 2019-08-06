@@ -35,16 +35,18 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
 //            print(i)
 //        }
 //
-        let res = zip(times, days).map { $0 * $1 }
+//        let res = zip(times, days).map { $0 * $1 }
         
         let countw = times.count
         
-        for i in medidinename{
-            print(i)
-            message = "\(i) "
+        for x in 0..<countw{
+                let name = medidinename[x] as! String
+                let timesx = times[x] as! Int
+                let daysx = days[x] as! Int
+                message = "<br>"
+                message += "<p>\(name) ------ \(timesx * daysx) tablets</p>"
         }
-        
-        
+        print(message)
  
         
         message = "<p>Hi, <br> Your second sentence would begin on the next line.</p>"

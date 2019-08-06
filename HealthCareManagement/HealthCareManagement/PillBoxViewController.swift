@@ -51,6 +51,7 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
                         timeADay.append(times)
                         afterMeal.append(afterM)
                         beforeMeal.append(beforeM)
+                        daysToHave.append(daysToTake)
                         
                         if (times == 1){
                             oneTimeScheduleNotification(messgae: name, before: beforeM, after: afterM, days: daysToTake)
@@ -73,6 +74,8 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
             UserDefaults.standard.set(medicineName, forKey: "MedicineNamesList")
             UserDefaults.standard.set(timeADay, forKey: "TimesADay")
             UserDefaults.standard.set(daysToHave, forKey: "HowManyDays")
+//            let tele = TeleMedicineVC()
+            
 //            UserDefaults.standard.set(medicineList, forKey: "List")
             UserDefaults.standard.synchronize()
             

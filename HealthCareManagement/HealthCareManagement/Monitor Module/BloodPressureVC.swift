@@ -61,7 +61,9 @@ class BloodPressureVC: UIViewController {
             let BPInfo = try managedContext.fetch(fetchRequestBP)
             for bpData in BPInfo{
                 if (UHI == bpData.value(forKey: "patientID") as? String){
-                    let goalSys = bpData.value(forKey: "goal_systolic") as! Int
+                    guard let goalSys = bpData.value(forKey: "goal_systolic") as? Int else {
+                        return
+                    }
                     let goalDia = bpData.value(forKey: "goal_diastolic") as! Int
                     goal.text = "\(goalSys)/\(goalDia) mm Hg"
                     
