@@ -88,11 +88,13 @@ class ViewController: UIViewController {
         healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite , read: healthKitTypesToRead) { (success, error) in
             print("Read write authorization succeded")
             self.getTodaysSteps { (steps) in
+                print("Steps: \(steps)")
                 self.steps = steps
+                UserDefaults.standard.set("\(steps)", forKey: "StepsCount")
             }
            let (years, btype) = self.readProfilesFromHealthKit()
             self.age = years ?? 0
-            UserDefaults.standard.set(self.steps, forKey: "Steps")
+           
             UserDefaults.standard.set(self.age, forKey:"Age")
             UserDefaults.standard.synchronize()
             

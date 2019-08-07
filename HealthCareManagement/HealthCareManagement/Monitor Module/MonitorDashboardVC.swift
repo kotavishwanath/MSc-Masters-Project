@@ -90,10 +90,12 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
         updateUI()
         
-        let steps = UserDefaults.standard.object(forKey: "Steps") as! Double
+        let steps = UserDefaults.standard.object(forKey: "StepsCount") as! String
+        print("Dashboard:  \(steps)")
         let age = UserDefaults.standard.object(forKey: "Age") as! Int
         //Steps Age
-        let str = "Your age is \(String(describing: age)) & Todays steps count is \(String(describing: steps))"
+        let str = "Your age is \(String(describing: age)) & Todays steps count is \(steps)"
+        //\(String(describing: steps))"
         let marquee = "<html><body><marquee>\(str)</marquee></body></html>"
         webvw.loadHTMLString(marquee, baseURL: nil)
     }
