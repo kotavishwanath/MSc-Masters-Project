@@ -240,9 +240,11 @@ class ViewController: UIViewController {
                     
                     let patientname = (data.value(forKey: "display_name") as? String)!
                     let patientUHI = "\(data.value(forKey: "uhi") as! Int)"
+                    let emergencyContactEmail = "\(data.value(forKey: "emergency_contact_email") as! String)"
                     
                     UserDefaults.standard.set(patientname, forKey: "username")
                     UserDefaults.standard.set(patientUHI, forKey: "UHI")
+                    UserDefaults.standard.set(emergencyContactEmail, forKey: "EmergencyConatctEmail")
                     UserDefaults.standard.synchronize()
                     
                     vc.name = patientname

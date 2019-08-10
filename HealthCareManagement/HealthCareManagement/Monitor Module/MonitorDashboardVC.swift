@@ -133,9 +133,10 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                 if (UHI == bpData.value(forKey: "patientID") as? String){
                    let systolicValue = bpData.value(forKeyPath: "systolic") as! Int
                    let diastolicValue = bpData.value(forKeyPath: "diastolic") as! Int
-                   bpValue.text = "\(systolicValue)/\(diastolicValue)"
+//                   bpValue.text = "\(systolicValue)/\(diastolicValue)"
                     if ( bpData.value(forKey: "date") != nil){
                         let d = bpData.value(forKey: "date") as! NSDate
+                        bpValue.text = "\(systolicValue)/\(diastolicValue)"
                         bpUpdatedDate.text = "\(d)"
                         bloodPressureValue = "\(systolicValue)/\(diastolicValue)"
                         bloodPressureDate = "\(d)"
@@ -148,9 +149,10 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                 tempData.setValue(i, forKey: "temprature_info")*/
                 if (UHI == tempData.value(forKey: "patientID") as? String){
                     let temp = tempData.value(forKey: "temprature_info") as! Float
-                    tempValue.text = String(format: "%.1f", temp)
+//                    tempValue.text = String(format: "%.1f", temp)
                     if (tempData.value(forKey: "date") != nil){
                         let d = tempData.value(forKey: "date") as! NSDate
+                        tempValue.text = String(format: "%.1f", temp)
                         tempUpdatedDate.text = "\(d)"
                         temperatureValue = "\(String(format: "%.1f", temp))"
                         temperatureDate = "\(d)"
@@ -161,9 +163,10 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
             for pulseData in pluseOxiInfo{
                 if (UHI == pulseData.value(forKey: "patientID") as? String){
                     let pulse = pulseData.value(forKey: "pulseoxi_value") as! Float
-                    pluseOxiValue.text = String(format: "%.1f", pulse)
+//                    pluseOxiValue.text = String(format: "%.1f", pulse)
                     if (pulseData.value(forKey: "date") != nil){
                         let d = pulseData.value(forKey: "date") as! NSDate
+                        pluseOxiValue.text = String(format: "%.1f", pulse)
                         pulseOxiUpdatedDate.text = "\(d)"
                         pulseoxiValue = "\(String(format: "%.1f", pulse))"
                         pulseoxiDate = "\(d)"
@@ -174,9 +177,10 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
             for glucoseData in glucoseInfo{
                 if (UHI == glucoseData.value(forKey: "patientID") as? String){
                     let glucose = glucoseData.value(forKey: "glucose_value") as! Int
-                    glucoseValue.text = "\(glucose)"
+//                    glucoseValue.text = "\(glucose)"
                     if (glucoseData.value(forKey: "date") != nil){
                         let d = glucoseData.value(forKey: "date") as! NSDate
+                        glucoseValue.text = "\(glucose)"
                         glucoseUpdatedDate.text = "\(d)"
                         glucValue = "\(glucose)"
                         glucoseDate = "\(d)"
@@ -187,9 +191,10 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
             for heartData in heartRateInfo{
                 if (UHI == heartData.value(forKey: "patientID") as? String){
                     let rate = heartData.value(forKey: "heartrate_value") as! Int
-                    heartRateValue.text = "\(rate)"
+//                    heartRateValue.text = "\(rate)"
                     if (heartData.value(forKey: "date") != nil){
                         let d = heartData.value(forKey: "date") as! NSDate
+                        heartRateValue.text = "\(rate)"
                         heartRateUpdatedDate.text = "\(d)"
                         heartValue = "\(rate)"
                         heartDate = "\(d)"
@@ -200,9 +205,10 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
             for hemoData in hemoInfo{
                 if (UHI == hemoData.value(forKey: "patientID") as? String){
                     let hemo = hemoData.value(forKey: "hemoglobin_value") as! Float
-                    hemoglobinValue.text = String(format: "%.1f", hemo)
+//                    hemoglobinValue.text = String(format: "%.1f", hemo)
                     if (hemoData.value(forKey: "date") != nil){
                         let d = hemoData.value(forKey: "date") as! NSDate
+                        hemoglobinValue.text = String(format: "%.1f", hemo)
                         hemoUpdatedDate.text = "\(d)"
                         hemoglValue = String(format: "%.1f", hemo)
                         hemobloginDate = "\(d)"

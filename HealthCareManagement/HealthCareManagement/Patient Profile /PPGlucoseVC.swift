@@ -27,6 +27,7 @@ class PPGlucoseVC: UIViewController {
     var glucose = String()
     var UHINumber = ""
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currentValue.text = glucose
@@ -123,6 +124,9 @@ class PPGlucoseVC: UIViewController {
                     
                     let goalVal = Int(goal.text!)
                     glucoseData.setValue(goalVal, forKey: "goal")
+                    
+//                    let cuur = glucose.components(separatedBy: " ")
+//                    glucoseData.setValue(cuur[1], forKey: "glucose_value")
                     
                     let notes = doctorNotes.text
                     glucoseData.setValue(notes, forKey: "doctor_notes")

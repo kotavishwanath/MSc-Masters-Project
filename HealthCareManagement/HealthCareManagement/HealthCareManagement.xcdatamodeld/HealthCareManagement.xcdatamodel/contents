@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14492.1" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="BloodPressureVitalInfo" representedClassName="BloodPressureVitalInfo" syncable="YES" codeGenerationType="class">
         <attribute name="alert_high_diastolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="alert_high_systolic" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -17,6 +17,7 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="DoctorsInfo" representedClassName="DoctorsInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gmc_number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
@@ -79,6 +80,7 @@
         <attribute name="pin_number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profile_picture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="qrCode" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uhi" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
@@ -107,13 +109,13 @@
         <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MedicalPrescription" positionX="75.88671875" positionY="-38.3203125" width="128" height="150"/>
         <element name="BloodPressureVitalInfo" positionX="-72.71875" positionY="-121.16015625" width="128" height="255"/>
-        <element name="DoctorsInfo" positionX="-12.0546875" positionY="179.65234375" width="128" height="105"/>
+        <element name="DoctorsInfo" positionX="-12.0546875" positionY="179.65234375" width="128" height="120"/>
         <element name="GlucoseInfo" positionX="-72" positionY="36" width="128" height="165"/>
         <element name="HeartRateInfo" positionX="-63" positionY="45" width="128" height="165"/>
         <element name="HemoglobinInfo" positionX="-54" positionY="54" width="128" height="120"/>
-        <element name="PatientsContactInfo" positionX="-240.07421875" positionY="-117.03515625" width="128" height="390"/>
+        <element name="MedicalPrescription" positionX="75.88671875" positionY="-38.3203125" width="128" height="150"/>
+        <element name="PatientsContactInfo" positionX="-240.07421875" positionY="-117.03515625" width="128" height="405"/>
         <element name="PulseOxiInfo" positionX="-81" positionY="27" width="128" height="150"/>
         <element name="SubAttributes" positionX="-71.34375" positionY="72.67578125" width="128" height="73"/>
         <element name="TemperatureVitalInfo" positionX="77.75" positionY="50.34765625" width="128" height="165"/>

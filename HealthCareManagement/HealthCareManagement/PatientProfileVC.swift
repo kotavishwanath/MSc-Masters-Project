@@ -90,6 +90,9 @@ class PatientProfileVC: UIViewController {
         
         updateVitalValues()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        updateVitalValues()
+    }
     
     func updateVitalValues(){
         guard let appDelegate =
@@ -124,10 +127,12 @@ class PatientProfileVC: UIViewController {
                 if (UHI == bpData.value(forKey: "patientID") as? String){
                     let systolicValue = bpData.value(forKeyPath: "systolic") as! Int
                     let diastolicValue = bpData.value(forKeyPath: "diastolic") as! Int
-                    self.bpData.text = "\(systolicValue)/\(diastolicValue)"
-                    bloodPressureValue = "Current Value: \(systolicValue)/\(diastolicValue) mmHG"
+//                    self.bpData.text = "\(systolicValue)/\(diastolicValue)"
+//                    bloodPressureValue = "Current Value: \(systolicValue)/\(diastolicValue) mmHG"
                     if (bpData.value(forKey: "date") != nil){
                         let d = bpData.value(forKey: "date") as! NSDate
+                        self.bpData.text = "\(systolicValue)/\(diastolicValue)"
+                        bloodPressureValue = "Current Value: \(systolicValue)/\(diastolicValue) mmHG"
                         bpUpdatedDate.text = "\(d)"
                     }
                 }
@@ -138,10 +143,12 @@ class PatientProfileVC: UIViewController {
                  tempData.setValue(i, forKey: "temprature_info")*/
                 if (UHI == tempData.value(forKey: "patientID") as? String){
                     let temp = tempData.value(forKey: "temprature_info") as! Float
-                    self.tempData.text = String(format: "%.1f", temp)
-                    temperatureValue = "Current Value: \( String(format: "%.1f", temp)) °F"
+//                    self.tempData.text = String(format: "%.1f", temp)
+//                    temperatureValue = "Current Value: \( String(format: "%.1f", temp)) °F"
                     if (tempData.value(forKey: "date") != nil){
                         let d = tempData.value(forKey: "date") as! NSDate
+                        self.tempData.text = String(format: "%.1f", temp)
+                        temperatureValue = "Current Value: \( String(format: "%.1f", temp)) °F"
                         tempUpdatedDate.text = "\(d)"
                     }
                     
@@ -151,10 +158,12 @@ class PatientProfileVC: UIViewController {
             for pulseData in pluseOxiInfo{
                 if (UHI == pulseData.value(forKey: "patientID") as? String){
                     let pulse = pulseData.value(forKey: "pulseoxi_value") as! Float
-                    pulseOxiData.text = String(format: "%.1f", pulse)
-                    pulseoxiValue = "Current Value: \(String(format: "%.1f", pulse)) %"
+//                    pulseOxiData.text = String(format: "%.1f", pulse)
+//                    pulseoxiValue = "Current Value: \(String(format: "%.1f", pulse)) %"
                     if (pulseData.value(forKey: "date") != nil){
                         let d = pulseData.value(forKey: "date") as! NSDate
+                        pulseOxiData.text = String(format: "%.1f", pulse)
+                        pulseoxiValue = "Current Value: \(String(format: "%.1f", pulse)) %"
                         pulseOxiUpdatedDate.text = "\(d)"
                     }
                 }
@@ -163,10 +172,12 @@ class PatientProfileVC: UIViewController {
             for glucoseData in glucoseInfo{
                 if (UHI == glucoseData.value(forKey: "patientID") as? String){
                     let glucose = glucoseData.value(forKey: "glucose_value") as! Int
-                    self.glucoseData.text = "\(glucose)"
-                    glucoseValue = "Current Value: \(glucose) mg/dl"
+//                    self.glucoseData.text = "\(glucose)"
+//                    glucoseValue = "Current Value: \(glucose) mg/dl"
                     if (glucoseData.value(forKey: "date") != nil){
                         let d = glucoseData.value(forKey: "date") as! NSDate
+                        self.glucoseData.text = "\(glucose)"
+                        glucoseValue = "Current Value: \(glucose) mg/dl"
                         glucoseUpdatedDate.text = "\(d)"
                     }
                 }
@@ -175,10 +186,12 @@ class PatientProfileVC: UIViewController {
             for heartData in heartRateInfo{
                 if (UHI == heartData.value(forKey: "patientID") as? String){
                     let rate = heartData.value(forKey: "heartrate_value") as! Int
-                    heartRateData.text = "\(rate)"
-                    heartRateValue = "Current Value: \(rate) bpm"
+//                    heartRateData.text = "\(rate)"
+//                    heartRateValue = "Current Value: \(rate) bpm"
                     if (heartData.value(forKey: "date") != nil){
                         let d = heartData.value(forKey: "date") as! NSDate
+                        heartRateData.text = "\(rate)"
+                        heartRateValue = "Current Value: \(rate) bpm"
                         heartRateUpdatedDate.text = "\(d)"
                     }
                 }
@@ -187,10 +200,12 @@ class PatientProfileVC: UIViewController {
             for hemoData in hemoInfo{
                 if (UHI == hemoData.value(forKey: "patientID") as? String){
                     let hemo = hemoData.value(forKey: "hemoglobin_value") as! Float
-                    self.hemoData.text = String(format: "%.1f", hemo)
-                    hemoValue = "Current Value: \(String(format: "%.1f", hemo)) %"
+//                    self.hemoData.text = String(format: "%.1f", hemo)
+//                    hemoValue = "Current Value: \(String(format: "%.1f", hemo)) %"
                     if (hemoData.value(forKey: "date") != nil){
                         let d = hemoData.value(forKey: "date") as! NSDate
+                        self.hemoData.text = String(format: "%.1f", hemo)
+                        hemoValue = "Current Value: \(String(format: "%.1f", hemo)) %"
                         hemoUpdatedDate.text = "\(d)"
                     }
                 }

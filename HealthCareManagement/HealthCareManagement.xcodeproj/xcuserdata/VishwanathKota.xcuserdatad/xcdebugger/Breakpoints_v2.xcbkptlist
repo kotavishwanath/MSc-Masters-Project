@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/PillBoxViewController.swift"
-            timestampString = "586898144.806715"
+            filePath = "HealthCareManagement/Monitor Module/TemperatureVC.swift"
+            timestampString = "587151309.7671551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "checkforAbnormalValues()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/Monitor Module/MonitorDashboardVC.swift"
-            timestampString = "586902260.384325"
+            filePath = "HealthCareManagement/Monitor Module/BloodPressureVC.swift"
+            timestampString = "587151309.767737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
-            landmarkName = "centralManagerDidUpdateState(_:)"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "checkforAbnormalValues()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,61 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/CalenderVC.swift"
-            timestampString = "586902260.384746"
+            filePath = "HealthCareManagement/Monitor Module/BloodPressureVC.swift"
+            timestampString = "587151309.768104"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "rightBarBtnAction(sender:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HealthCare.CalenderVC.rightBarBtnAction(sender: __C.UIBarButtonItem) -&gt; ()"
-                  moduleName = "HealthCare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/VishwanathKota/Desktop/MSc%20Project/GitHub_Repo/MSc-Masters-Project/HealthCareManagement/HealthCareManagement/CalenderVC.swift"
-                  timestampString = "586551832.868067"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "3833">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in HealthCare.CalenderVC.rightBarBtnAction(sender: __C.UIBarButtonItem) -&gt; ()"
-                  moduleName = "HealthCare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/VishwanathKota/Desktop/MSc%20Project/GitHub_Repo/MSc-Masters-Project/HealthCareManagement/HealthCareManagement/CalenderVC.swift"
-                  timestampString = "586551832.870474"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "145"
-                  endingLineNumber = "145"
-                  offsetFromSymbolStart = "241">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/CalenderVC.swift"
-            timestampString = "586902260.385275"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "didTapDate(date:time:available:)"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "checkforAbnormalValues()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +57,77 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/CalenderVC.swift"
-            timestampString = "586902260.385744"
+            filePath = "HealthCareManagement/Monitor Module/PulseOxiVC.swift"
+            timestampString = "587151309.76824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "235"
-            endingLineNumber = "235"
-            landmarkName = "didTapDate(date:time:available:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "fetchDoctorsInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthCareManagement/Monitor Module/PulseOxiVC.swift"
+            timestampString = "587151309.768553"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "fetchDoctorsInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthCareManagement/Monitor Module/BloodPressureVC.swift"
+            timestampString = "587151309.768638"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "fetchDoctorsInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthCareManagement/Monitor Module/BloodPressureVC.swift"
+            timestampString = "587151309.768711"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "fetchDoctorsInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthCareManagement/Monitor Module/BloodPressureVC.swift"
+            timestampString = "587151309.768778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "fetchDoctorsInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,29 +137,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/TeleMedicineVC.swift"
-            timestampString = "586898144.808578"
+            filePath = "HealthCareManagement/Monitor Module/BloodPressureVC.swift"
+            timestampString = "587151309.7688479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/PillBoxViewController.swift"
-            timestampString = "586898144.808876"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "fetchDoctorsInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -153,77 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/TeleMedicineVC.swift"
-            timestampString = "586898144.80913"
+            filePath = "HealthCareManagement/Monitor Module/TemperatureVC.swift"
+            timestampString = "587151309.768913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/ViewController.swift"
-            timestampString = "586902260.386268"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "integrateHealthKit()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HealthCare.ViewController.integrateHealthKit() -&gt; ()"
-                  moduleName = "HealthCare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/VishwanathKota/Desktop/MSc%20Project/GitHub_Repo/MSc-Masters-Project/HealthCareManagement/HealthCareManagement/ViewController.swift"
-                  timestampString = "586899237.610286"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "88"
-                  endingLineNumber = "88"
-                  offsetFromSymbolStart = "1256">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in HealthCare.ViewController.integrateHealthKit() -&gt; ()"
-                  moduleName = "HealthCare"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/VishwanathKota/Desktop/MSc%20Project/GitHub_Repo/MSc-Masters-Project/HealthCareManagement/HealthCareManagement/ViewController.swift"
-                  timestampString = "586899237.615685"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "89"
-                  endingLineNumber = "89"
-                  offsetFromSymbolStart = "68">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/ViewController.swift"
-            timestampString = "586902260.386816"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "integrateHealthKit()"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "checkforAbnormalValues()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/ViewController.swift"
-            timestampString = "586902260.387269"
+            filePath = "HealthCareManagement/Monitor Module/TemperatureVC.swift"
+            timestampString = "587151309.768978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
-            landmarkName = "signinbutton(_:)"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "checkforAbnormalValues()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -249,13 +185,45 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HealthCareManagement/Monitor Module/MonitorDashboardVC.swift"
-            timestampString = "586902260.387724"
+            filePath = "HealthCareManagement/Monitor Module/TemperatureVC.swift"
+            timestampString = "587151309.76904"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "checkforAbnormalValues()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthCareManagement/Monitor Module/TemperatureVC.swift"
+            timestampString = "587151309.769101"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "checkforAbnormalValues()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthCareManagement/Monitor Module/BloodPressureVC.swift"
+            timestampString = "587151309.7691801"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "fetchDoctorsInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

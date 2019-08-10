@@ -41,6 +41,24 @@ class HealthStatusVC: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
+//        print("Systolic Arry: \(systolicAry)")
+//        print("Diastolic Arry: \(diastolicAry)")
+//
+        var systolicAryData = [Int]()
+        var diastolicAryData = [Int]()
+        
+        for i in 0..<systolicAry.count{
+//            print("Systolic Ary index :\(i) and value :\(systolicAry[i])")
+            if (systolicAry[i] != 0){
+                systolicAryData.append(systolicAry[i])
+                diastolicAryData.append(diastolicAry[i])
+            }
+        }
+        
+        print("============================================")
+        print("Systolic Arry: \(systolicAryData)")
+        print("Diastolic Arry: \(diastolicAryData)")
+        
     }
     
     @IBAction func backBtnClicked(_ sender: Any) {

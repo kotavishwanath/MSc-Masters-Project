@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
-class PulseOxiVC: UIViewController {
+class PulseOxiVC: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var currentOxiValue: UILabel!
     @IBOutlet weak var updatedDate: UILabel!
@@ -24,6 +25,10 @@ class PulseOxiVC: UIViewController {
     
     var p = ""
     var d = ""
+    
+    var low = -1.0
+    var goal = -1.0
+    var note = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,9 +63,20 @@ class PulseOxiVC: UIViewController {
             let pluseOxiInfo = try managedContext.fetch(fetchRequestPulseOxi)
             for pulseData in pluseOxiInfo{
                 if (UHI == pulseData.value(forKey: "patientID") as? String){
-                    oxiGoal.text = String(format: "%.1f %", pulseData.value(forKey: "goal") as! Float)
-                    alertLow.text = String(format: "%.1f %", pulseData.value(forKey: "alert_low_pulse") as! Float)
-                    doctorsNotes.text = pulseData.value(forKey: "doctor_notes") as? String
+                    goal = Double(pulseData.value(forKey: "goal") as? Float ?? 0.0)
+                    if (goal > 0){
+                         oxiGoal.text = String(format: "%.1f %%", goal)
+                    }
+                    let l = Double(pulseData.value(forKey: "alert_low_pulse") as? Float ?? 0.0)
+                    if (l > 0){
+                        low = l
+                        alertLow.text = String(format: "%.1f %%", low)
+                    }
+                    note = pulseData.value(forKey: "doctor_notes") as? String ?? ""
+                    if (note != ""){
+                         doctorsNotes.text = note
+                    }
+                    
                 }
             }
         }catch let error as NSError {
@@ -75,10 +91,44 @@ class PulseOxiVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    /**
+     Checking if the entered values with the alert values if they are abnormal then email to both Doctor as well as to the guardian.
+     Note: Apple do not allow you to send emails in the background without user's interaction. The only way you can do this is to use a server to send the email.
+     */
+    func checkforAbnormalValues(){
+        if let eneteredValue = Int(enterOxiValue.text!){
+            if (low < 0){
+                return
+            }
+            if (Double(eneteredValue) <= low){
+                let doctorsEmail = UserDefaults.standard.object(forKey: "doctorsEmail") as! String
+                let emergencyEmail = UserDefaults.standard.object(forKey: "EmergencyConatctEmail") as! String
+                
+                if MFMailComposeViewController.canSendMail() {
+                    let mail = MFMailComposeViewController()
+                    mail.mailComposeDelegate = self
+                    mail.setToRecipients([doctorsEmail, emergencyEmail])
+                    mail.setSubject("Alert !!!")
+                    mail.setMessageBody("<h3>Please take care of your dear one, as Pulse oxi values has been recorded abnormally !!! </h3>", isHTML: true)
+                    present(mail, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Unable to send", message: "Please check your internet and also correct recipitents email address", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            } else {
+                return
+            }
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
     @IBAction func saveButtonClicked(_ sender: Any) {
-        
-        // for the first time
         if(enterOxiValue.text != ""){
+            checkforAbnormalValues()
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
@@ -96,6 +146,10 @@ class PulseOxiVC: UIViewController {
             person.setValue(Float(enterOxiValue.text!), forKey: "pulseoxi_value")
             person.setValue(NSDate(), forKey: "date")
             person.setValue("%", forKey: "unit")
+            
+            person.setValue(note, forKey: "doctor_notes")
+            person.setValue(goal, forKey: "goal")
+            person.setValue(low, forKey: "alert_low_pulse")
             
             do {
                 try managedContext.save()

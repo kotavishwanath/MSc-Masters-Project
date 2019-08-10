@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
-class BloodPressureVC: UIViewController {
+class BloodPressureVC: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var currentBPValue: UILabel!
     @IBOutlet weak var savedDate: UILabel!
@@ -23,6 +24,10 @@ class BloodPressureVC: UIViewController {
     var bloodpressure: [NSManagedObject] = []
     let currentdate = NSDate()
     var UHI = String()
+    var alertHighSys = -1
+    var alertHighDia = -1
+    var alertLowSys = -1
+    var alertLowDia = -1
     
     var bp = ""
     var d = ""
@@ -47,6 +52,10 @@ class BloodPressureVC: UIViewController {
         fetchDoctorsInfo()
     }
     
+    var goalSys = 0
+    var goalDia = 0
+    var note = ""
+    
     func fetchDoctorsInfo(){
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
         guard let appDelegate =
@@ -61,21 +70,43 @@ class BloodPressureVC: UIViewController {
             let BPInfo = try managedContext.fetch(fetchRequestBP)
             for bpData in BPInfo{
                 if (UHI == bpData.value(forKey: "patientID") as? String){
-                    guard let goalSys = bpData.value(forKey: "goal_systolic") as? Int else {
-                        return
+                    
+//                    guard let goalSys = bpData.value(forKey: "goal_systolic") as? Int else {
+//                        return
+//                    }
+                    goalSys = bpData.value(forKey: "goal_systolic") as? Int ?? 0
+                    goalDia = bpData.value(forKey: "goal_diastolic") as? Int ?? 0
+                    
+                    if (goalSys > 0 && goalDia > 0){
+                        goal.text = "\(goalSys)/\(goalDia) mm Hg"
                     }
-                    let goalDia = bpData.value(forKey: "goal_diastolic") as! Int
-                    goal.text = "\(goalSys)/\(goalDia) mm Hg"
                     
-                    let alertHighSys = bpData.value(forKey: "alert_high_systolic") as! Int
-                    let alertHighDia = bpData.value(forKey: "alert_high_diastolic") as! Int
-                    alertHigh.text = "\(alertHighSys)/\(alertHighDia) mm Hg"
+                    let ahs = bpData.value(forKey: "alert_high_systolic") as? Int ?? 0
+                    print("AHS: \(ahs)")
+                    let ahd = bpData.value(forKey: "alert_high_diastolic") as? Int ?? 0
+                    print("AHD: \(ahd)")
+                    if (ahs > 0 && ahd > 0){
+                        alertHighSys = ahs
+                        alertHighDia = ahd
+                        alertHigh.text = "\(alertHighSys)/\(alertHighDia) mm Hg"
+                    }
                     
-                    let alertLowSys = bpData.value(forKey: "alert_low_systolic") as! Int
-                    let alertLowDia = bpData.value(forKey: "alert_low_diastolic") as! Int
-                    alertLow.text = "\(alertLowSys)/\(alertLowDia) mm Hg"
+                    let als = bpData.value(forKey: "alert_low_systolic") as? Int ?? 0
+                    print("ALS: \(als)")
+                    let ald = bpData.value(forKey: "alert_low_diastolic") as? Int ?? 0
+                    print("ALD: \(ald)")
+                    if (als > 0 && ald > 0){
+                        alertLowSys = als
+                        alertLowDia = ald
+                        alertLow.text = "\(alertLowSys)/\(alertLowDia) mm Hg"
+                    }
                     
-                    doctorNotes.text = bpData.value(forKey: "doctor_notes") as? String
+                    note = bpData.value(forKey: "doctor_notes") as? String ?? ""
+                    if (note != ""){
+                        doctorNotes.text = note
+                        //bpData.value(forKey: "doctor_notes") as? String
+                    }
+                    
                 }
             }
             
@@ -90,10 +121,50 @@ class BloodPressureVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    /**
+     Checking if the entered values with the alert values if they are abnormal then email to both Doctor as well as to the guardian.
+     Note: Apple do not allow you to send emails in the background without user's interaction. The only way you can do this is to use a server to send the email.
+     */
+    func checkforAbnormalValues(){
+        if let eneteredsysValue = Int(systolicTxt.text!), let entereddiaValue = Int(diastolicTxt.text!){
+            if (alertHighSys < 0 || alertHighDia < 0 || alertLowSys < 0 || alertLowDia < 0){
+                return
+            }
+            
+            let alertHsys = alertHighSys
+            let alertHDia = alertHighDia
+            let alertLSys = alertLowSys
+            let alertLDia = alertLowDia
+            
+            if (Int(eneteredsysValue) >= alertHsys || Int(eneteredsysValue) <= alertLSys || Int(entereddiaValue) >= alertHDia || Int(entereddiaValue) <= alertLDia){
+                let doctorsEmail = UserDefaults.standard.object(forKey: "doctorsEmail") as! String
+                let emergencyEmail = UserDefaults.standard.object(forKey: "EmergencyConatctEmail") as! String
+                
+                if MFMailComposeViewController.canSendMail() {
+                    let mail = MFMailComposeViewController()
+                    mail.mailComposeDelegate = self
+                    mail.setToRecipients([doctorsEmail, emergencyEmail])
+                    mail.setSubject("Alert !!!")
+                    mail.setMessageBody("<h3>Please take care of your dear one, as Blood Pressure values has been recorded abnormally !!! </h3>", isHTML: true)
+                    present(mail, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Unable to send", message: "Please check your internet and also correct recipitents email address", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            } else {
+                return
+            }
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
+    
     @IBAction func saveButton(_ sender: Any) {
-        
-        // for the first time
         if(systolicTxt.text != "" && diastolicTxt.text != ""){
+            checkforAbnormalValues()
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
@@ -112,6 +183,14 @@ class BloodPressureVC: UIViewController {
             person.setValue(Int16(diastolicTxt.text!), forKey: "diastolic")
             person.setValue(NSDate(), forKey: "date")
             person.setValue("mmHg", forKey: "unit")
+            
+            person.setValue(alertHighSys, forKey: "alert_high_systolic")
+            person.setValue(alertHighDia, forKey: "alert_high_diastolic")
+            person.setValue(alertLowSys, forKey: "alert_low_systolic")
+            person.setValue(alertLowDia, forKey: "alert_low_diastolic")
+            person.setValue(goalSys, forKey: "goal_systolic")
+            person.setValue(goalDia, forKey: "goal_diastolic")
+            person.setValue(note, forKey: "doctor_notes")
             
             do {
                 try managedContext.save()

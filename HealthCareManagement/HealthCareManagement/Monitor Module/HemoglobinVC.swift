@@ -42,7 +42,7 @@ class HemoglobinVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         fetchDoctorsInfo()
     }
-    
+    var note = ""
     func fetchDoctorsInfo(){
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
         guard let appDelegate =
@@ -58,7 +58,10 @@ class HemoglobinVC: UIViewController {
             let hemoInfo = try managedContext.fetch(fetchRequestHemo)
             for hemoData in hemoInfo{
                 if (UHI == hemoData.value(forKey: "patientID") as? String){
-                    doctorNotes.text = hemoData.value(forKey: "doctor_notes") as? String
+                    note = hemoData.value(forKey: "doctor_notes") as? String ?? ""
+                    if (note != ""){
+                        doctorNotes.text = note
+                    }
                 }
             }
             
@@ -105,6 +108,8 @@ class HemoglobinVC: UIViewController {
             person.setValue(Float(enterHemoglobinValue.text!), forKey: "hemoglobin_value")
             person.setValue(NSDate(), forKey: "date")
             person.setValue("%", forKey: "unit")
+            
+            person.setValue(note, forKey: "doctor_notes")
             
             do {
                 try managedContext.save()

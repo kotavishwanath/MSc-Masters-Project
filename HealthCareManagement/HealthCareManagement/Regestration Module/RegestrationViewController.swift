@@ -177,8 +177,17 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
                 
                 uhiNumber = randomNumberWith(digits: 5)
                 print(uhiNumber)
+                //For QR Code
+                let data = "\(uhiNumber)".data(using: String.Encoding.ascii)
+                guard let qr = CIFilter(name: "CIQRCodeGenerator") else { return }
+                qr.setValue(data, forKey: "inputMessage")
+                guard let qrImg = qr.outputImage else { return }
+                let transform = CGAffineTransform(scaleX: 10, y: 10)
+                let scaledQrImage = qrImg.transformed(by: transform)
+                print(scaledQrImage)
+                let QR = convertCIImage(cmage: scaledQrImage)
+                person.setValue(QR.pngData() as NSData?, forKey: "qrCode")
                 //need to save this number and is used as the Universal Health Identifier number.
-                
                 person.setValue(uhiNumber, forKeyPath: "uhi")
                 //        _ = profileImageview.image?.pngData() as NSData?
                 person.setValue(profileImageview.image!.pngData() as NSData?, forKey: "profile_picture")
@@ -222,6 +231,14 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         patientname.text = displayname.text
+    }
+    
+    func convertCIImage(cmage:CIImage) -> UIImage
+    {
+        let context:CIContext = CIContext.init(options: nil)
+        let cgImage:CGImage = context.createCGImage(cmage, from: cmage.extent)!
+        let QRimage:UIImage = UIImage.init(cgImage: cgImage)
+        return QRimage
     }
 }
 

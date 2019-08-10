@@ -30,6 +30,9 @@ class DashboardViewController: UIViewController {
     }
     
     @IBAction func emergencyButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "EmergencyVC") as! EmergencyVC
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func pillboxButton(_ sender: Any) {
@@ -127,6 +130,7 @@ class DashboardViewController: UIViewController {
         UserDefaults.standard.removeObject(forKey: "MedicineNamesList")
         UserDefaults.standard.removeObject(forKey: "TimesADay") 
         UserDefaults.standard.removeObject(forKey: "HowManyDays")
+        UserDefaults.standard.removeObject(forKey: "EmergencyConatctEmail")
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController

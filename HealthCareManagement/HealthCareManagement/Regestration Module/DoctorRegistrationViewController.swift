@@ -17,6 +17,7 @@ class DoctorRegistrationViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var reenterPassword: UITextField!
     @IBOutlet weak var submitbtn: UIButton!
+    @IBOutlet weak var doctorEmail: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,12 +58,23 @@ class DoctorRegistrationViewController: UIViewController {
         let doctor = NSManagedObject(entity: entity,
                                      insertInto: managedContext)
         
-        if (firstName.text != "" && lastName.text != "" && gmcNumber.text != "" && password.text != "" && reenterPassword.text != "") {
+        if (firstName.text != "" && lastName.text != "" && gmcNumber.text != "" && password.text != "" && reenterPassword.text != "" && doctorEmail.text != "") {
             if (password.text == reenterPassword.text){
+                let emailCheck = isValidEmail(testStr: doctorEmail.text!)
+                if (emailCheck == false){
+                    let alert = UIAlertController(title: "Not Valid", message: "Please provide the valid email address", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
                 doctor.setValue(firstName.text, forKey: "first_name")
                 doctor.setValue(lastName.text, forKey: "last_name")
                 doctor.setValue(gmcNumber.text, forKey: "gmc_number")
                 doctor.setValue(password.text, forKey: "password")
+                doctor.setValue(doctorEmail.text, forKey: "email")
+                
+                UserDefaults.standard.setValue(doctorEmail.text, forKey: "doctorsEmail")
+                UserDefaults.standard.synchronize()
                 
                 do {
                     try managedContext.save()
@@ -84,10 +96,16 @@ class DoctorRegistrationViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }else {
-            let alert = UIAlertController(title: "Not Valid", message: "Please provide the valid email address", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Not Valid", message: "Please enter all the required fileds", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
 }

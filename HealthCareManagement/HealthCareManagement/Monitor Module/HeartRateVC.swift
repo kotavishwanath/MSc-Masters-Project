@@ -8,8 +8,9 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
-class HeartRateVC: UIViewController {
+class HeartRateVC: UIViewController, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var enterHeartRate: UITextField!
     @IBOutlet weak var currentHeartRateValue: UILabel!
@@ -45,6 +46,10 @@ class HeartRateVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         fetchDoctorsInfo()
     }
+    var high = 0
+    var low = 0
+    var goalv = 0
+    var note = ""
     
     func fetchDoctorsInfo(){
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
@@ -60,10 +65,24 @@ class HeartRateVC: UIViewController {
             let heartRateInfo = try managedContext.fetch(fetchRequestHeartRate)
             for heartData in heartRateInfo{
                 if (UHI == heartData.value(forKey: "patientID") as? String){
-                    goal.text = "\(heartData.value(forKey: "goal") as! Int) bpm"
-                    alertLow.text = "\(heartData.value(forKey: "alert_low") as! Int) bpm"
-                    alertHigh.text = "\(heartData.value(forKey: "alert_high") as! Int) bpm"
-                    doctorNotes.text = heartData.value(forKey: "doctor_notes") as? String
+                    goalv = heartData.value(forKey: "goal") as? Int ?? 0
+                    if (goalv > 0){
+                         goal.text = "\(goalv) bpm"
+                    }
+                    let l = heartData.value(forKey: "alert_low") as? Int ?? 0
+                    if (l > 0){
+                        low = l
+                        alertLow.text = "\(low) bpm"
+                    }
+                    let h = heartData.value(forKey: "alert_high") as? Int ?? 0
+                    if (h > 0){
+                        high = h
+                        alertHigh.text = "\(high) bpm"
+                    }
+                    note = heartData.value(forKey: "doctor_notes") as? String ?? ""
+                    if (note != ""){
+                        doctorNotes.text = note
+                    }
                 }
             }
         }catch let error as NSError {
@@ -75,10 +94,43 @@ class HeartRateVC: UIViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "MonitorDashboardVC") as! MonitorDashboardVC
         navigationController?.pushViewController(vc, animated: true)
     }
+    /**
+     Checking if the entered values with the alert values if they are abnormal then email to both Doctor as well as to the guardian.
+     Note: Apple do not allow you to send emails in the background without user's interaction. The only way you can do this is to use a server to send the email.
+     */
+    func checkforAbnormalValues(){
+        if let eneteredValue = Int(enterHeartRate.text!){
+            if (Int(eneteredValue) >= high || Int(eneteredValue) <= low){
+                let doctorsEmail = UserDefaults.standard.object(forKey: "doctorsEmail") as! String
+                let emergencyEmail = UserDefaults.standard.object(forKey: "EmergencyConatctEmail") as! String
+                
+                if MFMailComposeViewController.canSendMail() {
+                    let mail = MFMailComposeViewController()
+                    mail.mailComposeDelegate = self
+                    mail.setToRecipients([doctorsEmail, emergencyEmail])
+                    mail.setSubject("Alert !!!")
+                    mail.setMessageBody("<h3>Please take care of your dear one, as heart rate values has been recorded abnormally !!! </h3>", isHTML: true)
+                    present(mail, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Unable to send", message: "Please check your internet and also correct recipitents email address", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            } else {
+                return
+            }
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true)
+    }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
+      
         // for the first time
-        if(currentHeartRateValue.text != ""){
+        if(enterHeartRate.text != ""){
+            checkforAbnormalValues()
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {
                     return
@@ -96,6 +148,11 @@ class HeartRateVC: UIViewController {
             person.setValue(Int16(enterHeartRate.text!), forKey: "heartrate_value")
             person.setValue(NSDate(), forKey: "date")
             person.setValue("bpm", forKey: "unit")
+            
+            person.setValue(note, forKey: "doctor_notes")
+            person.setValue(goalv, forKey: "goal")
+            person.setValue(high, forKey: "alert_high")
+            person.setValue(low, forKey: "alert_low")
             
             do {
                 try managedContext.save()
