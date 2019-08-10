@@ -25,6 +25,9 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fetchPharmaDetails()
+        
         // TimesADay HowManyDays MedicineNamesList
         let medidinename = UserDefaults.standard.object(forKey: "MedicineNamesList") as! NSArray
         let times = UserDefaults.standard.object(forKey: "TimesADay") as! NSArray
@@ -78,8 +81,6 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
         message += "\(name).<br>"
         
         print(message)
- 
-        //Send the address of the patient to pharma
     }
 
     func sendEmail() {
@@ -95,6 +96,9 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
             mail.setSubject("Please send all the medicines")
             mail.setMessageBody(message, isHTML: true)
             present(mail, animated: true)
+            
+            storeDetails()
+            
         } else {
             // show failure alert
             let alert = UIAlertController(title: "Unable to send", message: "Please check your internet and also correct recipitents email address", preferredStyle: UIAlertController.Style.alert)
@@ -106,6 +110,25 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
+    }
+    
+    func storeDetails(){
+        UserDefaults.standard.set(pharmaName.text, forKey: "PharmacyName")
+        UserDefaults.standard.set(pharmaAddress1.text, forKey: "PharmacyAddress1")
+        UserDefaults.standard.set(pharmaAddress2.text, forKey: "PharmacyAddress2")
+        UserDefaults.standard.set(postcodeTxt.text, forKey: "PharmacyPostcode")
+        UserDefaults.standard.set(telephoneNum.text, forKey: "PharmacyTelephone")
+        UserDefaults.standard.set(emailAddressTxt.text, forKey: "PharmacyEmail")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func fetchPharmaDetails(){
+        pharmaName.text = UserDefaults.standard.object(forKey: "PharmacyName") as? String ?? ""
+        pharmaAddress1.text = UserDefaults.standard.object(forKey: "PharmacyAddress1") as? String ?? ""
+        pharmaAddress2.text = UserDefaults.standard.object(forKey: "PharmacyAddress2") as? String ?? ""
+        postcodeTxt.text = UserDefaults.standard.object(forKey: "PharmacyPostcode") as? String ?? ""
+        telephoneNum.text = UserDefaults.standard.object(forKey: "PharmacyTelephone") as? String ?? ""
+        emailAddressTxt.text = UserDefaults.standard.object(forKey: "PharmacyEmail") as? String ?? ""
     }
 
     @IBAction func back(_ sender: Any) {
