@@ -147,7 +147,7 @@ class CalenderView: UIView, UICollectionViewDelegate, UICollectionViewDataSource
     func openTimePicker()  {
         timePicker.datePickerMode = UIDatePicker.Mode.time
         timePicker.backgroundColor = UIColor.blue
-        timePicker.frame = CGRect(x: 0.0, y: (self.frame.height/2 + 160), width: self.frame.width, height: 150.0)
+        timePicker.frame = CGRect(x: 0.0, y: (self.frame.height/2 + 160), width: self.frame.width, height: 250.0)
         timePicker.backgroundColor = UIColor.lightGray
         addSubview(timePicker)
         self.bringSubviewToFront(timePicker)

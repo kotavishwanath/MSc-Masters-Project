@@ -13,6 +13,7 @@ class HealthStatusVC: UIViewController {
 
     var UHI = String()
     
+    @IBOutlet weak var bpView: UIView!
     @IBOutlet weak var tempView: UIView!
     @IBOutlet weak var pulseoxiView: UIView!
     @IBOutlet weak var glucoseView: UIView!
@@ -21,6 +22,10 @@ class HealthStatusVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let guster = UITapGestureRecognizer (target: self, action: #selector(HealthStatusVC.bpviewTapped(_:)))
+        
+        bpView.isUserInteractionEnabled = true
+        bpView.addGestureRecognizer(guster)
 //        TemperatureVC
         let tempGuster = UITapGestureRecognizer (target: self, action: #selector(HealthStatusVC.tempviewTapped(_:)))
         
@@ -50,46 +55,7 @@ class HealthStatusVC: UIViewController {
         
         //For Reteriving the Blood Pressure Information
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
-        var systolicAry = [Int]()
-        var diastolicAry = [Int]()
         
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "BloodPressureVitalInfo")
-        do{
-            let info = try managedContext.fetch(fetchRequest)
-            for data in info{
-                if (UHI == (data.value(forKey: "patientID") as? String)){
-                    systolicAry.append(data.value(forKey: "systolic") as! Int)
-                    diastolicAry.append(data.value(forKey: "diastolic") as! Int)
-                }
-            }
-        }catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-//        print("Systolic Arry: \(systolicAry)")
-//        print("Diastolic Arry: \(diastolicAry)")
-//
-        var systolicAryData = [Int]()
-        var diastolicAryData = [Int]()
-        
-        for i in 0..<systolicAry.count{
-//            print("Systolic Ary index :\(i) and value :\(systolicAry[i])")
-            if (systolicAry[i] != 0){
-                systolicAryData.append(systolicAry[i])
-                diastolicAryData.append(diastolicAry[i])
-            }
-        }
-        
-        print("============================================")
-        print("Systolic Arry: \(systolicAryData)")
-        print("Diastolic Arry: \(diastolicAryData)")
         
     }
     
@@ -115,6 +81,51 @@ class HealthStatusVC: UIViewController {
     }
      */
     
+    @objc func bpviewTapped(_ guster: UITapGestureRecognizer){
+        var systolicAry = [Int]()
+        var diastolicAry = [Int]()
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "BloodPressureVitalInfo")
+        do{
+            let info = try managedContext.fetch(fetchRequest)
+            for data in info{
+                if (UHI == (data.value(forKey: "patientID") as? String)){
+                    systolicAry.append(data.value(forKey: "systolic") as! Int)
+                    diastolicAry.append(data.value(forKey: "diastolic") as! Int)
+                }
+            }
+        }catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        var systolicAryData = [Int]()
+        var diastolicAryData = [Int]()
+        
+        for i in 0..<systolicAry.count{
+            if (systolicAry[i] != 0){
+                systolicAryData.append(systolicAry[i])
+                diastolicAryData.append(diastolicAry[i])
+            }
+        }
+        
+        print("============================================")
+        print("Systolic Arry: \(systolicAryData)")
+        print("Diastolic Arry: \(diastolicAryData)")
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ChartsViewController") as! ChartsViewController
+        vc.systolicAry = systolicAryData
+        vc.diastolicAry = diastolicAryData
+        vc.screen = "BloodPressure"
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc func tempviewTapped(_ guster: UITapGestureRecognizer){
         var temperatureDataAry = [Float]()

@@ -29,9 +29,14 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
         fetchPharmaDetails()
         
         // TimesADay HowManyDays MedicineNamesList
-        let medidinename = UserDefaults.standard.object(forKey: "MedicineNamesList") as! NSArray
-        let times = UserDefaults.standard.object(forKey: "TimesADay") as! NSArray
-        let days = UserDefaults.standard.object(forKey: "HowManyDays") as! NSArray
+        let medidinename = UserDefaults.standard.object(forKey: "MedicineNamesList") as? NSArray ?? []
+        let times = UserDefaults.standard.object(forKey: "TimesADay") as? NSArray ?? []
+        let days = UserDefaults.standard.object(forKey: "HowManyDays") as? NSArray ?? []
+        
+        if (medidinename == [] || medidinename.count == 0){
+            //Alert
+            print("Please check your medication in pill box")
+        }
 
         let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
         let countw = times.count

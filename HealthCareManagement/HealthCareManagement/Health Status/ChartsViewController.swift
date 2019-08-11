@@ -20,6 +20,9 @@ class ChartsViewController: UIViewController {
     var hearrateDataArray = [Int]()
     var hemoglobinDataArray = [Float]()
     
+    var systolicAry = [Int]()
+    var diastolicAry = [Int]()
+    
     var screen = ""
     
     override func viewDidLoad() {
@@ -40,6 +43,8 @@ class ChartsViewController: UIViewController {
         } else if (screen == "Hemoglobin"){
             print("Hemoglobin Data: \(hemoglobinDataArray)")
             hemoChartValues(set: hemoglobinDataArray)
+        } else if (screen == "BloodPressure"){
+             bloodpressureChartValues(set1: systolicAry, set2: diastolicAry)
         }
          chartsTitle.text = "\(screen) Report"
         
@@ -104,6 +109,38 @@ class ChartsViewController: UIViewController {
         let data = LineChartData(dataSet: set1)
         self.chartView.chartDescription?.text = "Hemoglobin Info"
         self.chartView.data = data
+    }
+    
+    func bloodpressureChartValues(set1: [Int], set2: [Int]){
+        let sysAry = set1
+        let diaAry = set2
+        
+        let values = (0..<sysAry.count).map { (i) -> ChartDataEntry in
+            let val = Double(sysAry[i])
+            return ChartDataEntry(x: Double(i), y: val)
+        }
+        
+        let set1 = LineChartDataSet(entries: values, label: "Systolic")
+        set1.setColor(UIColor.green)
+        set1.setCircleColor(UIColor.green)
+        
+        let values1 = (0..<diaAry.count).map { (i) -> ChartDataEntry in
+            let val = Double(diaAry[i])
+            return ChartDataEntry(x: Double(i), y: val)
+        }
+        
+        let set2 = LineChartDataSet(entries: values1, label: "Diastolic")
+       
+        var dataSetss: [LineChartDataSet] = [LineChartDataSet]()
+        dataSetss.append(set1)
+        dataSetss.append(set2)
+
+        let data = LineChartData(dataSets: dataSetss)
+        
+        self.chartView.chartDescription?.text = "Blood Pressure Info"
+        self.chartView.data = data
+
+       
     }
     
     @IBAction func closeBtnClicked(_ sender: Any) {
