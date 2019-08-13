@@ -10,7 +10,9 @@ import UIKit
 import CoreData
 
 class HemoglobinVC: UIViewController {
-
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var currentHemoglobinValue: UILabel!
     @IBOutlet weak var doctorNotes: UILabel!
     @IBOutlet weak var updatedDate: UILabel!
@@ -39,10 +41,16 @@ class HemoglobinVC: UIViewController {
         
         fetchDoctorsInfo()
     }
+    /**
+     View Controller life cycle method which will be used when navigating back to this screen
+     */
     override func viewWillAppear(_ animated: Bool) {
         fetchDoctorsInfo()
     }
     var note = ""
+    /**
+     Fetching the doctor inputs like alerts and notes 
+     */
     func fetchDoctorsInfo(){
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
         guard let appDelegate =
@@ -81,15 +89,18 @@ class HemoglobinVC: UIViewController {
         }
         
     }
-    
+    /**
+     Back button which will navigate to Monitor Dahborad screen
+     */
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MonitorDashboardVC") as! MonitorDashboardVC
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Save button used for saving the vital information 
+     */
     @IBAction func saveButtonClicked(_ sender: Any) {
-        // for the first time
         if(enterHemoglobinValue.text != ""){
             guard let appDelegate =
                 UIApplication.shared.delegate as? AppDelegate else {

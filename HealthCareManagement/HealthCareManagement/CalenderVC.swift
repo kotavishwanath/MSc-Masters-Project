@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalenderVC.swift
 //  HealthCareManagement
 //
 //  Created by Vishwanath Kota on 21/06/19.
@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import UserNotifications
-
+/// Theme for the calender UI.
 enum MyTheme {
     case light
     case dark
@@ -58,69 +58,8 @@ class CalenderVC: UIViewController, CalenderDelegate {
        
         calenderView.myCollectionView.collectionViewLayout.invalidateLayout()
     }
-    /*
-    func openTimePicker()  {
-        timePicker.datePickerMode = UIDatePicker.Mode.time
-        timePicker.frame = CGRect(x: 0.0, y: (self.view.frame.height/2 + 60), width: self.view.frame.width, height: 150.0)
-        timePicker.backgroundColor = UIColor.white
-        self.view.addSubview(timePicker)
-        timePicker.addTarget(self, action: #selector(CalenderVC.startTimeDiveChanged), for: UIControl.Event.valueChanged)
-    }
-    
-    @objc func startTimeDiveChanged(sender: UIDatePicker) {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        let timeslot = formatter.string(from: sender.date)
-        timePicker.removeFromSuperview() // if you want to remove time picker
-        
-        saveAppointmentDatetime()
-    }
-    
-    func saveAppointmentDatetime(){
-        print(selectedDate)
-        if (selectedDate == ""){
-            return
-        }
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        let fetchRequest =
-            NSFetchRequest<NSManagedObject>(entityName: "PatientsContactInfo")
-        do {
-            let patientsinfo = try managedContext.fetch(fetchRequest)
-            for data in patientsinfo {
-                if (Int64(uhino) == (data.value(forKey: "uhi") as? Int64)){
-                    data.setValue(selectedDate, forKey: "appointmentDate")
-                    try managedContext.save()
-                    let alert = UIAlertController(title: "Successful", message: "Your appointment has been booked on \(selectedDate)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (UIAlertAction) in
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
-                        vc.name = (data.value(forKey: "username") as? String)!
-                        vc.uhinumber = "\(data.value(forKey: "uhi") as! Int)"
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }))
-                    
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
-        }catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-    }
-     */
     
     @objc func rightBarBtnAction(sender: UIBarButtonItem) {
-//        print(123)
-        //Time
-        
-//        self.openTimePicker()
-        
-        //======================
-        
         print(selectedDate)
         if (selectedDate == "" || selectedTime == ""){
             return

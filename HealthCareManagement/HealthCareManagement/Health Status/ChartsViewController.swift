@@ -10,19 +10,26 @@ import UIKit
 import Charts
 
 class ChartsViewController: UIViewController {
-
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var chartView: LineChartView!
     @IBOutlet weak var chartsTitle: UILabel!
     
+    ///Getting the temperature data values
     var tempDataArrey = [Float]()
+    ///Getting the pulse oxi data values
     var pulseDataArray = [Float]()
+    ///Getting the Glucose data values
     var glucoseDataArray = [Int]()
+    ///Getting the Heart rate data values
     var hearrateDataArray = [Int]()
+    ///Getting the Hemoglobin data values
     var hemoglobinDataArray = [Float]()
     
     var systolicAry = [Int]()
     var diastolicAry = [Int]()
-    
+    ///Screen name 
     var screen = ""
     
     override func viewDidLoad() {
@@ -47,10 +54,11 @@ class ChartsViewController: UIViewController {
              bloodpressureChartValues(set1: systolicAry, set2: diastolicAry)
         }
          chartsTitle.text = "\(screen) Report"
-        
     }
     
-    
+    /**
+     Ploting the temperature graph
+     */
     func temperatureChartValues(set: [Float]){
         let temperatureAry = set
         let values = (0..<temperatureAry.count).map { (i) -> ChartDataEntry in
@@ -62,7 +70,9 @@ class ChartsViewController: UIViewController {
         self.chartView.chartDescription?.text = "Temperature Info"
         self.chartView.data = data
      }
-    
+    /**
+     Ploting the pulse oxi graph
+     */
     func pulseOxiChartValues(set: [Float]){
         let pulseAry = set
         let values = (0..<pulseAry.count).map { (i) -> ChartDataEntry in
@@ -74,7 +84,9 @@ class ChartsViewController: UIViewController {
         self.chartView.chartDescription?.text = "PulseOxi Info"
         self.chartView.data = data
     }
-    
+    /**
+     Ploting the Glucose graph
+     */
     func glucoseChartValues(set: [Int]){
         let glucoseAry = set
         let values = (0..<glucoseAry.count).map { (i) -> ChartDataEntry in
@@ -86,7 +98,9 @@ class ChartsViewController: UIViewController {
         self.chartView.chartDescription?.text = "Glucose Info"
         self.chartView.data = data
     }
-    
+    /**
+     Ploting the Heart rate graph
+     */
     func heartrateChartValues(set: [Int]){
         let heartbeatAry = set
         let values = (0..<heartbeatAry.count).map { (i) -> ChartDataEntry in
@@ -98,7 +112,9 @@ class ChartsViewController: UIViewController {
         self.chartView.chartDescription?.text = "Heart Rate"
         self.chartView.data = data
     }
-    
+    /**
+     Ploting the Hemoglobin graph
+     */
     func hemoChartValues(set: [Float]){
         let hemoAry = set
         let values = (0..<hemoAry.count).map { (i) -> ChartDataEntry in
@@ -110,7 +126,9 @@ class ChartsViewController: UIViewController {
         self.chartView.chartDescription?.text = "Hemoglobin Info"
         self.chartView.data = data
     }
-    
+    /**
+     Ploting the Blood pressure graph
+     */
     func bloodpressureChartValues(set1: [Int], set2: [Int]){
         let sysAry = set1
         let diaAry = set2
@@ -139,10 +157,10 @@ class ChartsViewController: UIViewController {
         
         self.chartView.chartDescription?.text = "Blood Pressure Info"
         self.chartView.data = data
-
-       
     }
-    
+    /**
+     Close button is used for navigating to the Health status screen
+     */
     @IBAction func closeBtnClicked(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "HealthStatusVC") as! HealthStatusVC

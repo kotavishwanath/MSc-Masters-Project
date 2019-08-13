@@ -8,8 +8,13 @@
 
 import UIKit
 import CoreData
-
+/**
+ This is where doctor serach for the patient, it can be done in three ways either by patient UHI number, date of bith and also by last name.
+ */
 class DoctorsViewController: UIViewController {
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var doctorName: UILabel!
     @IBOutlet weak var GMCNumber: UILabel!
     @IBOutlet weak var submitbtn: UIButton!
@@ -20,9 +25,13 @@ class DoctorsViewController: UIViewController {
     var doctorname: String = ""
     var gmcNumber: String = ""
     
+    ///Storing patinet name
     var nameAry = NSMutableArray()
+    ///Stroring UHI numbers
     var uhiAry = NSMutableArray()
+    ///Storing patient Date of birth
     var dobAry = NSMutableArray()
+    ///Storing patient profile picture
     var imgAry = NSMutableArray()
     
     override func viewDidLoad() {
@@ -47,7 +56,13 @@ class DoctorsViewController: UIViewController {
         name.layer.borderWidth = 1
         name.layer.cornerRadius = 5.0
     }
-    
+    /**
+     Fetching the patients information using the name, date of  birth and UHI number
+     - parameters:
+         - name: Patient name
+         - dateOfbirth: Patient Date of birth
+         - uhi: Patient UHI number
+     */
     func fetchDetails(name: String, dateOfbirth: String, uhi: String){
         let patientIdentifier = Int(uhi)
         guard let appDelegate =
@@ -82,7 +97,9 @@ class DoctorsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
+    /**
+     Doctor enetered information about the patient is passed to the DisplayPatientsList screen as there may be multiple patinets with the same information.
+     */
     @IBAction func submitButton(_ sender: Any) {
         
 //        let uhinumber = uhinumberTxt.text
@@ -101,7 +118,11 @@ class DoctorsViewController: UIViewController {
         
         
     }
-    
+    /**
+     Navigating to the Patient profile screen by using the patient uhiversal health identifer
+     - Parameters:
+        - number: Patinet UHI number
+     */
     func navigateToDahboard(number: Int){
         let uhi = Int(uhinumberTxt.text!)
         guard let appDelegate =
@@ -143,7 +164,9 @@ class DoctorsViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
+    /**
+     Logout button which is used for loggout of the application and navigating to the Login screen.
+     */
     @IBAction func logoutBtn(_ sender: Any) {
         UserDefaults.standard.removeObject(forKey: "PatientUHINumber")
         UserDefaults.standard.removeObject(forKey: "EmergencyContact")

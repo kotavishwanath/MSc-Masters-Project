@@ -4,21 +4,22 @@
 //
 //  Created by Vishwanath Kota on 10/06/19.
 //  Copyright © 2019 University Of Hertfordshire. All rights reserved.
-// https://www.youtube.com/watch?v=tP4OGvIRUC4 for coredata
-// https://stackoverflow.com/questions/29825604/how-to-save-array-to-coredata for transformable data type in coredata
-// http://www.bloodpressureuk.org/BloodPressureandyou/Thebasics/Bloodpressurechart for blood pressure values
-// https://medium.com/@ankurvekariya/core-data-crud-with-swift-4-2-for-beginners-40efe4e7d1cc for updating the records and deleting the records from the coredata
+//
 
-
+/**
+ Imported Coredata and HelathKit from the Apple
+ */
 import UIKit
 import CoreData
 import HealthKit
 
+/// Creating the healthkit object
 let healthKitStore:HKHealthStore = HKHealthStore()
 
-
 class ViewController: UIViewController {
-
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var docotrRegisterBtn: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
@@ -26,28 +27,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwod: UITextField!
     @IBOutlet weak var keepSignIn: UIButton!
     
-    var appointmentDate = String()
+    /// Steps information of the user from the health app
     var steps = Double()
+    /// Age infromation of the user from the health app
     var age = Int()
+    /// Blood group infromation of the user from the health app
     var bloodgroup = String()
-
-//    enum bloodType: Int {
-//       case HKBloodTypeNotSet = 0
-//       case HKBloodTypeAPositive
-//       case HKBloodTypeANegative
-//       case HKBloodTypeBPositive
-//       case HKBloodTypeBNegative
-//       case HKBloodTypeABPositive
-//       case HKBloodTypeABNegative
-//       case HKBloodTypeOPositive
-//       case HKBloodTypeONegative
-//    };
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-       // keepSignIn.setImage(UIImage(named: "empty_check"), for: .normal)
-        //navigationController?.setNavigationBarHidden(true, animated: true)
         signInButton.layer.borderWidth = 1
         signInButton.layer.borderColor = UIColor.blue.cgColor
         signInButton.layer.cornerRadius = 4.0
@@ -70,7 +58,9 @@ class ViewController: UIViewController {
         
         integrateHealthKit()
     }
-    
+    /**
+     Integrating the Health Kit and also asking for the users permession to share the deatils with the application
+     */
     func integrateHealthKit() {
         let healthKitTypesToRead: Set<HKObjectType> = [
             HKObjectType.characteristicType(forIdentifier: .bloodType)!,
@@ -84,7 +74,6 @@ class ViewController: UIViewController {
             print("Error Occured")
             return
         }
-        
         healthKitStore.requestAuthorization(toShare: healthKitTypesToWrite , read: healthKitTypesToRead) { (success, error) in
             print("Read write authorization succeded")
             self.getTodaysSteps { (steps) in
@@ -92,34 +81,22 @@ class ViewController: UIViewController {
                 self.steps = steps
                 UserDefaults.standard.set("\(steps)", forKey: "StepsCount")
             }
-           let (years, btype) = self.readProfilesFromHealthKit()
+            ///  let (years, btype) it is a tuple in swift
+            let (years, btype) = self.readProfilesFromHealthKit()
             self.age = years ?? 0
            
             UserDefaults.standard.set(self.age, forKey:"Age")
             UserDefaults.standard.synchronize()
-            
         }
     }
-   /*
-    func getBloodType(type: HKBloodTypeObject?) -> String{
-        var bloodType = ""
-        if (type != nil){
-            switch(type!){
-                case .HKBloodTypeAPositive:
-                    bloodType = "A+"
-                case .HKBloodTypeANegative:
-                    bloodType = "A-"
-               
-                    break
-            }
-            
-        }
-        
-        return bloodType
-    }
-    */
+    /**
+     Reading the data from the Health app of the users device
+     - parameters:
+         - age: For getting the age information
+         - bloodType: For getting the blood type information if avaiable in the users Health App
+         - Returns: age and blood group of the patient
+     */
     func readProfilesFromHealthKit() -> (age: Int?, bloodType: HKBloodTypeObject?){
-        
         var age: Int?
         var bloodType: HKBloodTypeObject?
         
@@ -139,9 +116,13 @@ class ViewController: UIViewController {
         }
         
         return(age, bloodType)
-        
     }
     
+    
+    /**
+     Get the number of steps the user has been walked
+     - Parameter completionHandler: The callback called after retrieval of the steps information from the HealthKit.
+     */
     func getTodaysSteps(completion: @escaping (Double) -> Void) {
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         
@@ -156,26 +137,25 @@ class ViewController: UIViewController {
             }
             completion(sum.doubleValue(for: HKUnit.count()))
         }
-        
+        /// Excute the query for fetching the information
         healthKitStore.execute(query)
     }
-
+    /**
+     ViewWillAppear method is called when the user is navigating back to this screen
+     */
     override func viewWillAppear(_ animated: Bool) {
          navigationController?.setNavigationBarHidden(true, animated: true)
     }
-    
+    /**
+     When clicked on signin button, this method checks the credentials of the user and navigative accordingly to the doctors screen or the patients screen
+     */
     @IBAction func signinbutton(_ sender: Any) {
-        // For fetching the data from the
-        //1
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
         }
-        
         let managedContext =
             appDelegate.persistentContainer.viewContext
-        
-        //2
         let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "PatientsContactInfo")
         
@@ -197,15 +177,16 @@ class ViewController: UIViewController {
                 if (uname == (data.value(forKey: "gmc_number") as? String)) && (pass == (data.value(forKey: "password") as? String)){
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "DoctorsViewController") as! DoctorsViewController
-                    //https://www.gmc-uk.org/registration-and-licensing/the-medical-register/a-guide-to-the-medical-register/find-a-doctors-record
+                    
                     let dcotorName = "Name: \((data.value(forKey: "first_name") as? String)!) \((data.value(forKey: "last_name") as? String)!)"
                     let gmcNumber = "GMC Ref. No.: \(uname)"
                     vc.doctorname = dcotorName
                     vc.gmcNumber = "GMC Ref. No.: \(uname)"
-                    
+                    /// Storing the Doctor name and General medication number for displaying the in the docotrs dashboard screen
                     UserDefaults.standard.set(dcotorName, forKey: "DoctorName")
                     UserDefaults.standard.set(gmcNumber, forKey: "GMCNumber")
                     UserDefaults.standard.synchronize()
+                    /// Navigating to Doctors View controller
                     navigationController?.pushViewController(vc, animated: true)
                     return
                 }
@@ -214,34 +195,20 @@ class ViewController: UIViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
         
-    /*
-        if (uname == "doctor" && pass == "doctor"){
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "DoctorsViewController") as! DoctorsViewController
-        //https://www.gmc-uk.org/registration-and-licensing/the-medical-register/a-guide-to-the-medical-register/find-a-doctors-record
-            vc.doctorname = "Name: \(uname)"
-            vc.gmcNumber = "GMC Ref. No.: 54323456"
-            navigationController?.pushViewController(vc, animated: true)
-            return
-        }
- */
-        //3
         do {
             let patientsinfo = try managedContext.fetch(fetchRequest)
             for data in patientsinfo {
                 if (uname == (data.value(forKey: "username") as! String)) && (pass == (data.value(forKey: "password") as! String)){
                     print(data.value(forKey: "uhi") as! Int)
                     print(data)
-                /*  let alert = UIAlertController(title: "Logged In Successfully", message: "", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil) */
+               
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
                     
                     let patientname = (data.value(forKey: "display_name") as? String)!
                     let patientUHI = "\(data.value(forKey: "uhi") as! Int)"
                     let emergencyContactEmail = "\(data.value(forKey: "emergency_contact_email") as! String)"
-                    
+                    /// Storing the username and Universal identifier number for fetching the data with respect to the particular patient
                     UserDefaults.standard.set(patientname, forKey: "username")
                     UserDefaults.standard.set(patientUHI, forKey: "UHI")
                     UserDefaults.standard.set(emergencyContactEmail, forKey: "EmergencyConatctEmail")
@@ -249,50 +216,41 @@ class ViewController: UIViewController {
                     
                     vc.name = patientname
                     vc.uhinumber = patientUHI
+                    /// Navigating to the patients dashboard view controller
                     navigationController?.pushViewController(vc, animated: true)
                     return
                 }
-                
-                //                let imgData = data.value(forKey: "profile_picture") as? Data
-                
-                //                let image = UIImage(data: imgData? as Data)
-                //                print(image as Any)
-                
             }
-            
+            ///Alert when the user enters invalid credentials
             let alert = UIAlertController(title: "UnSuccessful", message: "Please check your credentials", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-            
-            
-            // patientsinfo.value(forKeyPath: "uhi") as? Int
-            print(patientsinfo)
+//            print(patientsinfo)
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        
-        
     }
+    /**
+      Navigating to the patient regestration screen
+     */
     @IBAction func registerbutotn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "RegestrationViewController") as! RegestrationViewController
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Keep me signed is the functionality used for allowing the user to use the app without entering the login credentials again and again.
+     */
     @IBAction func keepMeSignInButton(_ sender: Any) {
-
         if keepSignIn.isSelected{
-//            keepSignIn.layer.borderWidth = 1.0
-//            keepSignIn.layer.borderColor = UIColor.green.cgColor
-            //keepSignIn.setImage(UIImage(named: "check"), for: .normal)
             keepSignIn.isSelected = false
         }else{
             keepSignIn.isSelected = true
-//            keepSignIn.layer.borderWidth = 1.0
-//            keepSignIn.layer.borderColor = UIColor.red.cgColor
         }
-        
     }
+    /**
+     Navigating to the doctors regestration screen
+     */
     @IBAction func doctorRegistration(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DoctorRegistrationViewController") as! DoctorRegistrationViewController

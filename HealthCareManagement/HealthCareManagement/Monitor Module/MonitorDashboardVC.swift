@@ -9,8 +9,13 @@
 import UIKit
 import CoreBluetooth
 import CoreData
-
+/**
+ This class is used for showing all the vital latest values and also allows the user to connect to any BLE (Bluetooth Low Energy Devices)
+ */
 class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var webvw: UIWebView!
     
     @IBOutlet weak var bluetoothBtn: UIButton!
@@ -54,34 +59,37 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
-        
+        // Blood Pressure
         let guster = UITapGestureRecognizer (target: self, action: #selector(MonitorDashboardVC.bpviewTapped(_:)))
         
         bpView.isUserInteractionEnabled = true
         bpView.addGestureRecognizer(guster)
         
-//        TemperatureVC
+        // TemperatureVC
         let tempGuster = UITapGestureRecognizer (target: self, action: #selector(MonitorDashboardVC.tempviewTapped(_:)))
         
         temperatureView.isUserInteractionEnabled = true
         temperatureView.addGestureRecognizer(tempGuster)
         
-//        PulseOxiVC
+        // PulseOxiVC
         let oxiGuster = UITapGestureRecognizer (target: self, action: #selector(MonitorDashboardVC.oxiviewTapped(_:)))
         
         pluseOxiView.isUserInteractionEnabled = true
         pluseOxiView.addGestureRecognizer(oxiGuster)
         
+        // GlucoseVC
         let glucoseGuster = UITapGestureRecognizer (target: self, action: #selector(MonitorDashboardVC.glucoseTapped(_:)))
         
         glucoseView.isUserInteractionEnabled = true
         glucoseView.addGestureRecognizer(glucoseGuster)
         
+        // Heart rate VC
         let heartRateGuster = UITapGestureRecognizer (target: self, action: #selector(MonitorDashboardVC.heartRateTapped(_:)))
         
         heartRateView.isUserInteractionEnabled = true
         heartRateView.addGestureRecognizer(heartRateGuster)
         
+        // Hemoglobin VC
         let hemoglobinGuster = UITapGestureRecognizer (target: self, action: #selector(MonitorDashboardVC.hemoglobinTapped(_:)))
         
         hemoglobinView.isUserInteractionEnabled = true
@@ -99,7 +107,9 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         let marquee = "<html><body><marquee>\(str)</marquee></body></html>"
         webvw.loadHTMLString(marquee, baseURL: nil)
     }
-    
+    /**
+     Fetching all the information for the database and showing it.
+     */
     func updateUI(){
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -128,7 +138,7 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
             let glucoseInfo = try managedContext.fetch(fetchRequestGlucose)
             let heartRateInfo = try managedContext.fetch(fetchRequestHeartRate)
             let hemoInfo = try managedContext.fetch(fetchRequestHemo)
-            
+            /// Fetching blood pressure infromation
             for bpData in BPInfo{
                 if (UHI == bpData.value(forKey: "patientID") as? String){
                    let systolicValue = bpData.value(forKeyPath: "systolic") as! Int
@@ -143,7 +153,7 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     }
                 }
             }
-            
+            /// Fetching Temperature infromation
             for tempData in tempInfo{
                /* let i:Int = 0
                 tempData.setValue(i, forKey: "temprature_info")*/
@@ -159,7 +169,7 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     }
                 }
             }
-            
+            /// Fetching Pulse Oxi information infromation
             for pulseData in pluseOxiInfo{
                 if (UHI == pulseData.value(forKey: "patientID") as? String){
                     let pulse = pulseData.value(forKey: "pulseoxi_value") as! Float
@@ -173,7 +183,7 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     }
                 }
             }
-            
+            /// Fetching Glucose infromation
             for glucoseData in glucoseInfo{
                 if (UHI == glucoseData.value(forKey: "patientID") as? String){
                     let glucose = glucoseData.value(forKey: "glucose_value") as! Int
@@ -187,7 +197,7 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     }
                 }
             }
-            
+            /// Fetching Heartrate infromation
             for heartData in heartRateInfo{
                 if (UHI == heartData.value(forKey: "patientID") as? String){
                     let rate = heartData.value(forKey: "heartrate_value") as! Int
@@ -201,7 +211,7 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
                     }
                 }
             }
-            
+            /// Fetching Hemoglobin infromation
             for hemoData in hemoInfo{
                 if (UHI == hemoData.value(forKey: "patientID") as? String){
                     let hemo = hemoData.value(forKey: "hemoglobin_value") as! Float
@@ -220,7 +230,9 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-    
+    /**
+     When the user clicked on back button app will be navigating to the Dashboard view controller
+     */
     @IBAction func backButtonClicked(_ sender: Any) {
         let name = UserDefaults.standard.object(forKey: "username") as! String
 //        let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
@@ -230,12 +242,18 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         vc.uhinumber = UHI
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Check if the blutooth is enabled or not, if not then it will navigate to settings page
+     */
     @IBAction func bluetoothBtnClicked(_ sender: Any) {
         manager          = CBCentralManager()
         manager.delegate = self
     }
-    
+    /**
+     Navigating to Patient profile Blood pressure screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func bpviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "BloodPressureVC") as! BloodPressureVC
@@ -247,7 +265,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         vc.d = bloodPressureDate
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Navigating to Patient profile Temperature screen for updating vital alerts and medication information
+     - Parameters:
+            - guster: sending guesture view
+     */
     @objc func tempviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "TemperatureVC") as! TemperatureVC
@@ -259,7 +281,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         vc.d = temperatureDate
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Navigating to Patient profile pulseoxi screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func oxiviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PulseOxiVC") as! PulseOxiVC
@@ -271,7 +297,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         vc.d = pulseoxiDate
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    /**
+     Navigating to Patient profile Glucose screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func glucoseTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "GlucoseVC") as! GlucoseVC
@@ -283,7 +313,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         vc.d = glucoseDate
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Navigating to Patient profile Heart rate screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func heartRateTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "HeartRateVC") as! HeartRateVC
@@ -295,7 +329,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         vc.d = heartDate
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Navigating to Patient profile Hemoglobin screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func hemoglobinTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "HemoglobinVC") as! HemoglobinVC
@@ -307,7 +345,11 @@ class MonitorDashboardVC: UIViewController,CBCentralManagerDelegate {
         vc.d = hemobloginDate
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Bluetooth connection updates
+     - Parameters:
+        - central: CBCentral Manager delegate function
+     */
     func centralManagerDidUpdateState(_ central: CBCentralManager)
     {
         if central.state == .poweredOn

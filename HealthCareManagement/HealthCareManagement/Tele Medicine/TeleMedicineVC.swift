@@ -11,24 +11,26 @@ import MessageUI
 import CoreData
 
 class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate {
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var pharmaName: UITextField!
     @IBOutlet weak var pharmaAddress1: UITextField!
     @IBOutlet weak var pharmaAddress2: UITextField!
     @IBOutlet weak var postcodeTxt: UITextField!
     @IBOutlet weak var telephoneNum: UITextField!
     @IBOutlet weak var emailAddressTxt: UITextField!
-    
     @IBOutlet weak var sendPresctionBtn: UIButton!
     @IBOutlet weak var callPharmaBtn: UIButton!
     
+    ///Message variable is used for formating the email which is used to send for the pharmacy
     var message = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         fetchPharmaDetails()
-        
-        // TimesADay HowManyDays MedicineNamesList
+        //
         let medidinename = UserDefaults.standard.object(forKey: "MedicineNamesList") as? NSArray ?? []
         let times = UserDefaults.standard.object(forKey: "TimesADay") as? NSArray ?? []
         let days = UserDefaults.standard.object(forKey: "HowManyDays") as? NSArray ?? []
@@ -87,7 +89,9 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
         
         print(message)
     }
-
+    /**
+     Send email to the pharamcy and show alert if the user didnt provide the email address.
+     */
     func sendEmail() {
         if (emailAddressTxt.text == "" || emailAddressTxt.text == nil){
             showAlert(msg: "email address to send the prescription")
@@ -112,11 +116,14 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
         }
         
     }
-    
+    //MARK:- Mail composer delegate
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
     
+    /**
+     Store the pharmacy all the details like Name, Address, Telephone and Email address
+     */
     func storeDetails(){
         UserDefaults.standard.set(pharmaName.text, forKey: "PharmacyName")
         UserDefaults.standard.set(pharmaAddress1.text, forKey: "PharmacyAddress1")
@@ -127,6 +134,9 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
         UserDefaults.standard.synchronize()
     }
     
+    /**
+     Fetch the pharmacy details from the previous communication with the Pharmacy
+     */
     func fetchPharmaDetails(){
         pharmaName.text = UserDefaults.standard.object(forKey: "PharmacyName") as? String ?? ""
         pharmaAddress1.text = UserDefaults.standard.object(forKey: "PharmacyAddress1") as? String ?? ""
@@ -136,6 +146,9 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
         emailAddressTxt.text = UserDefaults.standard.object(forKey: "PharmacyEmail") as? String ?? ""
     }
 
+    /**
+     Back button which will navigate to Dahborad screen
+     */
     @IBAction func back(_ sender: Any) {
         let name = UserDefaults.standard.object(forKey: "username") as! String
         let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
@@ -145,10 +158,15 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
         vc.uhinumber = uhi
         navigationController?.pushViewController(vc, animated: true)
     }
+    /**
+     Sending prescription to the pharmacy using the email address provided.
+     */
     @IBAction func sendPrescriptionBtn(_ sender: Any) {
         sendEmail()
     }
-    
+    /**
+     Calling to the pharmacy which is provided by the user.
+     */
     @IBAction func callPharmaBtn(_ sender: Any) {
         if (telephoneNum.text == "" || telephoneNum.text == nil){
            showAlert(msg: "number to dial")
@@ -156,21 +174,17 @@ class TeleMedicineVC: UIViewController, MFMailComposeViewControllerDelegate, MFM
         }
         guard let number = URL(string: "tel://" + telephoneNum.text!) else { return }
         UIApplication.shared.open(number)
-        /*
-        if (MFMessageComposeViewController.canSendText()) {
-            let controller = MFMessageComposeViewController()
-            controller.body = "Calling to \(pharmaName.text!)"
-            controller.recipients = [telephoneNum.text!]
-            controller.messageComposeDelegate = self
-            self.present(controller, animated: true, completion: nil)
-        }
-         */
     }
-    
+    //MARK:- Message composer delegate
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    /**
+     Alert message
+     - parameters:
+        - msg: Pass the error message
+     */
     func showAlert(msg: String){
         let alert = UIAlertController(title: "Unavailable", message: "You haven't given any \(msg)", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .destructive, handler: nil))

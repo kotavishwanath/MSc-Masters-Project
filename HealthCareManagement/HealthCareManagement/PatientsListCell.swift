@@ -7,14 +7,18 @@
 //
 
 import UIKit
-
+/**
+ Table view Cell for the patents list table view
+ */
 class PatientsListCell: UITableViewCell {
     
     @IBOutlet weak var patientsUHINumber: UILabel!
     @IBOutlet weak var patientsDOBLabel: UILabel!
     @IBOutlet weak var patientNameLabel: UILabel!
     @IBOutlet weak var patientProfilePicture: UIImageView!
-    
+    /**
+     setPatient name is used for updating the cell with the required data
+     */
     func setPatient(info: PatientsList){
         patientsUHINumber.text = info.UHI
         patientsDOBLabel.text = info.dob

@@ -107,7 +107,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-
+/**
+ Extenstion of Appdelegate for setting the local notifications
+ */
 extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,

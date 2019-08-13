@@ -10,9 +10,11 @@ import UIKit
 import CoreData
 
 class HealthStatusVC: UIViewController {
-
-    var UHI = String()
     
+    var UHI = String()
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var bpView: UIView!
     @IBOutlet weak var tempView: UIView!
     @IBOutlet weak var pulseoxiView: UIView!
@@ -21,7 +23,9 @@ class HealthStatusVC: UIViewController {
     @IBOutlet weak var hemoView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        /**
+         Tap gesture is added on all the views in order to recognize the tap on a particular vital
+         */
         let guster = UITapGestureRecognizer (target: self, action: #selector(HealthStatusVC.bpviewTapped(_:)))
         
         bpView.isUserInteractionEnabled = true
@@ -55,10 +59,10 @@ class HealthStatusVC: UIViewController {
         
         //For Reteriving the Blood Pressure Information
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
-        
-        
     }
-    
+    /**
+     When the user clicked on back button app will be navigating to the Dashborad View controller
+     */
     @IBAction func backBtnClicked(_ sender: Any) {
         let name = UserDefaults.standard.object(forKey: "username") as! String
         //        let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
@@ -80,7 +84,9 @@ class HealthStatusVC: UIViewController {
         self.chtView.data = data
     }
      */
-    
+    /**
+     Fetching the Blood Pressure records of the user
+     */
     @objc func bpviewTapped(_ guster: UITapGestureRecognizer){
         var systolicAry = [Int]()
         var diastolicAry = [Int]()
@@ -126,7 +132,9 @@ class HealthStatusVC: UIViewController {
         vc.screen = "BloodPressure"
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Fetching the Temperature records of the user
+     */
     @objc func tempviewTapped(_ guster: UITapGestureRecognizer){
         var temperatureDataAry = [Float]()
         guard let appDelegate =
@@ -157,7 +165,9 @@ class HealthStatusVC: UIViewController {
         vc.screen = "Temperature"
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Fetching the Pulseoxi records of the user
+     */
     @objc func oxiviewTapped(_ guster: UITapGestureRecognizer){
         var pulseoxiDataAry = [Float]()
         guard let appDelegate =
@@ -188,7 +198,9 @@ class HealthStatusVC: UIViewController {
         vc.screen = "PulseOxi"
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Fetching the Glucose records of the user
+     */
     @objc func glucoseTapped(_ guster: UITapGestureRecognizer){
         var glucoseDataAry = [Int]()
         
@@ -220,7 +232,9 @@ class HealthStatusVC: UIViewController {
         vc.screen = "Glucose"
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Fetching the Heartrate records of the user
+     */
     @objc func heartRateTapped(_ guster: UITapGestureRecognizer){
         var heartDataAry = [Int]()
         guard let appDelegate =
@@ -251,7 +265,9 @@ class HealthStatusVC: UIViewController {
         vc.screen = "HeartRate"
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Fetching the Hemoglobin records of the user
+     */
     @objc func hemoglobinTapped(_ guster: UITapGestureRecognizer){
         var hemobloginDataAry = [Float]()
         guard let appDelegate =

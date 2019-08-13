@@ -10,11 +10,13 @@
 
 import UIKit
 import CoreData
-
-// patients.value(forKeyPath: "name") as? String
-
+/**
+ This class is used for the patient regestration purpose
+ */
 class RegestrationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextFieldDelegate {
-    
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     var patients:[NSManagedObject] = []
     @IBOutlet weak var formScrollView: UIScrollView!
     var activeField: UITextField?
@@ -59,19 +61,21 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
         submitBtn.layer.borderColor = UIColor.blue.cgColor
         submitBtn.layer.cornerRadius = 4.0
     }
-    
+    ///Causes the view (or one of its embedded text fields) to resign the first responder status.
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
+    /**
+     When the user clicked on back button app will be navigating to the Front view controller
+     */
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-   
+    /**
+     User can also update there profile picture by taking the photo right away using the camera
+     */
     @IBAction func openCamerabutton(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera){
             imagepickerController.sourceType = .camera
@@ -82,37 +86,32 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+    /**
+     User will be selecting profile picture from there gallery
+     */
     @IBAction func openGalleryButton(_ sender: Any) {
         imagepickerController.sourceType = .photoLibrary
         self.present(imagepickerController, animated: true, completion: nil)
     }
     
+    ///MARK:- Image Picker delegate method
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let profileImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         profileImageview.image = profileImage
         dismiss(animated: true, completion: nil)
-        
-        /*
-         In future for resizing the image inorder to reduce the size of the image file
-         let image = resizeImage(profileImage, newWidth: 140)
-         let imgData = profileImage.pngData()
-         // let byteData = [UInt8](repeating: 0x0, count: imgData!.count)
-         
-         let tmpImg = UIImage(data: imgData!)!
-         let resizedImg = UIImage(cgImage: tmpImg.cgImage!, scale: image.scale, orientation: image.imageOrientation)
-         profileImageview.image = resizedImg
-         */
     }
-    
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
+    /**
+     Resizing the profile picture for displaying purpose
+     - Parameters:
+        - image: Which image do we need to resize
+        - newWidth: How much width do we need the image size
+     */
     func resizeImage(_ image: UIImage, newWidth: CGFloat) -> UIImage
     {
-//        let scale = newWidth / image.size.width
-//        let newHeight = image.size.height * scale
         let newHeight = CGFloat(150.0)
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
@@ -121,33 +120,33 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
         
         return newImage!
     }
-    
+    /**
+     Random generation with the given length of digits
+     - Parameters:
+        - digits: It will generate the number with the given digits
+     */
     func randomNumberWith(digits:Int) -> Int {
         let min = Int(pow(Double(10), Double(digits-1))) - 1
         let max = Int(pow(Double(10), Double(digits))) - 1
         return Int(Range(uncheckedBounds: (min, max)))
     }
-    
+    /**
+     Register button action checks if all the mandatory fields have been entered and if it has then will register user with the doctor and also give a Universal Identifier Number to the user.
+     */
     @IBAction func registerButton(_ sender: Any) {
         var uhiNumber = 0
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
                 return
         }
-        
-        // 1
+
         let managedContext =
             appDelegate.persistentContainer.viewContext
-        
-        // 2
         let entity =
             NSEntityDescription.entity(forEntityName: "PatientsContactInfo",
                                        in: managedContext)!
-        
         let person = NSManagedObject(entity: entity,
                                      insertInto: managedContext)
-        
-        // 3
         if (firstname.text != "" && lastname.text != "" && maidenname.text != "" && dateofbirth.text != "" && email.text != "" && displayname.text != "" && address1.text != "" && state.text != "" && country.text != "" && postcode.text != "" && mobilenumber.text != "" && emercontactname.text != "" && emercontactnumber.text != "" && emercontactemail.text != "" && emercontactrelationship.text != "" && pinnumber.text != "" && username.text != "" && password.text != "" && reenterpassword.text != "" && (password.text == reenterpassword.text)){
             
             let validemail = isValidEmail(testStr: email.text!)
@@ -199,13 +198,11 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
             }
            
         }else{
+            ///Alert for missing required fields
             let alert = UIAlertController(title: "Not Valid", message: "Please enter all the mandatory fields", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-        
-        
-        // 4
         do {
             try managedContext.save()
             patients.append(person)
@@ -215,24 +212,30 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
                 let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
                 self.navigationController?.pushViewController(vc, animated: true)
             }))
-//            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-
     }
-    
+    /**
+     Checking if the entered email address is valid or not by using Regular expression
+     - Parameters:
+        - testStr: Paasing the entered string to validiate
+     */
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
-    
+    //MARK:- Text filed delegate
     func textFieldDidEndEditing(_ textField: UITextField) {
         patientname.text = displayname.text
     }
-    
+    /**
+     Convering the CIImage to UIImage
+     - Parameters:
+        - cmage: we will pass the CIImage which is fetched from the QRCode
+     */
     func convertCIImage(cmage:CIImage) -> UIImage
     {
         let context:CIContext = CIContext.init(options: nil)
@@ -241,7 +244,9 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
         return QRimage
     }
 }
-
+/**
+ Random number generation using the extension of Integer
+ */
 extension Int {
     init(_ range: Range<Int> ) {
         let delta = range.lowerBound < 0 ? abs(range.lowerBound) : 0

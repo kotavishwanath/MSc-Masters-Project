@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/**
+ Medication cell view which is used pillbox screen
+ */
 class MedicationCell: UITableViewCell {
     @IBOutlet weak var medicineName: UILabel!
     @IBOutlet weak var beformeal: UILabel!
@@ -26,7 +28,9 @@ class MedicationCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    /**
+     Updating the pill box table view with the medicine name, how many times, before meal and after meal
+     */
     func updateUI(info: MedicationList){
         medicineName.text = info.medicineName
         howManyTimesADay.text = "\(info.timesADay)"

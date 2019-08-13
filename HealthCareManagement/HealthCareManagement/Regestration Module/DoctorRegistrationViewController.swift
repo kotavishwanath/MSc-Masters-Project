@@ -8,8 +8,13 @@
 
 import UIKit
 import CoreData
-
+/**
+ This class is used for the Doctor regestration purpose
+ */
 class DoctorRegistrationViewController: UIViewController {
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     var doctorsInfo:[NSManagedObject] = []
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -18,33 +23,24 @@ class DoctorRegistrationViewController: UIViewController {
     @IBOutlet weak var reenterPassword: UITextField!
     @IBOutlet weak var submitbtn: UIButton!
     @IBOutlet weak var doctorEmail: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         submitbtn.layer.borderWidth = 1
         submitbtn.layer.borderColor = UIColor.blue.cgColor
         submitbtn.layer.cornerRadius = 4.0
-        
-        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    /**
+     When the user clicked on back button app will be navigating to the Front view controller
+     */
     @IBAction func backBtn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     The submit button action checks if all the required fileds have been satisfied and generate error if any or create a doctor user in the application
+     */
     @IBAction func submitBtn(_ sender: Any) {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -72,7 +68,7 @@ class DoctorRegistrationViewController: UIViewController {
                 doctor.setValue(gmcNumber.text, forKey: "gmc_number")
                 doctor.setValue(password.text, forKey: "password")
                 doctor.setValue(doctorEmail.text, forKey: "email")
-                
+                ///Storing the docotrs email address for the user to send any emergency infromation
                 UserDefaults.standard.setValue(doctorEmail.text, forKey: "doctorsEmail")
                 UserDefaults.standard.synchronize()
                 
@@ -91,18 +87,24 @@ class DoctorRegistrationViewController: UIViewController {
                 }
                 
             }else{
+                ///Alert for password miss match
                 let alert = UIAlertController(title: "Not Valid", message: "Password not matching", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
         }else {
+            ///Alert for the missing required fileds values
             let alert = UIAlertController(title: "Not Valid", message: "Please enter all the required fileds", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         
     }
-    
+    /**
+     Checking if the entered email address is valid or not by using Regular expression
+     - Parameters:
+     - testStr: Paasing the entered string to validiate
+     */
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)

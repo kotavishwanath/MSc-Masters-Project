@@ -8,9 +8,13 @@
 
 import UIKit
 import CoreData
-
+/**
+ This screen is basically used by doctor and all the recent values will be updated according to the patient. It will also show the emeergency contanct name of patient.
+ */
 class PatientProfileVC: UIViewController {
-
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var patientName: UILabel!
     @IBOutlet weak var uhiNumber: UILabel!
     @IBOutlet weak var emergencyContactName: UILabel!
@@ -36,13 +40,16 @@ class PatientProfileVC: UIViewController {
     @IBOutlet weak var hemoData: UILabel!
     @IBOutlet weak var hemoUpdatedDate: UILabel!
     
+    /**
+     Vitals information
+     */
     var bloodPressureValue = String()
     var temperatureValue = String()
     var pulseoxiValue = String()
     var glucoseValue = String()
     var heartRateValue = String()
     var hemoValue = String()
-    
+    ///UHI number of a patient
     var UHI = String()
     
     override func viewDidLoad() {
@@ -52,48 +59,49 @@ class PatientProfileVC: UIViewController {
         let x = (uhiNumber.text)!.components(separatedBy: " ")
         UHI = x[1]
         
-        
         emergencyContactName.text = (UserDefaults.standard.object(forKey: "EmergencyContact") as! String)
         nextSession.text = (UserDefaults.standard.object(forKey: "Appointment") as! String)
         
         self.navigationController?.navigationBar.isHidden = true
         
+        /**
+         On all the vital information views, I have added the tap gesture.
+         */
         let guster = UITapGestureRecognizer (target: self, action: #selector(PatientProfileVC.bpviewTapped(_:)))
-        
         bpView.isUserInteractionEnabled = true
         bpView.addGestureRecognizer(guster)
         
         let tempGuster = UITapGestureRecognizer (target: self, action: #selector(PatientProfileVC.tempviewTapped(_:)))
-        
         temperatureView.isUserInteractionEnabled = true
         temperatureView.addGestureRecognizer(tempGuster)
         
         let oxiGuster = UITapGestureRecognizer (target: self, action: #selector(PatientProfileVC.oxiviewTapped(_:)))
-        
         pulseOxiView.isUserInteractionEnabled = true
         pulseOxiView.addGestureRecognizer(oxiGuster)
         
         let glucoseGuster = UITapGestureRecognizer (target: self, action: #selector(PatientProfileVC.glucoseTapped(_:)))
-        
         glucoseView.isUserInteractionEnabled = true
         glucoseView.addGestureRecognizer(glucoseGuster)
         
         let heartRateGuster = UITapGestureRecognizer (target: self, action: #selector(PatientProfileVC.heartRateTapped(_:)))
-        
         heartRateView.isUserInteractionEnabled = true
         heartRateView.addGestureRecognizer(heartRateGuster)
         
         let hemoglobinGuster = UITapGestureRecognizer (target: self, action: #selector(PatientProfileVC.hemoglobinTapped(_:)))
-        
         hemoglobinView.isUserInteractionEnabled = true
         hemoglobinView.addGestureRecognizer(hemoglobinGuster)
         
         updateVitalValues()
     }
+    /**
+     ViewWillAppear method is called when the user is navigating back to this screen
+     */
     override func viewWillAppear(_ animated: Bool) {
         updateVitalValues()
     }
-    
+    /**
+     Fetching all the vital latest values and its updated date and time
+     */
     func updateVitalValues(){
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -122,13 +130,11 @@ class PatientProfileVC: UIViewController {
             let glucoseInfo = try managedContext.fetch(fetchRequestGlucose)
             let heartRateInfo = try managedContext.fetch(fetchRequestHeartRate)
             let hemoInfo = try managedContext.fetch(fetchRequestHemo)
-            
+            ///Fetching Blood Pressure information and also last updated date and time
             for bpData in BPInfo{
                 if (UHI == bpData.value(forKey: "patientID") as? String){
                     let systolicValue = bpData.value(forKeyPath: "systolic") as! Int
                     let diastolicValue = bpData.value(forKeyPath: "diastolic") as! Int
-//                    self.bpData.text = "\(systolicValue)/\(diastolicValue)"
-//                    bloodPressureValue = "Current Value: \(systolicValue)/\(diastolicValue) mmHG"
                     if (bpData.value(forKey: "date") != nil){
                         let d = bpData.value(forKey: "date") as! NSDate
                         self.bpData.text = "\(systolicValue)/\(diastolicValue)"
@@ -137,10 +143,8 @@ class PatientProfileVC: UIViewController {
                     }
                 }
             }
-            
+            ///Fetching Temperature information and also last updated date and time
             for tempData in tempInfo{
-                /* let i:Int = 0
-                 tempData.setValue(i, forKey: "temprature_info")*/
                 if (UHI == tempData.value(forKey: "patientID") as? String){
                     let temp = tempData.value(forKey: "temprature_info") as! Float
 //                    self.tempData.text = String(format: "%.1f", temp)
@@ -154,7 +158,7 @@ class PatientProfileVC: UIViewController {
                     
                 }
             }
-            
+            ///Fetching PulseOxi information and also last updated date and time
             for pulseData in pluseOxiInfo{
                 if (UHI == pulseData.value(forKey: "patientID") as? String){
                     let pulse = pulseData.value(forKey: "pulseoxi_value") as! Float
@@ -168,7 +172,7 @@ class PatientProfileVC: UIViewController {
                     }
                 }
             }
-            
+            ///Fetching Glucose information and also last updated date and time
             for glucoseData in glucoseInfo{
                 if (UHI == glucoseData.value(forKey: "patientID") as? String){
                     let glucose = glucoseData.value(forKey: "glucose_value") as! Int
@@ -182,7 +186,7 @@ class PatientProfileVC: UIViewController {
                     }
                 }
             }
-            
+            ///Fetching Heartrate information and also last updated date and time
             for heartData in heartRateInfo{
                 if (UHI == heartData.value(forKey: "patientID") as? String){
                     let rate = heartData.value(forKey: "heartrate_value") as! Int
@@ -196,7 +200,7 @@ class PatientProfileVC: UIViewController {
                     }
                 }
             }
-            
+            ///Fetching Hemoglobin information and also last updated date and time
             for hemoData in hemoInfo{
                 if (UHI == hemoData.value(forKey: "patientID") as? String){
                     let hemo = hemoData.value(forKey: "hemoglobin_value") as! Float
@@ -211,11 +215,16 @@ class PatientProfileVC: UIViewController {
                 }
             }
             
-        }catch let error as NSError {
+        }///Catch if any error
+        catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-    
+    /**
+     Navigating to Patient profile Blood pressure screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func bpviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPBloodPressureVC") as! PPBloodPressureVC
@@ -226,7 +235,11 @@ class PatientProfileVC: UIViewController {
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+    Navigating to Patient profile Temperature screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func tempviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPTemperatureVC") as! PPTemperatureVC
@@ -237,7 +250,11 @@ class PatientProfileVC: UIViewController {
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+    Navigating to Patient profile PulseOxi screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func oxiviewTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPPulseOxiMeterVC") as! PPPulseOxiMeterVC
@@ -248,7 +265,11 @@ class PatientProfileVC: UIViewController {
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+    Navigating to Patient profile Glucose screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func glucoseTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPGlucoseVC") as! PPGlucoseVC
@@ -259,7 +280,11 @@ class PatientProfileVC: UIViewController {
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+    Navigating to Patient profile Heart rate screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func heartRateTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPHeartRateVC") as! PPHeartRateVC
@@ -270,7 +295,11 @@ class PatientProfileVC: UIViewController {
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+    Navigating to Patient profile Hemoglobin screen for updating vital alerts and medication information
+     - Parameters:
+        - guster: sending guesture view
+     */
     @objc func hemoglobinTapped(_ guster: UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PPHemoglobinVC") as! PPHemoglobinVC
@@ -281,7 +310,9 @@ class PatientProfileVC: UIViewController {
         }
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     When the user clicked on back button app will be navigating to the Doctors view controller
+     */
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DoctorsViewController") as! DoctorsViewController

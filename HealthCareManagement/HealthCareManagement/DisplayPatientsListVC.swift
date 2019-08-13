@@ -8,11 +8,16 @@
 
 import UIKit
 import CoreData
-
+/**
+ This class is used for displaying all the patients list matched with the doctors search
+ */
 class DisplayPatientsListVC: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var patientsListTblView: UITableView!
-    
+
     var patientName = ""
     var patientUHI = ""
     var patientDOB = ""
@@ -31,12 +36,21 @@ class DisplayPatientsListVC: UIViewController, UITableViewDelegate, UITableViewD
         listOfPatients = fetchPatientData(name: patientName, dateOfbirth: patientDOB, uhi: patientUHI)
         print(listOfPatients.count)
     }
+    /**
+     Back button is used for navigating to the Doctors view controller
+     */
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "DoctorsViewController") as! DoctorsViewController
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Fetching the patients information using the name, date of  birth and UHI number
+     - parameters:
+         - name: Patient name
+         - dateOfbirth: Patient Date of birth
+         - uhi: Patient UHI number
+     */
     func fetchPatientData(name: String, dateOfbirth: String, uhi: String) -> [PatientsList]{
         var tempAry: [PatientsList] = []
         
@@ -77,7 +91,7 @@ class DisplayPatientsListVC: UIViewController, UITableViewDelegate, UITableViewD
         }
         return tempAry
     }
-    
+    //MARK:- Table view Delegate and Datasource Methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -99,8 +113,11 @@ class DisplayPatientsListVC: UIViewController, UITableViewDelegate, UITableViewD
         navigateToDahboard(number: selectedPatient.UHI)
 
     }
-    
-   
+    /**
+     Navigating to the Patient profile screen by using the patient uhiversal health identifer
+     - Parameters:
+        - number: Patinet UHI number
+     */
     func navigateToDahboard(number: String){
         let uhi = Int(number)
         guard let appDelegate =
@@ -123,7 +140,6 @@ class DisplayPatientsListVC: UIViewController, UITableViewDelegate, UITableViewD
                     if ((data.value(forKey: "appointmentDate") != nil) || (data.value(forKey: "appointment_Time") != nil)){
                         appointmentDate = data.value(forKey: "appointmentDate") as! String
                         appointmentTime = data.value(forKey: "appointment_Time") as! String
-                    
                     }
                    
                     let appointment = "Next Session: \(appointmentDate) at \(appointmentTime)"
@@ -145,17 +161,15 @@ class DisplayPatientsListVC: UIViewController, UITableViewDelegate, UITableViewD
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
-        
+        ///Alert if the UHI number didnt matched with the data base
         let alert = UIAlertController(title: "Patient not found", message: "Please check patients UHI number correctly", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-
-    
 }
-
-
+/**
+Patients list is used for storing all the patient realted information like name, UHI number, date of birth and profile pictur.
+*/
 class PatientsList {
     var name: String
     var UHI: String

@@ -9,14 +9,23 @@
 import UIKit
 import CoreData
 import UserNotifications
-
+/**
+ This class is used for showing all the medication list to the user and also how many times a day as well as wheather to take before meal or after meal
+ */
 class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var pillsTblView: UITableView!
-    
+    ///Medicsine name array
     var medicineName = [String]()
+    ///How many times a day array
     var timeADay = [Int]()
+    ///After meal array
     var afterMeal = [Bool]()
+    ///Before meal array
     var beforeMeal = [Bool]()
+    ///How many days to have array
     var daysToHave = [Int]()
     
     var medicineList: [MedicationList] = []
@@ -63,7 +72,6 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
                             //Considering 4 times
                             fourTimesScheduleNotification(messgae: name, before: beforeM, after: afterM, days: daysToTake)
                         }
-                        
                         medicineList.append(MedicationList(name: name, times: times, before: beforeM, after: afterM, notes: note, days: daysToTake ))
                     }
                 }
@@ -84,7 +92,7 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
-    
+    //MARK:- Table view delegate methods
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -99,7 +107,9 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.updateUI(info: medicineInfo)
         return cell
     }
-    
+    /**
+     When the user clicked on back button app will be navigating to the Dashboard view controller
+     */
     @IBAction func backButtonClicked(_ sender: Any) {
         let name = UserDefaults.standard.object(forKey: "username") as! String
         let uhi = UserDefaults.standard.object(forKey: "UHI") as! String
@@ -109,7 +119,9 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
         vc.uhinumber = uhi
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    /**
+     Scheduling the notification with medicine name and time to take, it will notify the user for one time a day
+     */
     func oneTimeScheduleNotification(messgae: String, before: Bool, after: Bool, days: Int){
         
         let content = UNMutableNotificationContent()
@@ -145,7 +157,9 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         })
     }
-    
+    /**
+     Scheduling the notification with medicine name and time to take, it will notify the user for two times a day
+     */
     func twoTimesScheduleNotification(messgae: String, before: Bool, after: Bool, days: Int){
         let content = UNMutableNotificationContent();
         let patinetname = UserDefaults.standard.object(forKey: "username") as! String
@@ -195,7 +209,9 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    
+    /**
+     Scheduling the notification with medicine name and time to take, it will notify the user for three times a day
+     */
     func threeTimesScheduleNotification(messgae: String, before: Bool, after: Bool, days: Int){
         let content = UNMutableNotificationContent();
         let patinetname = UserDefaults.standard.object(forKey: "username") as! String
@@ -245,7 +261,9 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
             }
         }
     }
-    
+    /**
+     Scheduling the notification with medicine name and time to take, it will notify the user for four times a day
+     */
     func fourTimesScheduleNotification(messgae: String, before: Bool, after: Bool, days: Int){
         let content = UNMutableNotificationContent();
         let patinetname = UserDefaults.standard.object(forKey: "username") as! String
@@ -296,7 +314,9 @@ class PillBoxViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 }
-
+/**
+ Creating the class for storing Medicine name, timesAday, Beformeal, Aftermeal, Notes and Days to take
+ */
 class MedicationList{
     var medicineName:String
     var timesADay:Int

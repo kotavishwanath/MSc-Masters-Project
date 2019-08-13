@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 
 class PPTemperatureVC: UIViewController {
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var patientUHI: UILabel!
     @IBOutlet weak var currentValue: UILabel!
     @IBOutlet weak var alertMaxValue: UITextField!
@@ -38,20 +41,31 @@ class PPTemperatureVC: UIViewController {
         submitbtn.layer.borderColor = UIColor.blue.cgColor
         submitbtn.layer.cornerRadius = 4.0
     }
-    
+    /**
+     When the user clicked on back button app will be navigating to the Patient profile view controller
+     */
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PatientProfileVC") as! PatientProfileVC
         navigationController?.pushViewController(vc, animated: true)
     }
+    /**
+     Before meal button is used for taking the medication
+     */
     @IBAction func beforeMealClicked(_ sender: Any) {
         beforeMealBtn.isSelected = true
         afterMealBtn.isSelected = false
     }
+    /**
+     After meal button is used for taking the medication
+     */
     @IBAction func afterMealClicked(_ sender: Any) {
         afterMealBtn.isSelected = true
         beforeMealBtn.isSelected = false
     }
+    /**
+     Add medication is for adding the medicines to the patient and also how many times to take per day
+     */
     @IBAction func addMedicineButton(_ sender: Any) {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {
@@ -88,6 +102,9 @@ class PPTemperatureVC: UIViewController {
             }
         }
     }
+    /**
+     Updating all the medicaitions required for the temperature data to the database
+     */
     @IBAction func submitButtonClicked(_ sender: Any) {
         guard let appDelegate =
             UIApplication.shared.delegate as? AppDelegate else {

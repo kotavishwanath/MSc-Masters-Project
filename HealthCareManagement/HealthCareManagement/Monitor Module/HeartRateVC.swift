@@ -121,14 +121,14 @@ class HeartRateVC: UIViewController, MFMailComposeViewControllerDelegate {
             }
         }
     }
-    
+    ///MARK:- Mail composer delegate method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
-    
+    /**
+     Save button used for saving the vital information
+     */
     @IBAction func saveButtonClicked(_ sender: Any) {
-      
-        // for the first time
         if(enterHeartRate.text != ""){
             checkforAbnormalValues()
             guard let appDelegate =
