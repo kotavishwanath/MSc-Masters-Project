@@ -9,8 +9,13 @@
 import UIKit
 import CoreData
 import MessageUI
-
+/**
+ This class is used for updating the Glucose levels information by the registered patient
+ */
 class GlucoseVC: UIViewController, MFMailComposeViewControllerDelegate {
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var currentGlucoseValue: UILabel!
     @IBOutlet weak var updateDate: UILabel!
     @IBOutlet weak var glucoseGoal: UILabel!
@@ -42,7 +47,9 @@ class GlucoseVC: UIViewController, MFMailComposeViewControllerDelegate {
         
         fetchDoctorsInfo()
     }
-    
+    /**
+     View Controller life cycle method, it is called when navigated back to this screen
+     */
     override func viewWillAppear(_ animated: Bool) {
         fetchDoctorsInfo()
     }
@@ -51,7 +58,9 @@ class GlucoseVC: UIViewController, MFMailComposeViewControllerDelegate {
     var low = 0
     var goal = 0
     var note = ""
-    
+    /**
+     Fetching the doctor inputs like alerts and notes
+     */
     func fetchDoctorsInfo(){
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
         guard let appDelegate =
@@ -91,7 +100,9 @@ class GlucoseVC: UIViewController, MFMailComposeViewControllerDelegate {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-    
+    /**
+     Back button which will navigate to Monitor Dahborad screen
+     */
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MonitorDashboardVC") as! MonitorDashboardVC
@@ -125,11 +136,13 @@ class GlucoseVC: UIViewController, MFMailComposeViewControllerDelegate {
             }
         }
     }
-    
+    ///MARK:- Mail Composser delegate method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
-    
+    /**
+     Save button used for saving the vital information
+     */
     @IBAction func saveButtonClicked(_ sender: Any) {
         if(enterGlucoseValue.text != ""){
             checkforAbnormalValues()

@@ -98,7 +98,7 @@ class HemoglobinVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     /**
-     Save button used for saving the vital information 
+     Save button used for saving the vital information
      */
     @IBAction func saveButtonClicked(_ sender: Any) {
         if(enterHemoglobinValue.text != ""){

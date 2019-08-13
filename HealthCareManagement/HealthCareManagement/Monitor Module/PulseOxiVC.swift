@@ -9,9 +9,13 @@
 import UIKit
 import CoreData
 import MessageUI
-
+/**
+ This class is used for updating the PulseOxi information by the registered patient
+ */
 class PulseOxiVC: UIViewController, MFMailComposeViewControllerDelegate {
-
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var currentOxiValue: UILabel!
     @IBOutlet weak var updatedDate: UILabel!
     @IBOutlet weak var oxiGoal: UILabel!
@@ -44,11 +48,15 @@ class PulseOxiVC: UIViewController, MFMailComposeViewControllerDelegate {
         
         fetchDoctorsInfo()
     }
-    
+    /**
+     View Controller life cycle method, it is called when navigated back to this screen
+     */
     override func viewWillAppear(_ animated: Bool) {
         fetchDoctorsInfo()
     }
-    
+    /**
+     Fetching the doctor inputs like alerts and notes
+     */
     func fetchDoctorsInfo(){
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
         guard let appDelegate =
@@ -84,7 +92,9 @@ class PulseOxiVC: UIViewController, MFMailComposeViewControllerDelegate {
         }
         
     }
-    
+    /**
+     Back button which will navigate to Monitor Dahborad screen
+     */
     @IBAction func backButtonClicked(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MonitorDashboardVC") as! MonitorDashboardVC
@@ -121,11 +131,13 @@ class PulseOxiVC: UIViewController, MFMailComposeViewControllerDelegate {
             }
         }
     }
-    
+    ///MARK:- Mail composser delegate method
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true)
     }
-    
+    /**
+     Save button used for saving the vital information
+     */
     @IBAction func saveButtonClicked(_ sender: Any) {
         if(enterOxiValue.text != ""){
             checkforAbnormalValues()

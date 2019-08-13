@@ -9,9 +9,13 @@
 import UIKit
 import CoreData
 import MessageUI
-
+/**
+ This class is used for updating the Heart rate information by the registered patient
+ */
 class HeartRateVC: UIViewController, MFMailComposeViewControllerDelegate {
-
+    /**
+     Outlet connections from the UI and is self describing variable names
+     */
     @IBOutlet weak var enterHeartRate: UITextField!
     @IBOutlet weak var currentHeartRateValue: UILabel!
     @IBOutlet weak var updatedDate: UILabel!
@@ -42,15 +46,23 @@ class HeartRateVC: UIViewController, MFMailComposeViewControllerDelegate {
         
         fetchDoctorsInfo()
     }
-    
+    /**
+     View Controller life cycle method, it is called when navigated back to this screen
+     */
     override func viewWillAppear(_ animated: Bool) {
         fetchDoctorsInfo()
     }
+    ///Heart rate high value
     var high = 0
+    ///Heart rate Low value
     var low = 0
+    ///Heart rate Goal Value
     var goalv = 0
+    ///Heart rate Doctor Notes
     var note = ""
-    
+    /**
+     Fetching the doctor inputs like alerts and notes
+     */
     func fetchDoctorsInfo(){
         UHI = UserDefaults.standard.object(forKey: "UHI") as! String
         guard let appDelegate =
@@ -89,6 +101,9 @@ class HeartRateVC: UIViewController, MFMailComposeViewControllerDelegate {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
+    /**
+     Back button which will navigate to Monitor Dahborad screen
+     */
     @IBAction func backButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MonitorDashboardVC") as! MonitorDashboardVC
