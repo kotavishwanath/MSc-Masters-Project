@@ -149,6 +149,13 @@ class RegestrationViewController: UIViewController, UIImagePickerControllerDeleg
                                      insertInto: managedContext)
         if (firstname.text != "" && lastname.text != "" && maidenname.text != "" && dateofbirth.text != "" && email.text != "" && displayname.text != "" && address1.text != "" && state.text != "" && country.text != "" && postcode.text != "" && mobilenumber.text != "" && emercontactname.text != "" && emercontactnumber.text != "" && emercontactemail.text != "" && emercontactrelationship.text != "" && pinnumber.text != "" && username.text != "" && password.text != "" && reenterpassword.text != "" && (password.text == reenterpassword.text)){
             
+            if (password.text != reenterpassword.text){
+                let alert = UIAlertController(title: "Not Valid", message: "Password you have entered didnt match with the Re-enter password", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
             let validemail = isValidEmail(testStr: email.text!)
             let validemeremail = isValidEmail(testStr: emercontactemail.text!)
             if validemail && validemeremail{

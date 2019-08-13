@@ -40,6 +40,8 @@
 	<string>We will like to access your health kit data in order to provide best results</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>We will like to access your health kit data in order to provide best results</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We would like to access the camera for taking your profile picture</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
