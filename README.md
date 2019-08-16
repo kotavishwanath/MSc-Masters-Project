@@ -15,3 +15,10 @@ Why did I use Trello ?
 - Flexibility
 - Customizable
 
+Comments:
+
+/*
+ * -----------------------
+ * MARK: - Calendar Stuff
+ * ------------------------
+ */
